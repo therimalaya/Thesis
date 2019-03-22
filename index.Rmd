@@ -18,6 +18,10 @@ address:
     address: Faculty of Chemistry and Bioinformatics, Norwegian University of Life Sciences, Ås, Norway
   - code: NMBU
     address: Professor, Norwegian University of Life Sciences, Ås, Norway
+include-after:
+  - \includepdf[pages=-]{papers/001.pdf}
+  - \includepdf[pages=-]{papers/002.pdf}
+  - \includepdf[pages=-]{papers/003.pdf}
 classoption: ["12pt", "3p", "authoryear"]
 monofont: 'sourcecodepro'
 monofontoptions: "Scale=0.7"
@@ -47,6 +51,10 @@ if (knitr::is_html_output()) {
   knitr::opts_chunk$set(dev = 'svg', fig.retina = 2, dev.args = list(family="mono"))
 }
 ```
+
+# Introduction
+
+## Background
 
 
 ```{r scratch, echo = FALSE}

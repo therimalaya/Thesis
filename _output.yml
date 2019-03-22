@@ -10,7 +10,12 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: '<li><a href="./index.html"><strong>PhD Thesis</strong></a></li>'
-      after: '<li class="toc-footer"><a href="https://bookdown.org" target="blank">Published with <em>BookDown</em></a></li>'
+      after: |
+        <li><a name="title" href="javascript:void(0)"><strong>Papers:</strong></a><ul>
+        <li><a href="https://doi.org/10.1016/j.chemolab.2018.02.009" target="_blank">Paper I</a></li>
+        <li><a href="https://doi.org/10.1002/cem.3044" target="_blank">Paper II</a></li>
+        <li><a href="https://therimalaya.github.io/03-prediction-comparison" target="_blank">Paper III</a></li></ul></li>
+        <li class="toc-footer"><a href="https://bookdown.org" target="blank">Published with <em>BookDown</em></a></li>
     download: ['epub', 'pdf']
     sharing: 
       github: yes
@@ -20,14 +25,8 @@ bookdown::gitbook:
 bookdown::tufte_html_book:
   toc: yes
   css: [style.css, toc.css]
-# bookdown::html_document2:
-#   citation_package: natbib
-#   dev: svglite
-#   fig_caption: yes
-#   theme: yeti
-#   number_sections: no
-#   css: "custom.css"
 bookdown::pdf_book:
+  toc: yes
   fig_caption: yes
   citation_package: natbib
   md_extensions: -autolink_bare_uris

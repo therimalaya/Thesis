@@ -21,6 +21,7 @@
 \usepackage{cleveref}
 \usepackage{tabu}
 \usepackage{mathpazo}
+\usepackage{pdfpages}
 %% ------------ %%
 
 %% Conditional Packages %%
@@ -263,6 +264,11 @@ $preamble$
   $if(keywords)$ \begin{keyword} $for(keywords)$$keywords$$sep$,$endfor$\end{keyword}$endif$
 
 \end{frontmatter}
+
+$if(toc)$
+\tableofcontents
+$endif$
+
 
 $body$
 
