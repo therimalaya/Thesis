@@ -1,0 +1,41 @@
+---
+site: bookdown::bookdown_site
+title: 'Exploration of Multi-Response Multivariate Methods'
+subtitle: 'An application of simrel'
+date: "`r format(Sys.Date(), foramt = '%m, %Y')`"
+docsite: 'https://therimalaya.github.com/thesis'
+location: 'Ås, Norway'
+author:
+  name: "Raju Rimal*, Trygve Almøy & Solve Sæbø"
+  email: 'raju.rimal@nmbu.no'
+  homepage: 'https://www.mathatistics.com/'
+  affiliation: 'BIAS @ KBM, NMBU'
+bibliography: 'References.bib'
+biblio-style: 'plainnat'
+natbiboptions: 'authoryear'
+nociteall: true
+knit: 'bookdown::render_book'
+keywords: ['model-comparison ', 'multi-response ', 'simrel ']
+title-abstract: |
+  The titlepage reproduces an engraving of Maurits Cornelis Escher, titled \emph{Plane Filling with Birds} (the picture is obtained from \url{http://www.mcescher.com/}).
+abstract: |
+  This section belongs to absctract. Write awesome abstract.
+summary: |
+  This is summary section of the thesis.
+acknowledgement: |
+  I wish first of all to thank the members of the Staff of the Italian \TeX{} and \LaTeX{} User Group, in particular Prof.~Enrico Gregorio, for their invaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of precious observations and good advices.
+
+  Finally, thanks to Andr\'e Miede, for his wonderful ClassicThesis style, and to Daniel Gottschlag, who gave to me the hint for this original reworking.
+papers:
+  - title: "A tool for simulating multi-response linear model data"
+    path: "papers/001.pdf"
+  - title: "Model and estimators for partial least squares regression"
+    path: "papers/002.pdf"
+  - title: "Comparison of Multi-response Prediction Methods"
+    path: "papers/003.pdf"
+---
+
+# Introduction
+
+Citing @rimal2019pred in this text.
+

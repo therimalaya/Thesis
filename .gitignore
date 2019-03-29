@@ -1,2 +1,5 @@
 .Rproj.user
 *.spl
+.Rhistory
+templates/auto
+rstudio
