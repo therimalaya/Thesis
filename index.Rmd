@@ -12,7 +12,7 @@ author:
   affiliation: 'BIAS @ KBM, NMBU'
 bibliography: 'References.bib'
 biblio-style: 'plainnat'
-natbiboptions: 'numbers'
+natbiboptions: 'authoryear'
 nociteall: true
 knit: 'bookdown::render_book'
 keywords: ['model-comparison ', 'multi-response ', 'simrel ']
