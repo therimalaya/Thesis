@@ -1,39 +1,19 @@
 DIR="docs"
 
-all: pdf gitbook epub
+all: gitbook pdf epub
 
 gitbook:
-	Rscript --quiet _render.R "bookdown::gitbook"
+	Rscript -e 'bookdown::render_book(".", "bookdown::gitbook", quiet=TRUE)'
 
 pdf:
-	Rscript --quiet _render.R "bookdown::pdf_book"
-
-serve:
-	Rscript --quiet -e "servr::httw(dir = 'docs', watch = 'docs', port = 5555, host = '0.0.0.0')"
-
-clean:
-	rm -rf $(DIR) && rm main*.* && rm -rf _bookdown_files
-
-app:
-	Rscript -e "shiny::runApp('.', port = 4321, host = '0.0.0.0')"
+	Rscript -e 'bookdown::render_book(".", "bookdown::pdf_book", quiet=TRUE)'
 
 epub:
-	Rscript --quiet _render.R "bookdown::epub_book"
+	Rscript -e 'bookdown::render_book(".", "bookdown::epub_book", quiet=TRUE)'
 
-word:
-	Rscript --quiet _render.R "bookdown::word_document2"
+clean:
+	rm -f Thesis*.* && rm -rf _bookdown_files
 
-.PHONY: all app
+cleanall:
+	make clean && rm -rf $(DIR)
 
-# all:
-#		make gitbook
-#		make pdf
-#
-# tufte:
-#		Rscript --quiet _render.R "bookdown::tufte_html_book"
-#
-# htmlbook:
-#		Rscript --quiet _render.R "bookdown::html_book"
-#
-# html:
-#		Rscript --quiet _render.R "bookdown::html_document2" && mv main.html public/index.html

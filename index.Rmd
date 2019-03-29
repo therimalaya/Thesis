@@ -1,64 +1,41 @@
 ---
 site: bookdown::bookdown_site
-title: 'Simulation tool for statistical application and comparison of multi-response multivariate estimators'
-date: "`r Sys.Date()`"
+title: 'Exploration of Multi-Response Multivariate Methods'
+subtitle: 'An application of simrel'
+date: "`r format(Sys.Date(), foramt = '%m, %Y')`"
+docsite: 'https://therimalaya.github.com/thesis'
+location: 'Ås, Norway'
 author:
-  - name: Raju Rimal
-    email: raju.rimal@nmbu.no
-    affiliation: KBM
-    footnote: Corresponding Author
-  - name: Trygve Almøy
-    email: trygve.almoy@nmbu.no
-    affiliation: KBM
-  - name: Solve Sæbø
-    email: solve.sabo@nmbu.no
-    affiliation: NMBU
-address:
-  - code: KBM
-    address: Faculty of Chemistry and Bioinformatics, Norwegian University of Life Sciences, Ås, Norway
-  - code: NMBU
-    address: Professor, Norwegian University of Life Sciences, Ås, Norway
-include-after:
-  - \includepdf[pages=-]{papers/001.pdf}
-  - \includepdf[pages=-]{papers/002.pdf}
-  - \includepdf[pages=-]{papers/003.pdf}
-classoption: ["12pt", "3p", "authoryear"]
-monofont: 'sourcecodepro'
-monofontoptions: "Scale=0.7"
-colorlinks: true
-linespacing: 1.5
-fontfamily: mathpazo
-use-landscape-page: yes
-tables: yes
-bibliography: ref-db.bib
-biblio-title: References
-biblio-style: elsarticle-harv
-link-citations: true
-github-repo: therimalaya/thesis
-always_allow_html: true
-url: 'http\://therimalaya.github.io/thesis'
+  name: "Raju Rimal*, Trygve Almøy & Solve Sæbø"
+  email: 'raju.rimal@nmbu.no'
+  homepage: 'https://www.mathatistics.com/'
+  affiliation: 'BIAS @ KBM, NMBU'
+bibliography: 'References.bib'
+biblio-style: 'plainnat'
+natbiboptions: 'numbers'
+nociteall: true
 knit: 'bookdown::render_book'
-review: yes
 keywords: ['model-comparison ', 'multi-response ', 'simrel ']
+title-abstract: |
+  The titlepage reproduces an engraving of Maurits Cornelis Escher, titled \emph{Plane Filling with Birds} (the picture is obtained from \url{http://www.mcescher.com/}).
 abstract: |
-  While data science is battling to extract information from the enormous explosion of data, many estimators and algorithms are being developed for better prediction. Researchers and data scientists often introduce new methods and evaluate them based on various aspects of data. However, studies on the impact of/on a model with multiple response variables are limited. This study compares some newly-developed (envelope) and well- established (PLS, PCR) prediction methods based on real data and simulated data specifically designed by varying properties such as multicollinearity, the correlation between multiple responses and position of relevant principal components of predictors. This study aims to give some insight into these methods and help the researcher to understand and use them in further studies.
----
+  This section belongs to absctract. Write awesome abstract.
+summary: |
+  This is summary section of the thesis.
+acknowledgement: |
+  I wish first of all to thank the members of the Staff of the Italian \TeX{} and \LaTeX{} User Group, in particular Prof.~Enrico Gregorio, for their invaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of precious observations and good advices.
 
-```{r, echo = FALSE, warning=FALSE, message=FALSE, cache=FALSE}
-options(digits = 3, scipen = 999)
-knitr::opts_chunk$set(comment = NULL, out.width = "100%", echo = FALSE)
-if (knitr::is_html_output()) {
-  knitr::opts_chunk$set(dev = 'svg', fig.retina = 2, dev.args = list(family="mono"))
-}
-```
+  Finally, thanks to Andr\'e Miede, for his wonderful ClassicThesis style, and to Daniel Gottschlag, who gave to me the hint for this original reworking.
+papers:
+  - title: "A tool for simulating multi-response linear model data"
+    path: "papers/001.pdf"
+  - title: "Model and estimators for partial least squares regression"
+    path: "papers/002.pdf"
+  - title: "Comparison of Multi-response Prediction Methods"
+    path: "papers/003.pdf"
+---
 
 # Introduction
 
-## Background
+Citing @rimal2019pred in this text.
 
-
-```{r scratch, echo = FALSE}
-num_vec <- c('one', 'two', 'three', 'four', 'five', 
-             'six', 'seven', 'eight', 'nine', 'ten')
-names(num_vec) <- 1:10
-```

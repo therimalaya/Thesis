@@ -1,0 +1,6 @@
+# Methods
+This is the introduction section. It contains background subsection
+
+## Background
+Here I will reference to [@naes2013multi] I hope this will render properly.
+

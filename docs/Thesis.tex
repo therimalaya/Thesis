@@ -1,211 +1,226 @@
-%review=doublespace preprint=single 5p=2 column
-\documentclass[12pt,3p,authoryear]{elsarticle}
-
-%% add packages %%
-%% ------------ %%
-\usepackage[hyphens]{url}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{caption}
+\documentclass[11pt,a4paper,oneside,openright,titlepage,
+  headinclude,footinclude,BCOR5mm,
+  numbers=noenddot,cleardoublepage=empty,
+  tablecaptionabove, dottedtoc,
+  bibliography=totoc]{scrreprt}
 \usepackage{subfig}
-\usepackage{amssymb, amsmath}
-\usepackage[inline]{enumitem}
-\usepackage{float}
-\usepackage{tabularx}
-\usepackage[dvipsnames, table]{xcolor}
-\usepackage{ifxetex, ifluatex}
-\usepackage{fixltx2e}
-\usepackage[unicode=true, colorlinks]{hyperref}
-\usepackage{cleveref}
-\usepackage{tabu}
-\usepackage{mathpazo}
+\usepackage[
+    eulerchapternumbers,
+    subfig,
+    beramono,
+    eulermath,
+    pdfspacing
+  ]{classicthesis} 
+\usepackage{arsclassica}
+\usepackage{graphicx}
+\usepackage[norsk,american]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{pdfpages}
-%% ------------ %%
+\usepackage{titlesec}
 
-%% Conditional Packages %%
-%% -------------------- %%
+\usepackage[numbers]{natbib}
+\bibliographystyle{plainnat}
 
-\usepackage{easyReview}
+% *******************************************************
+% DEFINE VARIABLES
+% *******************************************************
+\newcommand{\myName}{Raju Rimal*, Trygve Almøy \& Solve Sæbø}
+\newcommand{\myTitle}{Exploration of Multi-Response Multivariate Methods}
+\newcommand{\mySubTitle}{An application of simrel}
+\newcommand{\myLocation}{\spacedlowsmallcaps{Ås, Norway}}
+\newcommand{\myGroup}{BIAS @ KBM, NMBU}
+\newcommand{\myUrl}{\url{https://www.mathatistics.com/}}
+\newcommand{\myTime}{2019, July}
+\newcommand{\docsite}{\url{https://therimalaya.github.com/thesis}}
+\newcommand{\email}{\mail{raju.rimal@nmbu.no}}
 
-
-
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[utf8]{inputenc}
-
-
-\else % if luatex or xelatex
-  \usepackage{fontspec}
-  \ifxetex
-    \usepackage{xltxtra,xunicode}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
-
-
-
-    \setmonofont{sourcecodepro}
-
-
-\fi
-
-% use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-
-
-
-
-
-
-\usepackage{longtable}
-
-
-
-
-% Pandoc toggle for numbering sections (defaults to be off)
-\setcounter{secnumdepth}{5}
-
-%% Use Landscape Pages
-\usepackage{lscape}
-
-\usepackage{setspace}
-\setstretch{1.5}
-
-\usepackage{lmodern}
-
-%% -------------------- %%
-
-%% Create and Provide some customizations %%
-%% -------------------------------------- %%
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-  
-%% Custom macros
-\newtheorem{mydef}{Definition}
-\newcommand{\bs}[1]{\ensuremath{\boldsymbol{#1}}}
-\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
-\newcommand{\seq}[3][1]{\ensuremath{#2_{#1},\ldots,\,#2_{#3}}}
-\newcommand{\note}[1]{\marginpar{\scriptsize\tt{\color{RoyalBlue}#1}}}
-\newcommand{\edit}[1]{{\color{OrangeRed} #1}}
-
-%% Declare Operators
-\newcommand{\argmin}{\operatornamewithlimits{arg\,min}}
-\newcommand{\argmax}{\operatornamewithlimits{arg\,max}}
-
-% set some lengths
-\setlength{\parindent}{0pt}
-% \setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-
-%% Hyperref color setup
-\AtBeginDocument{%
-  %% Define Colors
-  \newcommand\myshade{80}
-  \colorlet{mylinkcolor}{violet!\myshade!black}
-  \colorlet{mycitecolor}{YellowOrange!\myshade!black}
-  \colorlet{myurlcolor}{Aquamarine!\myshade!black}
-
-  \hypersetup{
-    breaklinks = true,
-    bookmarks  = true,
-    pdfauthor  = {},
-    pdftitle   = {Simulation tool for statistical application and comparison of multi-response multivariate estimators},
-    linkcolor  = mylinkcolor,
-    citecolor  = mycitecolor,
-    urlcolor   = myurlcolor,
-    colorlinks = true,
-  }
-}
-% \urlstyle{same}  % don't use monospace font for urls
-%% -------------------------------------- %%
-
-%% Customizations %%
-%% -------------- %%
- % turn line numbering on
-
-%% -------------- %%
-
-%% Configure Bibliography %%
-%% ---------------------- %%
-\bibliographystyle{elsarticle-harv}
-\biboptions{numbers,sort&compress}
-
-\makeatletter
-\providecommand{\doi}[1]{%
-  \begingroup
-    \let\bibinfo\@secondoftwo
-    \urlstyle{tt}%
-    \href{http://dx.doi.org/#1}{%
-      \discretionary{}{}{}%
-      \nolinkurl{#1}%
-    }%
-  \endgroup
-}
-\makeatother
-
-% 
-
-%% Header Includes %%
-%% --------------- %%
-%% --------------- %%
-
-
+% *******************************************************
+% CUSTOMIZATIONS
+% *******************************************************
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+\titleformat{\part}[display]
+  {\normalfont\centering\large}%
+  {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
+  {\color{Maroon}\spacedallcaps}
 
 \begin{document}
-%% --- Front Matter Start --- %%
-\begin{frontmatter}
+\pagenumbering{Roman}
+\pagestyle{plain}
+% *******************************************************
+% Title Front
+% *******************************************************
+\begin{titlepage}
+  \pdfbookmark{Titlepage}{Titlepage}
+  \null\vfill
+  \begin{center}
+    \large \sffamily
+    \bigskip
+    {\Large\spacedlowsmallcaps{\myName}} \\
+    \bigskip
+    {\huge\spacedlowsmallcaps{\myTitle} \\}
+    \bigskip
+    \vspace{9cm}
+    \begin{tabular} {cc}
+      \parbox{0.3\textwidth}{\includegraphics[width=3.5cm]{Logo}}
+      & \parbox{0.7\textwidth}{{\Large\spacedlowsmallcaps{\mySubTitle}} \\ 
+      {\normalsize
+      \myGroup \\
+      \myUrl \\
+      \myTime}}
+    \end{tabular}
+  \end{center}
+  \vfill
+\end{titlepage}
 
-  \title{Simulation tool for statistical application and comparison of
-multi-response multivariate estimators}
-  
-    \author[KBM]{Raju Rimal\corref{c1}}
-   \ead{raju.rimal@nmbu.no} 
-   \cortext[c1]{Corresponding Author}
-    \author[KBM]{Trygve Almøy}
-   \ead{trygve.almoy@nmbu.no} 
-  
-    \author[NMBU]{Solve Sæbø}
-   \ead{solve.sabo@nmbu.no} 
-  
-      \address[KBM]{Faculty of Chemistry and Bioinformatics, Norwegian University of Life
-Sciences, Ås, Norway}
-    \address[NMBU]{Professor, Norwegian University of Life Sciences, Ås, Norway}
-  
-  \begin{abstract}
-  While data science is battling to extract information from the enormous
-  explosion of data, many estimators and algorithms are being developed
-  for better prediction. Researchers and data scientists often introduce
-  new methods and evaluate them based on various aspects of data. However,
-  studies on the impact of/on a model with multiple response variables are
-  limited. This study compares some newly-developed (envelope) and well-
-  established (PLS, PCR) prediction methods based on real data and
-  simulated data specifically designed by varying properties such as
-  multicollinearity, the correlation between multiple responses and
-  position of relevant principal components of predictors. This study aims
-  to give some insight into these methods and help the researcher to
-  understand and use them in further studies.
-  \end{abstract}
-   \begin{keyword} model-comparison,multi-response,simrel\end{keyword}
+% *******************************************************
+% Title Back
+% *******************************************************
+\thispagestyle{empty}
+\hfill \vfill
+\noindent\myName:
+\textit{\myTitle,} \mySubTitle,
+\textcopyright\ \myTime.
+\medskip
+\noindent{\spacedlowsmallcaps{Website}}: \\
+\docsite
 
-\end{frontmatter}
+\medskip
+\noindent{\spacedlowsmallcaps{E-mail}}: \\
+\email
 
-\tableofcontents
+\vspace{1cm}
+\hrule
+\bigskip
+
+\noindent The titlepage reproduces an engraving of Maurits Cornelis Escher, titled \emph{Plane Filling with Birds} (the picture is obtained from \url{http://www.mcescher.com/}).
+
+\pagestyle{scrheadings} 
+\clearpage
+
+% *******************************************************
+% ABSTRACT
+% *******************************************************
+\pdfbookmark{Abstract}{Abstract}
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+\addchap{Abstract}
+This section belongs to absctract. Write awesome abstract.
+\vfill
+
+% *******************************************************
+% SUMMARY
+% *******************************************************
+\clearpage
+\pdfbookmark[1]{Sommario}{Sommario}
+\addchap{Summary}
+This is summary section of the thesis.
+\endgroup
+\vfill
+
+% *******************************************************
+% ACKNOWLEDGMENT
+% *******************************************************
+\pdfbookmark{Acknowledgements}{Acknowledgements}
+
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+
+\addchap{Acknowledgements}
+
+I wish first of all to thank the members of the Staff of the Italian \TeX\{\} and \LaTeX\{\} User Group, in particular Prof.\textasciitilde Enrico Gregorio, for their invaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of precious observations and good advices.
+
+Finally, thanks to Andr'e Miede, for his wonderful ClassicThesis style, and to Daniel Gottschlag, who gave to me the hint for this original reworking.
+
+\endgroup
+
+% *******************************************************
+% Contents
+% *******************************************************
+\clearpage
+\phantomsection
+\pdfbookmark{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2}
+\begingroup 
+  \let\clearpage\relax
+  \let\cleardoublepage\relax
+  \tableofcontents
+\endgroup
+\markboth{\spacedlowsmallcaps{\contentsname}}
+{\spacedlowsmallcaps{\contentsname}} 
+
+\begingroup 
+  \let\clearpage\relax
+  \let\cleardoublepage\relax
+\endgroup
+
+\cleardoublepage
+% *******************************************************
+% BODY START
+% *******************************************************
+\pagenumbering{arabic}
 
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
 
-\subsection{Background}\label{background}
+Citing \citet{rimal2019pred} in this text.
+
+\hypertarget{methods}{%
+\chapter{Methods}\label{methods}}
+
+This is the introduction section. It contains background subsection
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+Here I will reference to \citep{naes2013multi} I hope this will render properly.
+
+% *******************************************************
+% BIBLIOGRAPHY START
+% *******************************************************
+ % biblio-title
+ % beamer
+  \bibliography{References.bib}
+ % beamer
+ % bibliography
+ % natbib
 
 
-\renewcommand\refname{References}
-\bibliography{ref-db.bib}
+ % biblatex
 
+\nocite{*}
+
+% *******************************************************
+% PAPER START
+% *******************************************************
+\appendix
+\part*{Research Papers}
+\par\chapter{A tool for simulating multi-response linear model data}
 \includepdf[pages=-]{papers/001.pdf}
+\par\chapter{Model and estimators for partial least squares regression}
 \includepdf[pages=-]{papers/002.pdf}
+\par\chapter{Comparison of Multi-response Prediction Methods}
 \includepdf[pages=-]{papers/003.pdf}
+% \par\chapter{Paper1: A tool for simulating multi-response linear model data}
+% \includepdf[pages=-]{papers/001.pdf}
+% \par\chapter{Paper2:  Model and estimators for partial least squares regression}
+% \includepdf[pages=-]{papers/002.pdf}
+% \par\chapter{Paper3: Comparison of Multi-response Prediction Methods}
+% \includepdf[pages=-]{papers/003.pdf}
+
+% *******************************************************
+% ANYTHING EXTRA
+% *******************************************************
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -2,19 +2,10 @@ book_filename: "Thesis"
 repo: https://github.com/therimalaya/thesis/
 edit: https://github.com/therimalaya/thesis/edit/master/%s
 output_dir: docs
-clean: [packages.bib, bookdown.bbl]
+delete_merged_file: yes
 rmd_files: [
-  "index.Rmd", 
-  # "chapters/01-background.Rmd"
-  # "chapters/11-paper2.Rmd"
-  # "chapters/02-SimulationModel.Rmd",
-  # "chapters/03-ExperimentalDesign.Rmd",
-  # "chapters/04-Exploration.Rmd",
-  # "chapters/05-Analysis.Rmd",
-  # "chapters/06-Examples.Rmd",
-  # "chapters/07-DiscussionConclusion.Rmd",
-  # "chapters/08-References.Rmd",
-  # "chapters/09-Appendix.Rmd",
+  "index.Rmd",
+  "chapters/01-Introduction.Rmd"
   ]
 language:
   label:
