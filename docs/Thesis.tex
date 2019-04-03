@@ -1,76 +1,111 @@
-\documentclass[11pt,a4paper,oneside,openright,titlepage,
+% *******************************************************
+% SUPPRESS WARNINGS
+% *******************************************************
+\RequirePackage{silence}
+\WarningFilter{scrbook}{Usage of package `titlesec'}
+\WarningFilter{titlesec}{Non standard sectioning command detected}
+
+% *******************************************************
+% DOCUMENT FRONT MATTER START
+% *******************************************************
+\documentclass[11pt,twoside,openright,titlepage,
   headinclude,footinclude,BCOR=5mm,
   numbers=noenddot,cleardoublepage=empty,
   tablecaptionabove, dottedtoc,
   bibliography=totoc]{scrreprt}
 \usepackage{subfig}
-\usepackage[
-    eulerchapternumbers,
-    subfig,
-    beramono,
-    eulermath,
-    pdfspacing
-  ]{classicthesis} 
+\usepackage[eulerchapternumbers, subfig, beramono, eulermath, pdfspacing]{classicthesis} 
 \usepackage{arsclassica}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{pdfpages}
 \usepackage{titlesec}
+\usepackage{titletoc}
 \usepackage[norsk,american]{babel}
+\usepackage[paperwidth=17cm, paperheight=24cm, margin=2.5cm]{geometry}
+\usepackage[cam,a4,center,pdflatex]{crop}
 
-\usepackage[authoryear]{natbib}
-\bibliographystyle{plainnat}
+% *******************************************************
+% ADDITIONAL PACKAGES
+% *******************************************************
+
+% *******************************************************
+% REFERENCE PACKAGES
+% *******************************************************
+  \usepackage[authoryear]{natbib}
+  \bibliographystyle{plainnat}
 
 % *******************************************************
 % DEFINE VARIABLES
 % *******************************************************
-\newcommand{\myName}{Raju Rimal*, Trygve Almøy \& Solve Sæbø}
-\newcommand{\myTitle}{Exploration of Multi-Response Multivariate Methods}
-\newcommand{\mySubTitle}{An application of simrel}
-\newcommand{\myLocation}{\spacedlowsmallcaps{Ås, Norway}}
-\newcommand{\myGroup}{BIAS @ KBM, NMBU}
-\newcommand{\myUrl}{\url{https://www.mathatistics.com/}}
-\newcommand{\myTime}{2019, July}
+\newcommand{\Name}{Raju Rimal}
+\newcommand{\Title}{Exploration of Multi-Response Multivariate Methods}
+\newcommand{\Location}{\spacedlowsmallcaps{Ås}}
+\newcommand{\Year}{2019}
+\newcommand{\Month}{april}
+\newcommand{\Date}{\Year, \Month}
 \newcommand{\docsite}{\url{https://therimalaya.github.com/thesis}}
+\newcommand{\Subtitle}{}
 \newcommand{\email}{\mail{raju.rimal@nmbu.no}}
+\newcommand{\homepage}{\url{https://www.mathatistics.com/}}
+\newcommand{\Affiliation}{Biostatistics\\
+Dept. of Chemistry, Biotechnology and Food Science\\
+Norwegian University of Life Sciences}
+\newcommand{\Faculty}{}
+\newcommand{\Group}{}
+\newcommand{\alttitle}{Utforskning av multi-respons multivariate metoder}
 
 % *******************************************************
 % CUSTOMIZATIONS
 % *******************************************************
 \newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+\titlecontents{part}[0pt]{\pagebreak}{}{\Large\MakeTextUppercase}{}
 \titleformat{\part}[display]
-  {\normalfont\centering\large}%
+  {\normalfont\centering\Large}%
   {\thispagestyle{empty}\partname~\MakeTextUppercase{\thepart}}{1em}%
   {\color{Maroon}\spacedallcaps}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\DeclareTOCStyleEntry[beforeskip=3pt]{tocline}{section}
 
+% *******************************************************
+% DOCUMENT BEGIN
+% *******************************************************
 \begin{document}
 \pagenumbering{Roman}
 \pagestyle{plain}
+
 % *******************************************************
 % Title Front
 % *******************************************************
 \begin{titlepage}
   \pdfbookmark{Titlepage}{Titlepage}
-  \null\vfill
   \begin{center}
     \large \sffamily
     \bigskip
-    {\Large\spacedlowsmallcaps{\myName}} \\
+    {\huge\spacedlowsmallcaps{\Title} \\}
     \bigskip
-    {\huge\spacedlowsmallcaps{\myTitle} \\}
+    {\large{\alttitle}} \\
+    \vfill
+    {\Large\spacedlowsmallcaps{Doctor of Philosophy (PHD) Thesis}} \\
     \bigskip
-    \vspace{9cm}
-    \begin{tabular} {cc}
-      \parbox{0.3\textwidth}{\includegraphics[width=3.5cm]{Logo}}
-      & \parbox{0.7\textwidth}{{\Large\spacedlowsmallcaps{\mySubTitle}} \\ 
-      {\normalsize
-      \myGroup \\
-      \myUrl \\
-      \myTime}}
-    \end{tabular}
+    {\Large{\spacedlowsmallcaps\Name}} \\
+    \vfill
+    {\normalsize \Affiliation}
+    \vfill
+    {\normalsize \Location, \Year \\}
+    \vfill
+              \newcommand{\logowidth}{0.6\linewidth}
+          \includegraphics[width=\logowidth]{Logo.pdf} \\
+        \vfill
+    {\normalsize
+      Thesis Number: 1234:56\\
+      ISSN:  1234-5678\\
+      ISBN:  123-45-678-1234-5\\
+    }
   \end{center}
-  \vfill
 \end{titlepage}
 
 % *******************************************************
@@ -78,81 +113,109 @@
 % *******************************************************
 \thispagestyle{empty}
 \hfill \vfill
-\noindent\myName:
-\textit{\myTitle,} \mySubTitle,
-\textcopyright\ \myTime.
-\medskip
+\noindent
+\textit{The goal is to turn data into information, and information into insight.}\\
+\spacedlowsmallcaps{- Carly Fiorina, former CEO of Hewlett-Packard}
+\vfill
+\noindent
+{\textbf{Supervisors:}} \\
+Professor \textit{Solve Sæbø}\\
+Prorector\\
+Norwegian University of Life Sciences\\
+Ås, Norway\\
+\medskip\\
+Associate Professor \textit{Trygve Almøy}\\
+Dept. of Chemistry, Biotechnology and Food Science\\
+Norwegian University of Life Sciences\\
+Ås, Norway\\
+\medskip\\
+\bigskip \\
+\noindent
+\textit{\Title} \\
+{\spacedlowsmallcaps{PhD Thesis, \Date\,\, \textcopyright\, \Name}} \\
+\bigskip \\
 \noindent{\spacedlowsmallcaps{Website}}: \\
 \docsite
-
 \medskip
 \noindent{\spacedlowsmallcaps{E-mail}}: \\
 \email
-
 \vspace{1cm}
 \hrule
 \bigskip
-
-\noindent The titlepage reproduces an engraving of Maurits Cornelis Escher, titled \emph{Plane Filling with Birds} (the picture is obtained from \url{http://www.mcescher.com/}).
-
+\noindent This thesis is prepared with \texttt{ArsClassica} \LaTeX~template with \texttt{pandoc} and r-package \texttt{bookdown}.\\
+Source: \url{https://github.com/therimalaya/thesis}
 \pagestyle{scrheadings} 
-\clearpage
 
 % *******************************************************
 % ABSTRACT
 % *******************************************************
-\pdfbookmark{Abstract}{Abstract}
-\begingroup
-\let\clearpage\relax
-\let\cleardoublepage\relax
-\let\cleardoublepage\relax
-
-\addchap{Abstract}
-This section belongs to absctract. Write awesome abstract.
-\vfill
 
 % *******************************************************
 % SUMMARY
 % *******************************************************
-\clearpage
-\pdfbookmark[1]{Sommario}{Sommario}
+\begingroup
+\pdfbookmark{Summary}{Summary}
 \addchap{Summary}
-This is summary section of the thesis.
+\input{chapters/00-Summary.md}
+
+\KOMAoptions{open=left}
+\begin{otherlanguage}{norsk}
+\pdfbookmark{Sammendrag}{Sammendrag}
+\addchap{Sammendrag}
+\input{chapters/00-Sammendrag.md}
+\end{otherlanguage}{norsk}
+\KOMAoptions{open=right}
 \endgroup
-\vfill
 
 % *******************************************************
 % ACKNOWLEDGMENT
 % *******************************************************
-\pdfbookmark{Acknowledgements}{Acknowledgements}
-
+\pdfbookmark{Acknowledgments}{Acknowledgments}
 \begingroup
-\let\clearpage\relax
-\let\cleardoublepage\relax
-\let\cleardoublepage\relax
-
-\addchap{Acknowledgements}
-
-I wish first of all to thank the members of the Staff of the Italian \TeX\{\} and \LaTeX\{\} User Group, in particular Prof.\textasciitilde{}Enrico Gregorio, for their invaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of precious observations and good advices.
-
-Finally, thanks to Andr'e Miede, for his wonderful ClassicThesis style, and to Daniel Gottschlag, who gave to me the hint for this original reworking.
-
+\cleardoublepage
+\addchap{Acknowledgment}
+\input{chapters/00-Acknowledgment.md}
 \endgroup
+
+% *******************************************************
+% PREFACE
+% *******************************************************
+\pdfbookmark{Preface}{Preface}
+\begingroup
+\cleardoublepage
+\addchap{Preface}
+\input{chapters/00-Preface.md}
+\endgroup
+
+% *******************************************************
+% INCLUDE ANYTHING BEFORE
+% *******************************************************
 
 % *******************************************************
 % Contents
 % *******************************************************
-\clearpage
+\cleardoublepage
 \phantomsection
 \pdfbookmark{\contentsname}{tableofcontents}
 \setcounter{tocdepth}{2}
 \begingroup 
   \let\clearpage\relax
   \let\cleardoublepage\relax
-  \tableofcontents
+    \tableofcontents
 \endgroup
 \markboth{\spacedlowsmallcaps{\contentsname}}
 {\spacedlowsmallcaps{\contentsname}} 
+
+\begingroup
+\cleardoublepage
+\listoftables
+\vfill
+\let\clearpage\relax
+\let\cleardoublepage\relax
+
+\listoffigures
+\vfill
+\endgroup
 
 \begingroup 
   \let\clearpage\relax
@@ -160,37 +223,100 @@ Finally, thanks to Andr'e Miede, for his wonderful ClassicThesis style, and to D
 \endgroup
 
 \cleardoublepage
+
 % *******************************************************
 % BODY START
 % *******************************************************
-\pagenumbering{arabic}
 
+\pagenumbering{arabic}
 
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-Citing \citet{rimal2019pred} in this text.
+Try to be precise on the thesis objective, problem and what achievement does the theses is expected to meet.
 
-\hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
+\begin{itemize}
+\tightlist
+\item
+  What is the thesis about
+\item
+  Why is this important
+\item
+  What will it add to the big picture
+\end{itemize}
 
-This is the introduction section. It contains background subsection
+\begin{figure}[!htb]
+\includegraphics[width=1\linewidth]{Thesis_files/figure-latex/a-test-figure-1} \caption{Test Figure}\label{fig:a-test-figure}
+\end{figure}
+
+\begin{table}[t]
+
+\caption{\label{tab:a-test-table}The head of mtcars}
+\centering
+\begin{tabular}{lrrrrrrr}
+\toprule
+  & mpg & cyl & disp & hp & drat & wt & qsec\\
+\midrule
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90 & 2.620 & 16.46\\
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90 & 2.875 & 17.02\\
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85 & 2.320 & 18.61\\
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44\\
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440 & 17.02\\
+\addlinespace
+Valiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.460 & 20.22\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
-Here I will reference to \citep{RIMAL20181} I hope this will render properly.
+Write very basic about following topics as an introductory text.
+
+\begin{itemize}
+\tightlist
+\item
+  About reduction of regression model
+\item
+  Relevant and irrelevant components
+\item
+  Various study up to this point
+\item
+  Multi-response model
+\item
+  Tool for simulation
+\end{itemize}
+
+\hypertarget{paper-summary}{%
+\chapter{Paper Summary}\label{paper-summary}}
+
+\hypertarget{paper-1-a-tool-for-simulating-multi-response-linear-model-data}{%
+\section{Paper 1: A tool for simulating multi-response linear model data}\label{paper-1-a-tool-for-simulating-multi-response-linear-model-data}}
+
+\hypertarget{paper-2-model-and-estimators-for-partial-least-squares-regression}{%
+\section{Paper 2: Model and estimators for partial least squares regression}\label{paper-2-model-and-estimators-for-partial-least-squares-regression}}
+
+\hypertarget{paper-3-comparison-of-multi-response-prediction-methods}{%
+\section{Paper 3: Comparison of Multi-response Prediction Methods}\label{paper-3-comparison-of-multi-response-prediction-methods}}
+
+\hypertarget{paper-4-comparison-of-multi-response-estimation-methods}{%
+\section{Paper 4: Comparison of Multi-response Estimation Methods}\label{paper-4-comparison-of-multi-response-estimation-methods}}
+
+\hypertarget{discussions}{%
+\chapter{Discussions}\label{discussions}}
+
+\hypertarget{conclusion-and-future-perspective}{%
+\chapter{Conclusion and Future Perspective}\label{conclusion-and-future-perspective}}
 
 % *******************************************************
 % BIBLIOGRAPHY START
 % *******************************************************
+  \renewcommand\refname{References}
+ % has-chapters
  % biblio-title
- % beamer
   \bibliography{References.bib}
- % beamer
  % bibliography
  % natbib
-
 
  % biblatex
 
@@ -200,19 +326,6 @@ Here I will reference to \citep{RIMAL20181} I hope this will render properly.
 % PAPER START
 % *******************************************************
 \appendix
-\part*{Research Papers}
-\par\chapter{A tool for simulating multi-response linear model data}
-\includepdf[pages=-]{papers/001.pdf}
-\par\chapter{Model and estimators for partial least squares regression}
-\includepdf[pages=-]{papers/002.pdf}
-\par\chapter{Comparison of Multi-response Prediction Methods}
-\includepdf[pages=-]{papers/003.pdf}
-% \par\chapter{Paper1: A tool for simulating multi-response linear model data}
-% \includepdf[pages=-]{papers/001.pdf}
-% \par\chapter{Paper2:  Model and estimators for partial least squares regression}
-% \includepdf[pages=-]{papers/002.pdf}
-% \par\chapter{Paper3: Comparison of Multi-response Prediction Methods}
-% \includepdf[pages=-]{papers/003.pdf}
 
 % *******************************************************
 % ANYTHING EXTRA

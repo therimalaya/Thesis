@@ -1,41 +1,112 @@
 ---
 site: bookdown::bookdown_site
 title: 'Exploration of Multi-Response Multivariate Methods'
-subtitle: 'An application of simrel'
-date: "`r format(Sys.Date(), foramt = '%m, %Y')`"
-docsite: 'https://therimalaya.github.com/thesis'
-location: 'Ås, Norway'
-author:
-  name: "Raju Rimal*, Trygve Almøy & Solve Sæbø"
-  email: 'raju.rimal@nmbu.no'
-  homepage: 'https://www.mathatistics.com/'
-  affiliation: 'BIAS @ KBM, NMBU'
-bibliography: 'References.bib'
-biblio-style: 'plainnat'
-natbiboptions: 'authoryear'
-nociteall: true
-knit: 'bookdown::render_book'
-keywords: ['model-comparison ', 'multi-response ', 'simrel ']
-title-abstract: |
-  The titlepage reproduces an engraving of Maurits Cornelis Escher, titled \emph{Plane Filling with Birds} (the picture is obtained from \url{http://www.mcescher.com/}).
-abstract: |
-  This section belongs to absctract. Write awesome abstract.
-summary: |
-  This is summary section of the thesis.
-acknowledgement: |
-  I wish first of all to thank the members of the Staff of the Italian \TeX{} and \LaTeX{} User Group, in particular Prof.~Enrico Gregorio, for their invaluable aid during the writing of this work, the detailed explanations, the patience and the precision in the suggestions, the supplied solutions, the competence and the kindness. Thanks also to all the people who have discussed with me on the forum of the Group, prodigal of precious observations and good advices.
-
-  Finally, thanks to Andr\'e Miede, for his wonderful ClassicThesis style, and to Daniel Gottschlag, who gave to me the hint for this original reworking.
-papers:
-  - title: "A tool for simulating multi-response linear model data"
-    path: "papers/001.pdf"
-  - title: "Model and estimators for partial least squares regression"
-    path: "papers/002.pdf"
-  - title: "Comparison of Multi-response Prediction Methods"
-    path: "papers/003.pdf"
+alt-title: 'Utforskning av multi-respons multivariate metoder'
+date: "`r format(Sys.Date(), format = '%m, %Y')`"
 ---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  comment    = NA,
+  out.width  = '100%',
+  dev        = c('pdf', 'svg'),
+  fig.retina = 2,
+  fig.pos    = "!htb",
+  echo       = FALSE
+)
+```
+
 
 # Introduction
 
-Citing @rimal2019pred in this text.
+Try to be precise on the thesis objective, problem and what achievement does the theses is expected to meet.
 
+- What is the thesis about
+- Why is this important
+- What will it add to the big picture
+
+
+```{r a-test-figure, fig.cap="Test Figure", fig.width=5, fig.asp=0.7}
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = factor(am))) +
+    geom_point(aes(size = cyl))
+```
+
+```{r a-test-table}
+knitr::kable(
+  x        = head(mtcars[, 1:7]),
+  caption  = "The head of mtcars",
+  booktabs = TRUE
+)
+```
+
+## Background
+
+Write very basic about following topics as an introductory text.
+
+- About reduction of regression model
+- Relevant and irrelevant components
+- Various study up to this point
+- Multi-response model
+- Tool for simulation
+
+
+---
+year: "`r format(Sys.Date(), format = '%Y')`"
+month: "`r format(Sys.Date(), format = '%b')`"
+location: 'Ås'
+docsite: 'https://therimalaya.github.com/thesis'
+author:
+  name: "Raju Rimal"
+  email: 'raju.rimal@nmbu.no'
+  homepage: 'https://www.mathatistics.com/'
+  affiliation: |
+    Biostatistics\
+    Dept. of Chemistry, Biotechnology and Food Science\
+    Norwegian University of Life Sciences
+supervisors:
+  - title: 'Professor'
+    name: 'Solve Sæbø'
+    affiliation: |
+      Prorector\
+      Norwegian University of Life Sciences\
+      Ås, Norway
+  - title: 'Associate Professor'
+    name: 'Trygve Almøy'
+    affiliation: |
+      Dept. of Chemistry, Biotechnology and Food Science\
+      Norwegian University of Life Sciences\
+      Ås, Norway
+bibliography: 'References.bib'
+biblio-style: 'plainnat'
+biblio-title: 'References'
+natbiboptions: 'authoryear'
+nociteall: true
+toc: true
+lof: true
+lot: true
+knit: 'bookdown::render_book'
+logo: "Logo.pdf"
+logo-width: '0.6\linewidth'
+thesis-number: "1234:56"
+issn: "1234-5678"
+isbn: "123-45-678-1234-5"
+quote: "The goal is to turn data into information, and information into insight."
+quote-author: "- Carly Fiorina, former CEO of Hewlett-Packard"
+keywords: ['model-comparison ', 'multi-response ', 'simrel ']
+title-abstract: |
+  This thesis is prepared with `ArsClassica` \LaTeX\ template with `pandoc` and r-package `bookdown`.\
+  Source: [https://github.com/therimalaya/thesis](https://github.com/therimalaya/thesis)
+acknowledgments: chapters/00-Acknowledgment.md
+summary: chapters/00-Summary.md
+sammendrag: chapters/00-Sammendrag.md
+preface: chapters/00-Preface.md
+# papers:
+#   - title: "A tool for simulating multi-response linear model data"
+#     path: "papers/001.pdf"
+#   - title: "Model and estimators for partial least squares regression"
+#     path: "papers/002.pdf"
+#   - title: "Comparison of Multi-response Prediction Methods"
+#     path: "papers/003.pdf"
+---

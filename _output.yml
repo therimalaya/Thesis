@@ -22,10 +22,8 @@ bookdown::gitbook:
       facebook: no
       twitter: yes
       google: yes
-bookdown::tufte_html_book:
-  toc: yes
-  css: [style.css, toc.css]
 bookdown::pdf_book:
+  highlight: kate
   pandoc_args: --top-level-division=chapter
   toc: true
   fig_caption: yes
@@ -34,5 +32,9 @@ bookdown::pdf_book:
   dev: "cairo_pdf"
   keep_tex: yes
   template: './templates/arsclassica.tex'
-bookdown::epub_book:
-  dev: svg
+bookdown::word_document2: default
+# bookdown::tufte_html_book:
+#   toc: yes
+#   css: [style.css, toc.css]
+# bookdown::epub_book:
+#   dev: svg

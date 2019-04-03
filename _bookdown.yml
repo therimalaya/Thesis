@@ -5,7 +5,9 @@ output_dir: docs
 delete_merged_file: yes
 rmd_files: [
   "index.Rmd",
-  "chapters/01-Introduction.Rmd"
+  "chapters/01-Paper-Summary.Rmd",
+  "chapters/02-Discussion.Rmd",
+  "chapters/03-Conclusion.Rmd",
   ]
 language:
   label:

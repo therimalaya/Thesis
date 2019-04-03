@@ -1,0 +1,9 @@
+# Paper Summary
+
+## Paper 1: A tool for simulating multi-response linear model data
+
+## Paper 2: Model and estimators for partial least squares regression
+
+## Paper 3: Comparison of Multi-response Prediction Methods
+
+## Paper 4: Comparison of Multi-response Estimation Methods
