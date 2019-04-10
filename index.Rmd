@@ -28,7 +28,7 @@ supervisors:
       Dept. of Chemistry, Biotechnology and Food Science\
       Norwegian University of Life Sciences\
       Ås, Norway
-bibliography: 'References'
+bibliography: 'References.bib'
 biblio-style: 'plainnat'
 biblio-title: 'References'
 natbiboptions: 'authoryear'

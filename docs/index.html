@@ -82,78 +82,80 @@ true
 <h1 class="title">Exploration of Multi-Response Multivariate Methods</h1>
 <p class="author"><em>Raju Rimal</em></p>
 <address class="author_afil">
-Biostatistics<br />
+<p>Biostatistics<br />
 Dept. of Chemistry, Biotechnology and Food Science<br />
-Norwegian University of Life Sciences<br><a class="author_email" href="mailto:#"><a href="mailto:raju.rimal@nmbu.no" class="email">raju.rimal@nmbu.no</a></a>
+Norwegian University of Life Sciences</p><br><a class="author_email" href="mailto:#"><a href="mailto:raju.rimal@nmbu.no" class="email">raju.rimal@nmbu.no</a></a>
 </address>
 <p class="date"><em>04, 2019</em></p>
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<div id="objective" class="section level2">
-<h2>Objective</h2>
-<ul>
-<li>Explore multi-response multivariate methods that are based on the reduction of regression model</li>
-<li>Create a versatile tool with few tuning parameter for simulating multi-response linear model data</li>
-<li>Explore the interaction of methods and data properties</li>
-<li>Understand the difference on estimation and prediction difference on these methods</li>
-</ul>
-</div>
-<div id="problems-and-expected-achievement" class="section level2">
-<h2>Problems and expected achievement</h2>
-<ul>
-<li>Many estimation and prediction methods are available but there performance has not been accessed</li>
-<li>The comparison motivates researchers for using different methods based on the properties of the data they are working</li>
-<li>Demonstrates the use of the simulation tool to encourage researchers and academics for its innovative use</li>
-<li>The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling that structure</li>
-</ul>
-</div>
-<div id="about" class="section level2">
-<h2>About</h2>
-<ul>
-<li>Thesis is exploratory in its nature</li>
-<li>Binds the methods based on reduction of regression model</li>
-<li>At the same time, it also explore there differences and their interaction with the properties of data</li>
-</ul>
-</div>
+<p>As a consequence of the development in the technology and computing power, data science discipline has emerged from the explosion of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools are being devised for this purpose. However the difference in the approach, these methods target the problem, makes them distinct and useful to deal with certain aspect of the data. Most of these problems lie in identifying the relationship between variables. This thesis confined itself in the exploration of linear relationship where a set of independent variables called predictor variables affect another set of dependent variables called response variables. Normally only subspace of predictor variables are relevant for a subspace of response variables to define its linear relationship. This brings to the concept of relevant and irrelevant space. Methods like Principal Components Regression (PCR), Partial Least Squares (PLS) and many other variants of PLS has leveraged this concept and are serving as a prime tool in many discipline, most notably chemometrics. A relatively new methods called envelopes has used this concept of dimension reduction such that only the relevant (material) part in both response and predictors can be used to estimate the underlying linear model. Although the underlying population model is similar in these methods, they estimate the model parameter differently. Evaluation of these methods is crucial in order to understand their pros and cons on dataset with certain properties. This thesis will explore some of these methods and access their estimative and predictive strength and weaknesses through both simulated and real datasets. This exploration adds a reference for researchers and motivates them for using different methods based on the properties of the data they are working on.</p>
+<p>This study is exploratory in nature where we assess and compare different multi-response multivariate methods but most importantly study their interaction with the properties of the data. The properties include the correlation between predictor variables, the position of principal components of predictor variables (predictor components) that are relevant for certain principal components of response variables (response components), the amount of correlation between the response variables and the number of predictor variables. The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling this structure. In order to simulate data with these properties varying at different levels, we have created an R-package called <code>simrel</code> which is an extension of the previous version of it introduced by <span class="citation">Sæbø, Almøy, and Helland (2015)</span> to incorporate multiple response.</p>
 <div id="background" class="section level2">
 <h2>Background</h2>
+<p>In the following few subsection, I will discuss few related topics in this thesis. These topics are extensively used in all the papers which are summarized in next chapter.</p>
 <div id="multivariate-linear-regression-model" class="section level3">
 <h3>Multivariate Linear Regression Model</h3>
-</div>
-<div id="reduction-of-regression-model" class="section level3">
-<h3>Reduction of Regression Model</h3>
+<p>A model that linearly relates a random variable <span class="math inline">\(\mathbold{y}\)</span> consists of <span class="math inline">\(m\)</span> response variables with another random variable <span class="math inline">\(\mathbold{x}\)</span> consists of <span class="math inline">\(p\)</span> predictor variables through regression coefficient <span class="math inline">\(\boldsymbol{\beta}\)</span> is often written as,</p>
+<p><span class="math display">\[\begin{equation}
+\mathbold{y} = \boldsymbol{\mu}_y + \boldsymbol{\beta}^t\left(\mathbold{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
+\end{equation}\]</span>
+where <span class="math inline">\(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbold{0}, \boldsymbol{\Sigma}_{y|x}\right)\)</span>, <span class="math inline">\(\boldsymbol{\mu}_y\)</span> is the mean vector of <span class="math inline">\(\mathbold{y}\)</span> and <span class="math inline">\(\boldsymbol{\mu}_x\)</span> is the mean vector of <span class="math inline">\(\mathbold{x}\)</span>.</p>
+<p>Here the regression coefficient <span class="math inline">\(\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}\)</span>
+- A linear model
+- Linear relationship model</p>
 </div>
 <div id="relevant-space-and-relevant-components" class="section level3">
 <h3>Relevant Space and Relevant Components</h3>
-</div>
-<div id="previous-studies" class="section level3">
-<h3>Previous Studies</h3>
-</div>
-<div id="simulation-and-experimental-design" class="section level3">
-<h3>Simulation and Experimental Design</h3>
-</div>
-<div id="estimators" class="section level3">
-<h3>Estimators</h3>
 <ul>
-<li>Principal Components Regression</li>
-<li>Partial Least Squares Regression</li>
-<li>Envelope Methods</li>
+<li>Connection to relevant space</li>
+<li>How relevant space is connected to relevant component and dimension reduction</li>
+<li>Concept linked to simrel and various methods</li>
 </ul>
-</div>
-<div id="population-model-of-these-estimators" class="section level3">
-<h3>Population model of these estimators</h3>
 </div>
 <div id="estimation-and-prediction" class="section level3">
 <h3>Estimation and Prediction</h3>
-</div>
-<div id="measurement-of-the-performance" class="section level3">
-<h3>Measurement of the performance</h3>
+<ul>
+<li>What is the difference between estimation and prediction</li>
+<li>How large estimation error can also result in close prediction</li>
+<li>What have we used in these papers for comparison</li>
+</ul>
 </div>
 <div id="multivariate-analysis-of-variance" class="section level3">
 <h3>Multivariate Analysis of Variance</h3>
-
+<ul>
+<li>What is ANOVA in multi-response setting</li>
+<li>Why is it different from regular ANOVA</li>
+<li>How we have used this method in our study</li>
+<li>What statistic we have used for comparison</li>
+</ul>
 </div>
+</div>
+<div id="previous-studies" class="section level2">
+<h2>Previous Studies</h2>
+<ul>
+<li>Previous similar studies</li>
+<li>Mostly used the methods developers</li>
+<li>Connection with data properties in an experimental manner is not explored properly and comprehensively</li>
+<li>Effect on multi-response model and the effect of correlation structure on the methods is not studied for these methods to our knowledge</li>
+</ul>
+</div>
+<div id="simulation-and-experimental-design" class="section level2">
+<h2>Simulation and Experimental Design</h2>
+<ul>
+<li>Different papers have different design</li>
+<li>Last two papers have similar design as the fourth paper extends the third</li>
+<li>Following factors and their interaction is studied,
+<ul>
+<li>Low and High multicollinearity</li>
+<li>Position of predictor components that are relevant for specific response components</li>
+<li>Number of predictor variables</li>
+<li>Low to High correlation between response variables</li>
+</ul></li>
+</ul>
+<p>The exploration and findings of the papers are discussed in brief in next chapter.</p>
+
 </div>
 </div>
             </section>

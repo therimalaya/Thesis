@@ -46,7 +46,7 @@
 \newcommand{\Title}{Exploration of Multi-Response Multivariate Methods}
 \newcommand{\Location}{\spacedlowsmallcaps{Ås}}
 \newcommand{\Year}{2019}
-\newcommand{\Month}{april}
+\newcommand{\Month}{Apr}
 \newcommand{\Date}{\Year, \Month}
 \newcommand{\docsite}{\url{https://therimalaya.github.com/thesis}}
 \newcommand{\Subtitle}{}
@@ -247,19 +247,16 @@ In the following few subsection, I will discuss few related topics in this thesi
 \hypertarget{multivariate-linear-regression-model}{%
 \subsection{Multivariate Linear Regression Model}\label{multivariate-linear-regression-model}}
 
-A model that relates a random variable \(\mathbold{y}\) with \(m\) response variables linearly with another random variable \(\mathbold{x}\) with \(p\) predictor variables through regression coefficient \(\boldsymbol{\beta}\) is,
-\begin{equation}
-\mathbold{y} = \boldsymbol{\mu}_y + \left(\mathbold{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
-\end{equation}
-where \(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbold{0}, \boldsymbol{\Sigma}_{y|x}\right)\)
+A model that linearly relates a random variable \(\mathbold{y}\) consists of \(m\) response variables with another random variable \(\mathbold{x}\) consists of \(p\) predictor variables through regression coefficient \(\boldsymbol{\beta}\) is often written as,
 
-\begin{itemize}
-\tightlist
-\item
-  A linear model
-\item
-  Linear relationship model
-\end{itemize}
+\begin{equation}
+\mathbold{y} = \boldsymbol{\mu}_y + \boldsymbol{\beta}^t\left(\mathbold{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
+\end{equation}
+where \(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbold{0}, \boldsymbol{\Sigma}_{y|x}\right)\), \(\boldsymbol{\mu}_y\) is the mean vector of \(\mathbold{y}\) and \(\boldsymbol{\mu}_x\) is the mean vector of \(\mathbold{x}\).
+
+Here the regression coefficient \(\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}\)
+- A linear model
+- Linear relationship model
 
 \hypertarget{relevant-space-and-relevant-components}{%
 \subsection{Relevant Space and Relevant Components}\label{relevant-space-and-relevant-components}}
@@ -353,7 +350,7 @@ The exploration and findings of the papers are discussed in brief in next chapte
 \begin{itemize}
 \tightlist
 \item
-  Extend the simulation tool introduced by \ldots{}solve2015simrel\ldots{} for multi-response simulation
+  Extend the simulation tool introduced by \ldots solve2015simrel\ldots{} for multi-response simulation
 \item
   Gives the mathematical formulation for the simulation
 \item
@@ -437,10 +434,10 @@ The exploration and findings of the papers are discussed in brief in next chapte
 % *******************************************************
 % BIBLIOGRAPHY START
 % *******************************************************
-  \renewcommand\refname{References}
+  \renewcommand\bibname{References}
  % has-chapters
  % biblio-title
-  \bibliography{References}
+  \bibliography{References.bib}
  % bibliography
  % natbib
 
