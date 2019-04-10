@@ -1,9 +1,25 @@
 # Paper Summary
 
 ## Paper 1: A tool for simulating multi-response linear model data
+- Extend the simulation tool introduced by ...solve2015simrel... for multi-response simulation
+- Gives the mathematical formulation for the simulation
+- Makes basic comparison on various multivariate methods using both simulated and real data
+- Shows that ...
+
 
 ## Paper 2: Model and estimators for partial least squares regression
+- The paper shows the similarity of population model of PCR, PLS and envelope in predictors
+- My contribution on the paper is on the example of a comparative study with single response with both simulated and real data
+- BayesPLS showed better performance with few fallback such as crashing, time consuming and lack of method for multi-response model
+- It also showed that ... on the prediction performance
 
 ## Paper 3: Comparison of Multi-response Prediction Methods
+- This paper extends the comparative study on both of the previous paper
+- Here only methods based on relevant space is considered for comparison
+- A small modification in the envelope methods is made as the methods is based on maximum likelihood and can not be fitted on $p>>n$ case.
+- The results showed that ...
 
 ## Paper 4: Comparison of Multi-response Estimation Methods
+- Since good prediction not always results in good estimation, this paper continue the exploration of Paper3 for the estimation performance of the methods
+- The same data is used with the similar modification in envelope methods
+- The interaction of methods and the design on the basis of error is studied with MANOVA in both Paper3 and Paper4

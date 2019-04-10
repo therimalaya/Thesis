@@ -16,6 +16,8 @@
 \usepackage{subfig}
 \usepackage[eulerchapternumbers, subfig, beramono, eulermath, pdfspacing]{classicthesis} 
 \usepackage{arsclassica}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
@@ -135,15 +137,15 @@ Norwegian University of Life Sciences\\
 {\spacedlowsmallcaps{PhD Thesis, \Date\,\, \textcopyright\, \Name}} \\
 \bigskip \\
 \noindent{\spacedlowsmallcaps{Website}}: \\
-\docsite
+\docsite \\
 \medskip
 \noindent{\spacedlowsmallcaps{E-mail}}: \\
 \email
 \vspace{1cm}
 \hrule
 \bigskip
-\noindent This thesis is prepared with \texttt{ArsClassica} \LaTeX~template with \texttt{pandoc} and r-package \texttt{bookdown}.\\
-Source: \url{https://github.com/therimalaya/thesis}
+\noindent This thesis is prepared with \texttt{ArsClassica} {\LaTeX} template with \texttt{pandoc} and r-package \texttt{bookdown}.
+% \begin{flushright}source: \url{https://therimalaya.github.com/thesis}\end{flushright}
 \pagestyle{scrheadings} 
 
 % *******************************************************
@@ -233,59 +235,114 @@ Source: \url{https://github.com/therimalaya/thesis}
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-Try to be precise on the thesis objective, problem and what achievement does the theses is expected to meet.
+As a consequence of the development in the technology and computing power, data science discipline has emerged from the explosion of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools are being devised for this purpose. However the difference in the approach, these methods target the problem, makes them distinct and useful to deal with certain aspect of the data. Most of these problems lie in identifying the relationship between variables. This thesis confined itself in the exploration of linear relationship where a set of independent variables called predictor variables affect another set of dependent variables called response variables. Normally only subspace of predictor variables are relevant for a subspace of response variables to define its linear relationship. This brings to the concept of relevant and irrelevant space. Methods like Principal Components Regression (PCR), Partial Least Squares (PLS) and many other variants of PLS has leveraged this concept and are serving as a prime tool in many discipline, most notably chemometrics. A relatively new methods called envelopes has used this concept of dimension reduction such that only the relevant (material) part in both response and predictors can be used to estimate the underlying linear model. Although the underlying population model is similar in these methods, they estimate the model parameter differently. Evaluation of these methods is crucial in order to understand their pros and cons on dataset with certain properties. This thesis will explore some of these methods and access their estimative and predictive strength and weaknesses through both simulated and real datasets. This exploration adds a reference for researchers and motivates them for using different methods based on the properties of the data they are working on.
 
-\begin{itemize}
-\tightlist
-\item
-  What is the thesis about
-\item
-  Why is this important
-\item
-  What will it add to the big picture
-\end{itemize}
-
-\begin{figure}[!htb]
-\includegraphics[width=1\linewidth]{Thesis_files/figure-latex/a-test-figure-1} \caption{Test Figure}\label{fig:a-test-figure}
-\end{figure}
-
-\begin{table}[t]
-
-\caption{\label{tab:a-test-table}The head of mtcars}
-\centering
-\begin{tabular}{lrrrrrrr}
-\toprule
-  & mpg & cyl & disp & hp & drat & wt & qsec\\
-\midrule
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90 & 2.620 & 16.46\\
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90 & 2.875 & 17.02\\
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85 & 2.320 & 18.61\\
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44\\
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440 & 17.02\\
-\addlinespace
-Valiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.460 & 20.22\\
-\bottomrule
-\end{tabular}
-\end{table}
+This study is exploratory in nature where we assess and compare different multi-response multivariate methods but most importantly study their interaction with the properties of the data. The properties include the correlation between predictor variables, the position of principal components of predictor variables (predictor components) that are relevant for certain principal components of response variables (response components), the amount of correlation between the response variables and the number of predictor variables. The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling this structure. In order to simulate data with these properties varying at different levels, we have created an R-package called \texttt{simrel} which is an extension of the previous version of it introduced by \citet{saebo2015simrel} to incorporate multiple response.
 
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
-Write very basic about following topics as an introductory text.
+In the following few subsection, I will discuss few related topics in this thesis. These topics are extensively used in all the papers which are summarized in next chapter.
+
+\hypertarget{multivariate-linear-regression-model}{%
+\subsection{Multivariate Linear Regression Model}\label{multivariate-linear-regression-model}}
+
+A model that relates a random variable \(\mathbold{y}\) with \(m\) response variables linearly with another random variable \(\mathbold{x}\) with \(p\) predictor variables through regression coefficient \(\boldsymbol{\beta}\) is,
+\begin{equation}
+\mathbold{y} = \boldsymbol{\mu}_y + \left(\mathbold{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
+\end{equation}
+where \(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbold{0}, \boldsymbol{\Sigma}_{y|x}\right)\)
 
 \begin{itemize}
 \tightlist
 \item
-  About reduction of regression model
+  A linear model
 \item
-  Relevant and irrelevant components
-\item
-  Various study up to this point
-\item
-  Multi-response model
-\item
-  Tool for simulation
+  Linear relationship model
 \end{itemize}
+
+\hypertarget{relevant-space-and-relevant-components}{%
+\subsection{Relevant Space and Relevant Components}\label{relevant-space-and-relevant-components}}
+
+\begin{itemize}
+\tightlist
+\item
+  Connection to relevant space
+\item
+  How relevant space is connected to relevant component and dimension reduction
+\item
+  Concept linked to simrel and various methods
+\end{itemize}
+
+\hypertarget{estimation-and-prediction}{%
+\subsection{Estimation and Prediction}\label{estimation-and-prediction}}
+
+\begin{itemize}
+\tightlist
+\item
+  What is the difference between estimation and prediction
+\item
+  How large estimation error can also result in close prediction
+\item
+  What have we used in these papers for comparison
+\end{itemize}
+
+\hypertarget{multivariate-analysis-of-variance}{%
+\subsection{Multivariate Analysis of Variance}\label{multivariate-analysis-of-variance}}
+
+\begin{itemize}
+\tightlist
+\item
+  What is ANOVA in multi-response setting
+\item
+  Why is it different from regular ANOVA
+\item
+  How we have used this method in our study
+\item
+  What statistic we have used for comparison
+\end{itemize}
+
+\hypertarget{previous-studies}{%
+\section{Previous Studies}\label{previous-studies}}
+
+\begin{itemize}
+\tightlist
+\item
+  Previous similar studies
+\item
+  Mostly used the methods developers
+\item
+  Connection with data properties in an experimental manner is not explored properly and comprehensively
+\item
+  Effect on multi-response model and the effect of correlation structure on the methods is not studied for these methods to our knowledge
+\end{itemize}
+
+\hypertarget{simulation-and-experimental-design}{%
+\section{Simulation and Experimental Design}\label{simulation-and-experimental-design}}
+
+\begin{itemize}
+\tightlist
+\item
+  Different papers have different design
+\item
+  Last two papers have similar design as the fourth paper extends the third
+\item
+  Following factors and their interaction is studied,
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Low and High multicollinearity
+  \item
+    Position of predictor components that are relevant for specific response components
+  \item
+    Number of predictor variables
+  \item
+    Low to High correlation between response variables
+  \end{itemize}
+\end{itemize}
+
+The exploration and findings of the papers are discussed in brief in next chapter.
 
 \hypertarget{paper-summary}{%
 \chapter{Paper Summary}\label{paper-summary}}
@@ -293,20 +350,89 @@ Write very basic about following topics as an introductory text.
 \hypertarget{paper-1-a-tool-for-simulating-multi-response-linear-model-data}{%
 \section{Paper 1: A tool for simulating multi-response linear model data}\label{paper-1-a-tool-for-simulating-multi-response-linear-model-data}}
 
+\begin{itemize}
+\tightlist
+\item
+  Extend the simulation tool introduced by \ldots{}solve2015simrel\ldots{} for multi-response simulation
+\item
+  Gives the mathematical formulation for the simulation
+\item
+  Makes basic comparison on various multivariate methods using both simulated and real data
+\item
+  Shows that \ldots{}
+\end{itemize}
+
 \hypertarget{paper-2-model-and-estimators-for-partial-least-squares-regression}{%
 \section{Paper 2: Model and estimators for partial least squares regression}\label{paper-2-model-and-estimators-for-partial-least-squares-regression}}
+
+\begin{itemize}
+\tightlist
+\item
+  The paper shows the similarity of population model of PCR, PLS and envelope in predictors
+\item
+  My contribution on the paper is on the example of a comparative study with single response with both simulated and real data
+\item
+  BayesPLS showed better performance with few fallback such as crashing, time consuming and lack of method for multi-response model
+\item
+  It also showed that \ldots{} on the prediction performance
+\end{itemize}
 
 \hypertarget{paper-3-comparison-of-multi-response-prediction-methods}{%
 \section{Paper 3: Comparison of Multi-response Prediction Methods}\label{paper-3-comparison-of-multi-response-prediction-methods}}
 
+\begin{itemize}
+\tightlist
+\item
+  This paper extends the comparative study on both of the previous paper
+\item
+  Here only methods based on relevant space is considered for comparison
+\item
+  A small modification in the envelope methods is made as the methods is based on maximum likelihood and can not be fitted on \(p>>n\) case.
+\item
+  The results showed that \ldots{}
+\end{itemize}
+
 \hypertarget{paper-4-comparison-of-multi-response-estimation-methods}{%
 \section{Paper 4: Comparison of Multi-response Estimation Methods}\label{paper-4-comparison-of-multi-response-estimation-methods}}
 
-\hypertarget{discussions}{%
-\chapter{Discussions}\label{discussions}}
+\begin{itemize}
+\tightlist
+\item
+  Since good prediction not always results in good estimation, this paper continue the exploration of Paper3 for the estimation performance of the methods
+\item
+  The same data is used with the similar modification in envelope methods
+\item
+  The interaction of methods and the design on the basis of error is studied with MANOVA in both Paper3 and Paper4
+\end{itemize}
 
-\hypertarget{conclusion-and-future-perspective}{%
-\chapter{Conclusion and Future Perspective}\label{conclusion-and-future-perspective}}
+\hypertarget{discussions-conclusions-and-future-perspectives}{%
+\chapter{Discussions, Conclusions and Future Perspectives}\label{discussions-conclusions-and-future-perspectives}}
+
+\hypertarget{discussions-and-conclusions}{%
+\section{Discussions and Conclusions}\label{discussions-and-conclusions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Get the conclusion of all the papers
+\item
+  Add a paragraph to say something on big picture
+\end{itemize}
+
+\hypertarget{limitations-and-future-perspectives}{%
+\section{Limitations and Future Perspectives}\label{limitations-and-future-perspectives}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ridge, Lasso and other methods could have been used for comparison but since they are not based on the relevant components. Although we did some basic comparison by including them but they require a separate and comprehensive study.
+\item
+  Highly applied form of comparison but it can be extended also to the comparison of their mathematical formulation. This has been done in second paper for a single response case but the simultaneous envelope and multi-response case needs a separate study.
+\item
+  In the current state, the simulation tool assumes that the predictor components relevant for one response components is not relevant for another. This can be further studied and can be extended to simulate more general data structure.
+\item
+  The simulation tool can also be extended to simulate ANOVA model and model with multi-class categorical response model. This increases the applicability of tools in more research areas and educational purpose.
+\end{itemize}
 
 % *******************************************************
 % BIBLIOGRAPHY START
@@ -314,7 +440,7 @@ Write very basic about following topics as an introductory text.
   \renewcommand\refname{References}
  % has-chapters
  % biblio-title
-  \bibliography{References.bib}
+  \bibliography{References}
  % bibliography
  % natbib
 
@@ -326,6 +452,16 @@ Write very basic about following topics as an introductory text.
 % PAPER START
 % *******************************************************
 \appendix
+\part*{List of Research Papers}
+\par\chapter{A tool for simulating multi-response linear model data}
+\cleardoublepage
+\includepdf[pages=-]{papers/001.pdf}
+\par\chapter{Model and estimators for partial least squares regression}
+\cleardoublepage
+\includepdf[pages=-]{papers/002.pdf}
+\par\chapter{Comparison of Multi-response Prediction Methods}
+\cleardoublepage
+\includepdf[pages=-]{papers/003.pdf}
 
 % *******************************************************
 % ANYTHING EXTRA

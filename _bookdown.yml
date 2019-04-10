@@ -6,8 +6,7 @@ delete_merged_file: yes
 rmd_files: [
   "index.Rmd",
   "chapters/01-Paper-Summary.Rmd",
-  "chapters/02-Discussion.Rmd",
-  "chapters/03-Conclusion.Rmd",
+  "chapters/02-Discussion-Conclusion.Rmd",
   ]
 language:
   label:

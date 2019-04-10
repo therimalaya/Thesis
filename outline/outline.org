@@ -1,0 +1,47 @@
+#+TITLE: Exploration of multi-response multivariate methods
+#+AUTHOR: Raju Rimal
+#+PROPERTY: header-args :exports both
+#+PROPERTY: header-args:R :session *R*
+
+* Introduction
+
+As a consequence of the development in the technology and computing power, data science discipline has emerged from the explosion of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools are being devised for this purpose. However the difference in the approach these methods target the problem makes them distinct and makes them useful to deal with certain aspect of the data. Most of these problems lies in identifying the relationship between variables. This thesis confined itself in the exploration of linear relationship where a set of independent variables called predictor variables affect another set of dependent variables called response variables. Normally not all information content in the predictor variables are relevant to define its linear relationship with the response variables. Similarly not all the information content in the response variables are informative for the predictor variables to relate. This leads to a reduction in the linear model
+
+- This thesis explore some these methods based on simulated dataset with specifically designed properties together with real data.
+- The integrated properties in the data such as the correlation between the predictors, correlation between the responses, the number of predictors, and the predictors that are relevant and not relevant for a response have strong interaction with different methods due to there modeling strategy.
+- This exploration adds a reference for researchers and motivates them for using different methods based on the properties of data they are dealing with.
+- An R-package `simrel` as a product of these study will provide a practical tool to the researchers and academics.
+
+** Objective
+- Explore multi-response multivariate methods that are based on the reduction of regression model
+- Create a versatile tool with few tuning parameter for simulating multi-response linear model data
+- Explore the interaction of methods and data properties
+- Understand the difference on estimation and prediction difference on these methods
+
+** Problems and expected achievement
+- Many estimation and prediction methods are available but there performance has not been accessed
+- The comparison motivates researchers for using different methods based on the properties of the data they are working
+- Demonstrates the use of the simulation tool to encourage researchers and academics for its innovative use
+- The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling that structure
+
+** About
+- Thesis is exploratory in its nature
+- Binds the methods based on reduction of regression model
+- At the same time, it also explore there differences and their interaction with the properties of data
+
+** Background
+
+*** Multivariate Linear Regression Model
+*** Reduction of Regression Model
+*** Relevant Space and Relevant Components
+*** Previous Studies
+*** Simulation and Experimental Design
+*** Estimators
+- Principal Components Regression
+- Partial Least Squares Regression
+- Envelope Methods
+
+*** Population model of these estimators
+*** Estimation and Prediction
+*** Measurement of the performance
+*** Multivariate Analysis of Variance

@@ -16,6 +16,8 @@
 \usepackage{subfig}
 \usepackage[eulerchapternumbers, subfig, beramono, eulermath, pdfspacing]{classicthesis} 
 \usepackage{arsclassica}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
@@ -157,14 +159,15 @@ $endif$
 {\spacedlowsmallcaps{PhD Thesis, \Date\,\, \textcopyright\, \Name}} \\
 \bigskip \\
 \noindent{\spacedlowsmallcaps{Website}}: \\
-\docsite
+\docsite \\
 \medskip
 \noindent{\spacedlowsmallcaps{E-mail}}: \\
 \email
 \vspace{1cm}
 \hrule
 \bigskip
-\noindent $title-abstract$
+\noindent This thesis is prepared with \texttt{ArsClassica} {\LaTeX} template with \texttt{pandoc} and r-package \texttt{bookdown}.
+% $if(docsite)$\begin{flushright}source: \url{$docsite$}\end{flushright}$endif$
 \pagestyle{scrheadings} 
 
 % *******************************************************

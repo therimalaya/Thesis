@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Exploration of Multi-Response Multivariate Methods</title>
+  <meta name="description" content="Exploration of Multi-Response Multivariate Methods">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Exploration of Multi-Response Multivariate Methods" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Exploration of Multi-Response Multivariate Methods" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="paper-summary.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+true
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exploration of Multi-Response Multivariate Methods</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Exploration of Multi-Response Multivariate Methods</h1>
+<p class="author"><em>Raju Rimal</em></p>
+<address class="author_afil">
+Biostatistics<br />
+Dept. of Chemistry, Biotechnology and Food Science<br />
+Norwegian University of Life Sciences<br><a class="author_email" href="mailto:#"><a href="mailto:raju.rimal@nmbu.no" class="email">raju.rimal@nmbu.no</a></a>
+</address>
+<p class="date"><em>04, 2019</em></p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<div id="objective" class="section level2">
+<h2>Objective</h2>
+<ul>
+<li>Explore multi-response multivariate methods that are based on the reduction of regression model</li>
+<li>Create a versatile tool with few tuning parameter for simulating multi-response linear model data</li>
+<li>Explore the interaction of methods and data properties</li>
+<li>Understand the difference on estimation and prediction difference on these methods</li>
+</ul>
+</div>
+<div id="problems-and-expected-achievement" class="section level2">
+<h2>Problems and expected achievement</h2>
+<ul>
+<li>Many estimation and prediction methods are available but there performance has not been accessed</li>
+<li>The comparison motivates researchers for using different methods based on the properties of the data they are working</li>
+<li>Demonstrates the use of the simulation tool to encourage researchers and academics for its innovative use</li>
+<li>The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling that structure</li>
+</ul>
+</div>
+<div id="about" class="section level2">
+<h2>About</h2>
+<ul>
+<li>Thesis is exploratory in its nature</li>
+<li>Binds the methods based on reduction of regression model</li>
+<li>At the same time, it also explore there differences and their interaction with the properties of data</li>
+</ul>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<div id="multivariate-linear-regression-model" class="section level3">
+<h3>Multivariate Linear Regression Model</h3>
+</div>
+<div id="reduction-of-regression-model" class="section level3">
+<h3>Reduction of Regression Model</h3>
+</div>
+<div id="relevant-space-and-relevant-components" class="section level3">
+<h3>Relevant Space and Relevant Components</h3>
+</div>
+<div id="previous-studies" class="section level3">
+<h3>Previous Studies</h3>
+</div>
+<div id="simulation-and-experimental-design" class="section level3">
+<h3>Simulation and Experimental Design</h3>
+</div>
+<div id="estimators" class="section level3">
+<h3>Estimators</h3>
+<ul>
+<li>Principal Components Regression</li>
+<li>Partial Least Squares Regression</li>
+<li>Envelope Methods</li>
+</ul>
+</div>
+<div id="population-model-of-these-estimators" class="section level3">
+<h3>Population model of these estimators</h3>
+</div>
+<div id="estimation-and-prediction" class="section level3">
+<h3>Estimation and Prediction</h3>
+</div>
+<div id="measurement-of-the-performance" class="section level3">
+<h3>Measurement of the performance</h3>
+</div>
+<div id="multivariate-analysis-of-variance" class="section level3">
+<h3>Multivariate Analysis of Variance</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="paper-summary.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/therimalaya/thesis/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Thesis.epub", "Thesis.pdf"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
