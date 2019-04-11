@@ -56,6 +56,8 @@ papers:
     path: "papers/002.pdf"
   - title: "Comparison of Multi-response Prediction Methods"
     path: "papers/003.pdf"
+  - title: "Comparison of Multi-response Estimation Methods"
+    path: "papers/004.pdf"
 ---
 
 
