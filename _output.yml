@@ -1,7 +1,7 @@
 bookdown::gitbook:
   dev: svg
   number_sections: no
-  css: style.css
+  css: "_style/custom.css"
   citation_package: natbib
   github-repo: "therimalaya/thesis"
   description: "Simulation tool for statistical Application"
@@ -14,7 +14,8 @@ bookdown::gitbook:
         <li><a name="title" href="javascript:void(0)"><strong>Papers:</strong></a><ul>
         <li><a href="https://doi.org/10.1016/j.chemolab.2018.02.009" target="_blank">Paper I</a></li>
         <li><a href="https://doi.org/10.1002/cem.3044" target="_blank">Paper II</a></li>
-        <li><a href="https://therimalaya.github.io/03-prediction-comparison" target="_blank">Paper III</a></li></ul></li>
+        <li><a href="https://doi.org/10.1016/j.chemolab.2019.05.004" target="_blank">Paper III</a></li>
+        <li><a href="https://therimalaya.github.io/04-estimation-comparison" target="_blank">Paper IV</a></li></ul></li>
         <li class="toc-footer"><a href="https://bookdown.org" target="blank">Published with <em>BookDown</em></a></li>
     download: ['epub', 'pdf']
     sharing: 
@@ -32,9 +33,3 @@ bookdown::pdf_book:
   dev: "cairo_pdf"
   keep_tex: yes
   template: './templates/arsclassica.tex'
-bookdown::word_document2: default
-# bookdown::tufte_html_book:
-#   toc: yes
-#   css: [style.css, toc.css]
-# bookdown::epub_book:
-#   dev: svg

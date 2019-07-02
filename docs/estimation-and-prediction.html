@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Paper Summary | Exploration of Multi-Response Multivariate Methods</title>
-  <meta name="description" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <title>Estimation and Prediction | Exploration of Multi-Response Multivariate Methods</title>
+  <meta name="description" content="Estimation and Prediction | Exploration of Multi-Response Multivariate Methods" />
   <meta name="generator" content="bookdown 0.11.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <meta property="og:title" content="Estimation and Prediction | Exploration of Multi-Response Multivariate Methods" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <meta name="twitter:title" content="Estimation and Prediction | Exploration of Multi-Response Multivariate Methods" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="background.html">
-<link rel="next" href="discussions-conclusions-and-future-perspectives.html">
+<link rel="prev" href="simulation.html">
+<link rel="next" href="multivariate-methods.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -67,12 +67,14 @@
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i>Background</a><ul>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-linear-regression-model"><i class="fa fa-check"></i>Multivariate Linear Regression Model</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#relevant-space-and-relevant-components"><i class="fa fa-check"></i>Relevant Space and Relevant Components</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#simulation"><i class="fa fa-check"></i>Simulation</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#estimation-and-prediction"><i class="fa fa-check"></i>Estimation and Prediction</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-methods"><i class="fa fa-check"></i>Multivariate Methods</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a></li>
+<li class="chapter" data-level="" data-path="estimation-and-prediction.html"><a href="estimation-and-prediction.html"><i class="fa fa-check"></i>Estimation and Prediction</a></li>
+<li class="chapter" data-level="" data-path="multivariate-methods.html"><a href="multivariate-methods.html"><i class="fa fa-check"></i>Multivariate Methods</a></li>
+<li class="chapter" data-level="" data-path="multivariate-analysis-of-variance.html"><a href="multivariate-analysis-of-variance.html"><i class="fa fa-check"></i>Multivariate Analysis of Variance</a></li>
+<li class="chapter" data-level="" data-path="simulation-of-a-linear-model-data.html"><a href="simulation-of-a-linear-model-data.html"><i class="fa fa-check"></i>Simulation of a Linear Model Data</a></li>
+<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html"><i class="fa fa-check"></i>Previous Studies</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a></li>
 <li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html"><i class="fa fa-check"></i>Paper Summary</a><ul>
 <li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-1-a-tool-for-simulating-multi-response-linear-model-data"><i class="fa fa-check"></i>Paper 1: A tool for simulating multi-response linear model data</a></li>
 <li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-2-model-and-estimators-for-partial-least-squares-regression"><i class="fa fa-check"></i>Paper 2: Model and estimators for partial least squares regression</a></li>
@@ -81,9 +83,7 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html"><i class="fa fa-check"></i>Discussions, Conclusions and Future Perspectives</a><ul>
 <li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html#discussions-and-conclusions"><i class="fa fa-check"></i>Discussions and Conclusions</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html"><i class="fa fa-check"></i>Previous Studies</a><ul>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html#limitations-and-future-perspectives"><i class="fa fa-check"></i>Limitations and Future Perspectives</a></li>
+<li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html#limitations-and-future-perspectives"><i class="fa fa-check"></i>Limitations and Future Perspectives</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a name="title" href="javascript:void(0)"><strong>Papers:</strong></a><ul>
@@ -110,52 +110,40 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="paper-summary" class="section level1">
-<h1>Paper Summary</h1>
-<div id="paper-1-a-tool-for-simulating-multi-response-linear-model-data" class="section level2">
-<h2>Paper 1: A tool for simulating multi-response linear model data</h2>
+<div id="estimation-and-prediction" class="section level1">
+<h1>Estimation and Prediction</h1>
+<p>Measures such as mean and standard deviation for a population are usually referred as parameters of the population. A model as in <a href="background.html#eq:linear-reg-model">(2)</a>, which tries to formulate the relationship between <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> in the population uses parameters such as the error variance and regression coefficients are also terms as parameters. Usually, due to the lack of known population distribution, the values of these parameters are calculated using a sample collected from that population. The process of determining the value of certain parameters is called estimation. The estimated value from any two samples are different. The estimated values are considered better if squared difference between the estimated and true value is small and have small variation. The goodness of the estimates depends on the nature of the data and the method that is used to estimate them. In estimation error for a certain method using the simulated data with specific properties in most of the comparisons in this thesis are computed as in <a href="estimation-and-prediction.html#eq:est-error">(3)</a>.</p>
+<p><span class="math display" id="eq:est-error">\[\begin{equation}
+\text{Estimation Error} = \mathsf{E}\left[
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t 
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
+\right]
+\tag{3}
+\end{equation}\]</span></p>
+<p>A fitted or trained model are mostly used for prediction. Prediction referes to determining the value of the response for a new set of predictor which were not used to train the model. Most studies under “data science” field are targeted for better prediction. Most comparison in this thesis evaluate the prediction performance of the multivariate methods using the prediction error measured as in <a href="estimation-and-prediction.html#eq:pred-error">(4)</a>.</p>
+<p><span class="math display" id="eq:pred-error">\[\begin{equation}
+\text{Prediction Error} = \mathsf{E}\left[
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t
+  \boldsymbol{\Sigma}_{xx}
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
+\right] + \boldsymbol{\Sigma}_{y|x}
+\tag{4}
+\end{equation}\]</span></p>
 <ul>
-<li>Extend the simulation tool introduced by …solve2015simrel… for multi-response simulation</li>
-<li>Gives the mathematical formulation for the simulation</li>
-<li>Makes basic comparison on various multivariate methods using both simulated and real data</li>
-<li>Shows that …</li>
+<li>Prediction error are influenced by the covariance of the predictor directly while estimation error are not</li>
+<li>In the case of multicollinear predictors, estimation error can be huge while due to the scaling of the covariation of predictors, the prediction error can still be small</li>
+<li>A good estimation can give proper and trustworthy idea about the relation between certain predictor variation with certain response variable</li>
+<li>This is important in policy making, academic researches and to understanding the relation to develope new models.</li>
+<li>Prediction on the other hand are widely used from weather forcasting, economic forecasting, prediction in production and sales and many more.</li>
 </ul>
-</div>
-<div id="paper-2-model-and-estimators-for-partial-least-squares-regression" class="section level2">
-<h2>Paper 2: Model and estimators for partial least squares regression</h2>
-<ul>
-<li>The paper shows the similarity of population model of PCR, PLS and envelope in predictors</li>
-<li>My contribution on the paper is on the example of a comparative study with single response with both simulated and real data</li>
-<li>BayesPLS showed better performance with few fallback such as crashing, time consuming and lack of method for multi-response model</li>
-<li>It also showed that … on the prediction performance</li>
-</ul>
-</div>
-<div id="paper-3-comparison-of-multi-response-prediction-methods" class="section level2">
-<h2>Paper 3: Comparison of Multi-response Prediction Methods</h2>
-<ul>
-<li>This paper extends the comparative study on both of the previous paper</li>
-<li>Here only methods based on relevant space is considered for comparison</li>
-<li>A small modification in the envelope methods is made as the methods is based on maximum likelihood and can not be fitted on <span class="math inline">\(p&gt;&gt;n\)</span> case.</li>
-<li>The results showed that …</li>
-</ul>
-</div>
-<div id="paper-4-comparison-of-multi-response-estimation-methods" class="section level2">
-<h2>Paper 4: Comparison of Multi-response Estimation Methods</h2>
-<ul>
-<li>Since good prediction not always results in good estimation, this paper continue the exploration of Paper3 for the estimation performance of the methods</li>
-<li>The same data is used with the similar modification in envelope methods</li>
-<li>The interaction of methods and the design on the basis of error is studied with MANOVA in both Paper3 and Paper4</li>
-</ul>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="discussions-conclusions-and-future-perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multivariate-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -185,7 +173,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/therimalaya/thesis/edit/master/chapters/01-Paper-Summary.Rmd",
+"link": "https://github.com/therimalaya/thesis/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {

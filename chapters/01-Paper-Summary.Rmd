@@ -6,7 +6,6 @@
 - Makes basic comparison on various multivariate methods using both simulated and real data
 - Shows that ...
 
-
 ## Paper 2: Model and estimators for partial least squares regression
 - The paper shows the similarity of population model of PCR, PLS and envelope in predictors
 - My contribution on the paper is on the example of a comparative study with single response with both simulated and real data

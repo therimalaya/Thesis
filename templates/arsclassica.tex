@@ -315,7 +315,8 @@ $if(papers)$
 $for(papers)$
 \par\chapter{$papers.title$}
 \cleardoublepage
-\includepdf[pages=-]{$papers.path$}
+\includepdf[pages=-1]{$papers.path$}
+%\includepdf[pages=-]{$papers.path$}
 $endfor$
 $endif$
 

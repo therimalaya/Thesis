@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Paper Summary | Exploration of Multi-Response Multivariate Methods</title>
-  <meta name="description" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <title>Previous Studies | Exploration of Multi-Response Multivariate Methods</title>
+  <meta name="description" content="Previous Studies | Exploration of Multi-Response Multivariate Methods" />
   <meta name="generator" content="bookdown 0.11.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <meta property="og:title" content="Previous Studies | Exploration of Multi-Response Multivariate Methods" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Paper Summary | Exploration of Multi-Response Multivariate Methods" />
+  <meta name="twitter:title" content="Previous Studies | Exploration of Multi-Response Multivariate Methods" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="background.html">
-<link rel="next" href="discussions-conclusions-and-future-perspectives.html">
+<link rel="prev" href="discussions-conclusions-and-future-perspectives.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -110,43 +110,69 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="paper-summary" class="section level1">
-<h1>Paper Summary</h1>
-<div id="paper-1-a-tool-for-simulating-multi-response-linear-model-data" class="section level2">
-<h2>Paper 1: A tool for simulating multi-response linear model data</h2>
+<div id="previous-studies" class="section level1">
+<h1>Previous Studies</h1>
 <ul>
-<li>Extend the simulation tool introduced by …solve2015simrel… for multi-response simulation</li>
-<li>Gives the mathematical formulation for the simulation</li>
-<li>Makes basic comparison on various multivariate methods using both simulated and real data</li>
-<li>Shows that …</li>
+<li>Previous similar studies</li>
+<li>Mostly used the methods developers</li>
+<li>Connection with data properties in an experimental manner is not explored properly and comprehensively</li>
+<li>Effect on multi-response model and the effect of correlation structure on the methods is not studied for these methods to our knowledge</li>
+<li>Envelope model is not accessed in these applied setting and data related to chemometrics
+The exploration and findings of the papers are discussed in brief in next chapter.</li>
 </ul>
-</div>
-<div id="paper-2-model-and-estimators-for-partial-least-squares-regression" class="section level2">
-<h2>Paper 2: Model and estimators for partial least squares regression</h2>
+<div id="limitations-and-future-perspectives" class="section level2">
+<h2>Limitations and Future Perspectives</h2>
 <ul>
-<li>The paper shows the similarity of population model of PCR, PLS and envelope in predictors</li>
-<li>My contribution on the paper is on the example of a comparative study with single response with both simulated and real data</li>
-<li>BayesPLS showed better performance with few fallback such as crashing, time consuming and lack of method for multi-response model</li>
-<li>It also showed that … on the prediction performance</li>
-</ul>
-</div>
-<div id="paper-3-comparison-of-multi-response-prediction-methods" class="section level2">
-<h2>Paper 3: Comparison of Multi-response Prediction Methods</h2>
-<ul>
-<li>This paper extends the comparative study on both of the previous paper</li>
-<li>Here only methods based on relevant space is considered for comparison</li>
-<li>A small modification in the envelope methods is made as the methods is based on maximum likelihood and can not be fitted on <span class="math inline">\(p&gt;&gt;n\)</span> case.</li>
-<li>The results showed that …</li>
-</ul>
-</div>
-<div id="paper-4-comparison-of-multi-response-estimation-methods" class="section level2">
-<h2>Paper 4: Comparison of Multi-response Estimation Methods</h2>
-<ul>
-<li>Since good prediction not always results in good estimation, this paper continue the exploration of Paper3 for the estimation performance of the methods</li>
-<li>The same data is used with the similar modification in envelope methods</li>
-<li>The interaction of methods and the design on the basis of error is studied with MANOVA in both Paper3 and Paper4</li>
+<li>Ridge, Lasso and other methods could have been used for comparison but since they are not based on the relevant components. Although we did some basic comparison by including them but they require a separate and comprehensive study.</li>
+<li>Highly applied form of comparison but it can be extended also to the comparison of their mathematical formulation. This has been done in second paper for a single response case but the simultaneous envelope and multi-response case needs a separate study.</li>
+<li>In the current state, the simulation tool assumes that the predictor components relevant for one response components is not relevant for another. This can be further studied and can be extended to simulate more general data structure.</li>
+<li>The simulation tool can also be extended to simulate ANOVA model and model with multi-class categorical response model. This increases the applicability of tools in more research areas and educational purpose.</li>
 </ul>
 
+<div id="refs" class="references">
+<div>
+<p>Cook, R Dennis, Bing Li, and Francesca Chiaromonte. 2010. “Envelope Models for Parsimonious and Efficient Multivariate Linear Regression.” <em>Statistica Sinica</em> 20 (3): 927–1010.</p>
+</div>
+<div>
+<p>Cook, R. Dennis, Bing Li, and Francesca Chiaromonte. 2007. “Dimension reduction in regression without matrix inversion.” <em>Biometrika</em> 94 (3): 569–84. <a href="https://doi.org/10.1093/biomet/asm038">https://doi.org/10.1093/biomet/asm038</a>.</p>
+</div>
+<div>
+<p>Cook, R. Dennis, and Xin Zhang. 2015. “Simultaneous envelopes for multivariate linear regression.” <em>Technometrics</em> 57 (1): 11–25. <a href="https://doi.org/10.1080/00401706.2013.872700">https://doi.org/10.1080/00401706.2013.872700</a>.</p>
+</div>
+<div>
+<p>Cook, R. D., I. S. Helland, and Z. Su. 2013. “Envelopes and partial least squares regression.” <em>Journal of the Royal Statistical Society. Series B: Statistical Methodology</em> 75 (5): 851–77. <a href="https://doi.org/10.1111/rssb.12018">https://doi.org/10.1111/rssb.12018</a>.</p>
+</div>
+<div>
+<p>Helland, Inge S. 1990. “Partial least squares regression and statistical models.” <em>Scandinavian Journal of Statistics</em> 17 (2): 97–114. <a href="https://doi.org/10.2307/4616159">https://doi.org/10.2307/4616159</a>.</p>
+</div>
+<div>
+<p>Helland, Inge S., Solve Saebø, and Ha Kon Tjelmeland. 2012. “Near Optimal Prediction from Relevant Components.” <em>Scandinavian Journal of Statistics</em> 39 (4): 695–713. <a href="https://doi.org/10.1111/j.1467-9469.2011.00770.x">https://doi.org/10.1111/j.1467-9469.2011.00770.x</a>.</p>
+</div>
+<div>
+<p>Indahl, Ulf G., Kristian Hovde Liland, and Tormod Næs. 2009. “Canonical partial least squares-a unified PLS approach to classification and regression problems.” <em>Journal of Chemometrics</em> 23 (9): 495–504. <a href="https://doi.org/10.1002/cem.1243">https://doi.org/10.1002/cem.1243</a>.</p>
+</div>
+<div>
+<p>Johnson, R. A., and D. W. Wichern. 2018. <em>Applied Multivariate Statistical Analysis (Classic Version)</em>. Pearson Modern Classics for Advanced Statistics Series. Pearson Education Canada. <a href="https://books.google.no/books?id=QBqlswEACAAJ">https://books.google.no/books?id=QBqlswEACAAJ</a>.</p>
+</div>
+<div>
+<p>Naes, Tormod, and Harald Martens. 1985. “Comparison of prediction methods for multicollinear data.” <em>Communications in Statistics - Simulation and Computation</em> 14 (3): 545–76. <a href="https://doi.org/10.1080/03610918508812458">https://doi.org/10.1080/03610918508812458</a>.</p>
+</div>
+<div>
+<p>Næs, Tormod, and Inge S Helland. 1993. “Relevant components in regression.” <em>Scandinavian Journal of Statistics</em> 20 (3): 239–50.</p>
+</div>
+<div>
+<p>Rimal, Raju, Trygve Almøy, and Solve Sæbø. 2018a. “A Tool for Simulating Multi-Response Linear Model Data.” <em>Chemometrics and Intelligent Laboratory Systems</em> 176: 1–10. <a href="https://doi.org/https://doi.org/10.1016/j.chemolab.2018.02.009">https://doi.org/https://doi.org/10.1016/j.chemolab.2018.02.009</a>.</p>
+</div>
+<div>
+<p>———. 2018b. “A tool for simulating multi-response linear model data.” <em>Chemometrics and Intelligent Laboratory Systems</em> 176 (May): 1–10. <a href="https://doi.org/10.1016/j.chemolab.2018.02.009">https://doi.org/10.1016/j.chemolab.2018.02.009</a>.</p>
+</div>
+<div>
+<p>Sæbø, Solve, Trygve Almøy, and Inge S. Helland. 2015. “Simrel - A versatile tool for linear model data simulation based on the concept of a relevant subspace and relevant predictors.” <em>Chemometrics and Intelligent Laboratory Systems</em> 146: 128–35. <a href="https://doi.org/10.1016/j.chemolab.2015.05.012">https://doi.org/10.1016/j.chemolab.2015.05.012</a>.</p>
+</div>
+<div>
+<p>Wentzell, Peter D., and Lorenzo Vega Montoto. 2003. “Comparison of Principal Components Regression and Partial Least Squares Regression Through Generic Simulations of Complex Mixtures.” <em>Chemometrics and Intelligent Laboratory Systems</em> 65 (2): 257–79. <a href="https://doi.org/https://doi.org/10.1016/S0169-7439(02)00138-7">https://doi.org/https://doi.org/10.1016/S0169-7439(02)00138-7</a>.</p>
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -154,8 +180,8 @@
           </div>
         </div>
       </div>
-<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="discussions-conclusions-and-future-perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="discussions-conclusions-and-future-perspectives.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -185,7 +211,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/therimalaya/thesis/edit/master/chapters/01-Paper-Summary.Rmd",
+"link": "https://github.com/therimalaya/thesis/edit/master/chapters/02-Discussion-Conclusion.Rmd",
 "text": "Edit"
 },
 "history": {
