@@ -24,6 +24,7 @@ bookdown::gitbook:
       twitter: yes
       google: yes
 bookdown::pdf_book:
+  number_sections: no
   highlight: kate
   pandoc_args: --top-level-division=chapter
   toc: true

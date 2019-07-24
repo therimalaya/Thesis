@@ -6,6 +6,7 @@ gitbook:
 	Rscript -e 'bookdown::render_book(".", "bookdown::gitbook", quiet=TRUE)'
 
 pdf:
+	bash _pandoc.sh tex latex
 	Rscript -e 'bookdown::render_book(".", "bookdown::pdf_book", quiet=TRUE)'
 
 epub:

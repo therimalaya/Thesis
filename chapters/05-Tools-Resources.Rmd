@@ -1,0 +1,22 @@
+# Tools and Resources
+
+R-package:
+: [\linebreak `https://github.com/simulatr/simrel`](https://github.com/simulatr/simrel)
+
+Shiny Application:
+: [\linebreak `https://github.com/simulatr/AppSimulatr`](https://github.com/simulatr/AppSimulatr)
+
+Thesis GitHub Repository:
+: [\linebreak `https://github.com/therimalaya/Thesis`](https://github.com/therimalaya/Thesis)
+
+Paper 1:
+: [\linebreak `https://github.com/therimalaya/simrel-m`](https://github.com/therimalaya/simrel-m)
+
+Paper 2:
+: [\linebreak `https://github.com/therimalaya/model-comparison-paper`](https://github.com/therimalaya/model-comparison-paper)
+
+Paper 3:                   
+: [\linebreak `https://github.com/therimalaya/03-prediction-comparison`](https://github.com/therimalaya/03-prediction-comparison)
+
+Paper 4:                   
+: [\linebreak `https://github.com/therimalaya/04-estimation-comparison`](https://github.com/therimalaya/04-estimation-comparison)

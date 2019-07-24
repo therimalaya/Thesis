@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="background.html">
-<link rel="next" href="discussions-conclusions-and-future-perspectives.html">
+<link rel="next" href="discussions-conclusions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -69,22 +69,23 @@
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#relevant-space-and-relevant-components"><i class="fa fa-check"></i>Relevant Space and Relevant Components</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#simulation"><i class="fa fa-check"></i>Simulation</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#estimation-and-prediction"><i class="fa fa-check"></i>Estimation and Prediction</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-methods"><i class="fa fa-check"></i>Multivariate Methods</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-methods"><i class="fa fa-check"></i>Multivariate Methods</a><ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#methods-based-on-envelope-model"><i class="fa fa-check"></i>Methods based on Envelope Model</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#pls-and-its-derivatives"><i class="fa fa-check"></i>PLS and its derivatives</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html"><i class="fa fa-check"></i>Paper Summary</a><ul>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-1-a-tool-for-simulating-multi-response-linear-model-data"><i class="fa fa-check"></i>Paper 1: A tool for simulating multi-response linear model data</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-2-model-and-estimators-for-partial-least-squares-regression"><i class="fa fa-check"></i>Paper 2: Model and estimators for partial least squares regression</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-3-comparison-of-multi-response-prediction-methods"><i class="fa fa-check"></i>Paper 3: Comparison of Multi-response Prediction Methods</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-4-comparison-of-multi-response-estimation-methods"><i class="fa fa-check"></i>Paper 4: Comparison of Multi-response Estimation Methods</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-1-a-tool-for-simulating-multi-response-linear-model-data"><i class="fa fa-check"></i>Paper 1: A Tool for Simulating Multi Response Linear Model Data</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-2-model-and-estimators-for-pls-regression"><i class="fa fa-check"></i>Paper 2: Model and Estimators for PLS Regression</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-3-comparison-of-multi-response-prediction-methods"><i class="fa fa-check"></i>Paper 3: Comparison of Multi Response Prediction Methods</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-4-comparison-of-multi-response-estimation-methods"><i class="fa fa-check"></i>Paper 4: Comparison of Multi Response Estimation Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html"><i class="fa fa-check"></i>Discussions, Conclusions and Future Perspectives</a><ul>
-<li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html#discussions-and-conclusions"><i class="fa fa-check"></i>Discussions and Conclusions</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html"><i class="fa fa-check"></i>Previous Studies</a><ul>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html#limitations-and-future-perspectives"><i class="fa fa-check"></i>Limitations and Future Perspectives</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="discussions-conclusions.html"><a href="discussions-conclusions.html"><i class="fa fa-check"></i>Discussions &amp; Conclusions</a></li>
+<li class="chapter" data-level="" data-path="limitations-future-perspectives.html"><a href="limitations-future-perspectives.html"><i class="fa fa-check"></i>Limitations &amp; Future Perspectives</a></li>
+<li class="chapter" data-level="" data-path="tools-and-resources.html"><a href="tools-and-resources.html"><i class="fa fa-check"></i>Tools and Resources</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a name="title" href="javascript:void(0)"><strong>Papers:</strong></a><ul>
 <li><a href="https://doi.org/10.1016/j.chemolab.2018.02.009" target="_blank">Paper I</a></li>
@@ -113,39 +114,30 @@
 <div id="paper-summary" class="section level1">
 <h1>Paper Summary</h1>
 <div id="paper-1-a-tool-for-simulating-multi-response-linear-model-data" class="section level2">
-<h2>Paper 1: A tool for simulating multi-response linear model data</h2>
-<ul>
-<li>Extend the simulation tool introduced by …solve2015simrel… for multi-response simulation</li>
-<li>Gives the mathematical formulation for the simulation</li>
-<li>Makes basic comparison on various multivariate methods using both simulated and real data</li>
-<li>Shows that …</li>
-</ul>
+<h2>Paper 1: A Tool for Simulating Multi Response Linear Model Data</h2>
+<p>As an extension of <span class="citation">(Sæbø, Almøy, and Helland 2015)</span> to simulate linear model data with multiple response variables, this paper discusses the simulation model, the strategy for the simulation and compare some multivariate methods using the simulated data. Additionally, it also includes an R-package called <code>simrel</code> that has been built based on the mathematical formulation discussed in the paper.</p>
+<p>The simulation of the linear model discussed here is based on the concept of the relevant components. A subspace of the predictor space, which is relevant for a subspace of response space, is the basis of the simulation tool. These subspaces are assumed to be spanned by a subset of respective latent components. The simulation strategy started with identifying the covariance between these components that satisfy the user’s condition for the data, i.e. the simulation parameters. A covariance structure of the latent space is then created which is rotated by an arbitrary orthogonal rotation matrix to obtain the population covariance structure of the simulated data. Data is then sampled from a normal distribution with the constructed covariance structure. The tool also provides mathematically computed properties of the data such as true regression coefficient, minimum model error, coefficient of determination and the predictor variables relevant for a given response.</p>
+<p>In addition to the mathematical formulation for simulation, the study also compares some multivariate methods including OLS, PCR, PLS and Envelope using two simulation examples. It has included some derivatives of PLS such as PLS1, PLS2, CPLS and CPPLS and some methods based on envelope estimation such as Xenv, Yenv and Senv. The first example has three relevant response components rotated into five response variables. Additionally, four simulation designs were constructed using factorial design with low and high multicollinearity interacting with low and high noise levels. The simultaneous envelope (Senv) method has achieved the smallest prediction error with a smaller number of components in the dataset with low noise level (high coefficient of determination), while canonical PLS (CPLS and CPPLS) have shown better performance in the dataset with a higher level of noise. All the methods are found robust for multicollinearity problem. The second example compared PLS1 and PLS2 where, on most occasions, the latter dominates the earlier with regards to minimum prediction error. Further, the paper has also introduced the shiny <span class="citation">(Chang et al. 2018)</span> web application designed for easier access to the simulation tool.</p>
 </div>
-<div id="paper-2-model-and-estimators-for-partial-least-squares-regression" class="section level2">
-<h2>Paper 2: Model and estimators for partial least squares regression</h2>
-<ul>
-<li>The paper shows the similarity of population model of PCR, PLS and envelope in predictors</li>
-<li>My contribution on the paper is on the example of a comparative study with single response with both simulated and real data</li>
-<li>BayesPLS showed better performance with few fallback such as crashing, time consuming and lack of method for multi-response model</li>
-<li>It also showed that … on the prediction performance</li>
-</ul>
+<div id="paper-2-model-and-estimators-for-pls-regression" class="section level2">
+<h2>Paper 2: Model and Estimators for PLS Regression</h2>
+<p>Comparison of methods requires us to understand the modelling approach of the corresponding methods. This paper formulates five different ways to present a PLS model <span class="citation">(Helland 1990)</span> and show how they are equivalent. Additionally, it argues that the concept of relevant components for reduction of the regression model is the simplest way for it. My contribution to the paper was to compare the performance of PCR, PLS, Bayes PLS and Envelope (Xenv) methods using both simulated and real data.</p>
+<p>The comparison was based on simulated data with 32 unique properties through a factorial design of simulation parameters. The parameters include medium and high levels of coefficient of determination, medium and high levels of multicollinearity, four different position index of relevant predictor components and two different <span class="math inline">\(n/p\)</span> ratios, 0.3 and 0.8. The study is based on a single response model.</p>
+<p>The study found some interesting results for the envelope and BayesPLS methods. Since the Envelope (Xenv) method is based on maximum likelihood, the designs with <span class="math inline">\(n/p\)</span> ratio equals to 0.8 destroyed its prediction while the method has fine prediction when the ratio was 0.3. Bayes PLS has shown remarkable prediction performance in most design, however, both methods had convergence problem in many situations.</p>
+<p>Despite having the best performance, Bayes PLS has time-consuming computation and failed to converge for some cases. For practical purpose, the study recommends the ordinary PLS algorithm as a good option for prediction purpose.</p>
 </div>
 <div id="paper-3-comparison-of-multi-response-prediction-methods" class="section level2">
-<h2>Paper 3: Comparison of Multi-response Prediction Methods</h2>
-<ul>
-<li>This paper extends the comparative study on both of the previous paper</li>
-<li>Here only methods based on relevant space is considered for comparison</li>
-<li>A small modification in the envelope methods is made as the methods is based on maximum likelihood and can not be fitted on <span class="math inline">\(p&gt;&gt;n\)</span> case.</li>
-<li>The results showed that …</li>
-</ul>
+<h2>Paper 3: Comparison of Multi Response Prediction Methods</h2>
+<p>Since prediction has been an essential component in data science, understanding how the prediction methods interact with different properties of data is important. This paper, together with the next, makes a comprehensive comparison using simulated data with specifically designed properties through various simulation parameters. The experimental design in Figure <a href="background.html#fig:design-plot">4</a>, discussed in the previous section, has been used in both of these comparisons. Besides, for the prediction comparison, two real data examples have also been used in the study. These two papers try to give an understanding of the interaction between methods and data properties in multi-response cases and also assess the performance of the envelope methods (Xenv and Senv) using both simulation and data from the field of chemometrics. Further, these studies not only use prediction and estimation error for assessment but also the number of components used to get the minimum error. Here only methods based on relevant space such as PCR, PLS (PLS1 and PLS2) and Envelopes (Xenv and Senv) are considered for comparison.</p>
+<p>Since envelope methods are unable to fit a model with <span class="math inline">\(p&gt;n\)</span>, principal components of the predictor matrix were used to reduce the number of predictors. The number of components that explains the minimum of 97.5% of the variation in <span class="math inline">\(\mathbf{x}\)</span> are chosen. The regression coefficients were later transformed back using the respective eigenvectors. Since the envelope methods do the dimension reduction as part of its fitting process, this detour in <span class="math inline">\(p&gt;n\)</span> cases does not give them extra benefit which we have tested for <span class="math inline">\(n&gt;p\)</span> cases using with and without using principal components. This paper also illustrates the use of principal components for using envelope methods in data with wide <span class="math inline">\((p&gt;n)\)</span> predictor matrix which is common in fields like chemometrics and bioinformatics.</p>
+<p>The minimum prediction error and the number of components to get that error are considered as observed responses in the study. The simulation parameters used in the experimental design are considered as factor variables for further statistical analysis. Multivariate Analysis of Variance (MANOVA) is used for proper statistical analysis with third-order interaction of these factors. The effect of different levels of the factors and their interactions are used for minute comparison.</p>
+<p>Envelope methods, in the study, have produced a small prediction error using fewer components than other methods. The effect of correlation between the response variables is small for all methods however, envelope methods are more sensitive to this correlation. All methods are robust for handling multicollinearity, but PCR and PLS methods struggle more when the relevant predictor components have small variance and irrelevant components have a large variance.</p>
+<p>Example with real data shows PCR and PLS have the smallest prediction error, but the number of components used by them is higher than for the envelope methods. Envelope methods in these examples have obtained prediction error closer to the minimum obtained by PCR and PLS but using a smaller number of components.</p>
 </div>
 <div id="paper-4-comparison-of-multi-response-estimation-methods" class="section level2">
-<h2>Paper 4: Comparison of Multi-response Estimation Methods</h2>
-<ul>
-<li>Since good prediction not always results in good estimation, this paper continue the exploration of Paper3 for the estimation performance of the methods</li>
-<li>The same data is used with the similar modification in envelope methods</li>
-<li>The interaction of methods and the design on the basis of error is studied with MANOVA in both Paper3 and Paper4</li>
-</ul>
+<h2>Paper 4: Comparison of Multi Response Estimation Methods</h2>
+<p>In many disciplines, the correct and stable estimation is just as an important primary objective as the prediction. This paper extends the analysis from Paper 3 to analyze the estimation aspect of the methods. The same experimental design and simulated data are used for this assessment as well.</p>
+<p>The study found that overall performance highly depends on the nature of the data since simulation parameters, such as multicollinearity level and position of relevant predictors, significantly interact with the methods. Low multicollinearity with independent response variables is in favour of envelope methods as they have both smaller prediction and estimation error using fewer components. Higher correlations between the responses have given a larger estimation error for envelope methods. For these methods, choosing the wrong number of components can result in large estimation error, so the study also suggests using validation for estimation purpose as well. Both prediction and estimation error from PCR is more stable than other methods, while as PLS1 method models each response separately, the performance is in general poorer than for other methods.</p>
 
 </div>
 </div>
@@ -155,7 +147,7 @@
         </div>
       </div>
 <a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="discussions-conclusions-and-future-perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="discussions-conclusions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -185,7 +177,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/therimalaya/thesis/edit/master/chapters/01-Paper-Summary.Rmd",
+"link": "https://github.com/therimalaya/thesis/edit/master/chapters/02-Paper-Summary.Rmd",
 "text": "Edit"
 },
 "history": {

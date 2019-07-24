@@ -69,22 +69,23 @@
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#relevant-space-and-relevant-components"><i class="fa fa-check"></i>Relevant Space and Relevant Components</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#simulation"><i class="fa fa-check"></i>Simulation</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#estimation-and-prediction"><i class="fa fa-check"></i>Estimation and Prediction</a></li>
-<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-methods"><i class="fa fa-check"></i>Multivariate Methods</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multivariate-methods"><i class="fa fa-check"></i>Multivariate Methods</a><ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#methods-based-on-envelope-model"><i class="fa fa-check"></i>Methods based on Envelope Model</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#pls-and-its-derivatives"><i class="fa fa-check"></i>PLS and its derivatives</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#analysis-of-variance"><i class="fa fa-check"></i>Analysis of Variance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html"><i class="fa fa-check"></i>Paper Summary</a><ul>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-1-a-tool-for-simulating-multi-response-linear-model-data"><i class="fa fa-check"></i>Paper 1: A tool for simulating multi-response linear model data</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-2-model-and-estimators-for-partial-least-squares-regression"><i class="fa fa-check"></i>Paper 2: Model and estimators for partial least squares regression</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-3-comparison-of-multi-response-prediction-methods"><i class="fa fa-check"></i>Paper 3: Comparison of Multi-response Prediction Methods</a></li>
-<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-4-comparison-of-multi-response-estimation-methods"><i class="fa fa-check"></i>Paper 4: Comparison of Multi-response Estimation Methods</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-1-a-tool-for-simulating-multi-response-linear-model-data"><i class="fa fa-check"></i>Paper 1: A Tool for Simulating Multi Response Linear Model Data</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-2-model-and-estimators-for-pls-regression"><i class="fa fa-check"></i>Paper 2: Model and Estimators for PLS Regression</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-3-comparison-of-multi-response-prediction-methods"><i class="fa fa-check"></i>Paper 3: Comparison of Multi Response Prediction Methods</a></li>
+<li class="chapter" data-level="" data-path="paper-summary.html"><a href="paper-summary.html#paper-4-comparison-of-multi-response-estimation-methods"><i class="fa fa-check"></i>Paper 4: Comparison of Multi Response Estimation Methods</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html"><i class="fa fa-check"></i>Discussions, Conclusions and Future Perspectives</a><ul>
-<li class="chapter" data-level="" data-path="discussions-conclusions-and-future-perspectives.html"><a href="discussions-conclusions-and-future-perspectives.html#discussions-and-conclusions"><i class="fa fa-check"></i>Discussions and Conclusions</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html"><i class="fa fa-check"></i>Previous Studies</a><ul>
-<li class="chapter" data-level="" data-path="previous-studies.html"><a href="previous-studies.html#limitations-and-future-perspectives"><i class="fa fa-check"></i>Limitations and Future Perspectives</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="discussions-conclusions.html"><a href="discussions-conclusions.html"><i class="fa fa-check"></i>Discussions &amp; Conclusions</a></li>
+<li class="chapter" data-level="" data-path="limitations-future-perspectives.html"><a href="limitations-future-perspectives.html"><i class="fa fa-check"></i>Limitations &amp; Future Perspectives</a></li>
+<li class="chapter" data-level="" data-path="tools-and-resources.html"><a href="tools-and-resources.html"><i class="fa fa-check"></i>Tools and Resources</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a name="title" href="javascript:void(0)"><strong>Papers:</strong></a><ul>
 <li><a href="https://doi.org/10.1016/j.chemolab.2018.02.009" target="_blank">Paper I</a></li>
@@ -112,114 +113,181 @@
             <section class="normal" id="section-">
 <div id="background" class="section level1">
 <h1>Background</h1>
-<p>Following subsections will discuss few related topics extensively used in the papers.</p>
+<p>This section discusses the relevant topics that have been used in the included papers.</p>
 <div id="multivariate-linear-regression-model" class="section level2">
 <h2>Multivariate Linear Regression Model</h2>
-<p>We can write the joint distribution of a random variable <span class="math inline">\(\mathbf{y}\)</span> consists of <span class="math inline">\(m\)</span> response variables and another random variable <span class="math inline">\(\mathbf{x}\)</span> consists of <span class="math inline">\(p\)</span> predictor variables as,</p>
+<p>The joint normal distribution of a random variable-vector <span class="math inline">\(\mathbf{y}\)</span> of <span class="math inline">\(m\)</span> response variables with mean of <span class="math inline">\(\boldsymbol{\mu}_y\)</span> and another random variable-vector <span class="math inline">\(\mathbf{x}\)</span> of <span class="math inline">\(p\)</span> predictor variables with mean <span class="math inline">\(\boldsymbol{\mu}_x\)</span> as,</p>
 <p><span class="math display" id="eq:linear-model">\[\begin{equation}
 \begin{bmatrix}
   \mathbf{y}\\
   \mathbf{x}
 \end{bmatrix} \sim
-\mathsf{N}\begin{pmatrix}
+\mathsf{N}
+\begin{pmatrix}
   \begin{bmatrix}
     \boldsymbol{\mu_y}\\
     \boldsymbol{\mu_x}
   \end{bmatrix},
   \begin{bmatrix}
-    \boldsymbol{\Sigma_{yy}} &amp;
-    \boldsymbol{\Sigma_{yx}} \\
-    \boldsymbol{\Sigma_{xy}} &amp;
-    \boldsymbol{\Sigma_{xx}}
+    \boldsymbol{\Sigma_{yy}} &amp; \boldsymbol{\Sigma_{yx}} \\
+    \boldsymbol{\Sigma_{xy}} &amp; \boldsymbol{\Sigma_{xx}}
   \end{bmatrix}
 \end{pmatrix}
 \tag{1}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
+where, <span class="math inline">\(\boldsymbol{\Sigma}_{xx}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}_{yy}\)</span> are the variance-covariance matrix of <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> respectively and <span class="math inline">\(\boldsymbol{\Sigma}_{xy} = \boldsymbol{\Sigma}_{yx}^t\)</span> is the covariances between them.</p>
 <p>A model that linearly relates <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> through regression coefficient <span class="math inline">\(\boldsymbol{\beta}\)</span> is often written as,</p>
 <p><span class="math display" id="eq:linear-reg-model">\[\begin{equation}
 \mathbf{y} = \boldsymbol{\mu}_y + \boldsymbol{\beta}^t\left(\mathbf{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
 \tag{2}
 \end{equation}\]</span>
-where <span class="math inline">\(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_{y|x}\right)\)</span>, <span class="math inline">\(\boldsymbol{\mu}_y\)</span> is the mean vector of <span class="math inline">\(\mathbf{y}\)</span> and <span class="math inline">\(\boldsymbol{\mu}_x\)</span> is the mean vector of <span class="math inline">\(\mathbf{x}\)</span>.</p>
-<p>We can write the regression coefficient <span class="math inline">\(\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}\)</span> in terms of the covariance matrices. A complete simulation of this model requires to identify <span class="math inline">\(1/2(p+m)(p+m+1)\)</span> unknowns. However, not all information in <span class="math inline">\(\mathbf{x}\)</span> are relevant for <span class="math inline">\(\mathbf{y}\)</span> and not everything in <span class="math inline">\(\mathbf{y}\)</span> are informative. We can refer the space with information as relevant (informative) space and the rest as irrelevant (uninformative) space. <span class="citation">Sæbø, Almøy, and Helland (2015)</span> and <span class="citation">Rimal, Almøy, and Sæbø (2018b)</span> have parameterized the linear model <a href="background.html#eq:linear-model">(1)</a> based on the concept of relevant space and provided a tool for simulating multi-response data with few tuning parameters. A review on the simulation and the experimental design adopted in various papers attached to this thesis will follow after a short discussion of relevance and irrelevance in linear model.</p>
+where <span class="math inline">\(\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_{y|x}\right)\)</span></p>
+<p>We can write the regression coefficient <span class="math inline">\(\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}\)</span> in terms of the covariance matrices. A complete simulation of this model requires to identify <span class="math inline">\(1/2(p+m)(p+m+1)\)</span> unknowns.</p>
+<p>With a transformation defined as <span class="math inline">\(\mathbf{z} = \mathbf{Rx}\)</span> and <span class="math inline">\(\mathbf{w} = \mathbf{Qy}\)</span> with <span class="math inline">\(\mathbf{R}_{p\times p}\)</span> and <span class="math inline">\(\mathbf{Q}_{m\times m}\)</span> random orthogonal rotation matrices, model <a href="background.html#eq:linear-model">(1)</a> can be rewritten as,</p>
+<p><span class="math display" id="eq:latent-model">\[\begin{align}
+  \begin{bmatrix}\mathbf{w} \\
+  \mathbf{z}\end{bmatrix}  &amp; \sim N \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right)
+  = N \left(
+    \begin{bmatrix}
+      \boldsymbol{\mu}_w \\ \boldsymbol{\mu}_z
+    \end{bmatrix},
+    \begin{bmatrix}
+      \boldsymbol{\Sigma}_{ww} &amp; \boldsymbol{\Sigma}_{wz} \\
+      \boldsymbol{\Sigma}_{zw} &amp; \boldsymbol{\Sigma}_{zz}
+    \end{bmatrix} \right) \nonumber \\
+  &amp;= N \left(
+    \begin{bmatrix}
+      \boldsymbol{Q\mu}_y \\
+      \boldsymbol{R\mu}_x
+    \end{bmatrix},
+    \begin{bmatrix}
+      \boldsymbol{Q\Sigma}_{yy}\boldsymbol{Q}^t &amp; \boldsymbol{Q\Sigma}_{yx}\mathbf{R}^t \\
+      \boldsymbol{R\Sigma}_{xy}\boldsymbol{Q}^t &amp; \boldsymbol{R\Sigma}_{xx}\mathbf{R}^t
+    \end{bmatrix}
+  \right)
+  \tag{3}
+\end{align}\]</span></p>
+<p>Since both <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> are orthonormal matrices, i.e., <span class="math inline">\(\mathbf{Q}^t\mathbf{Q} = \mathbf{I}_m\)</span> and <span class="math inline">\(\mathbf{R}^t\mathbf{R} = \mathbf{I}_p\)</span>, the inverse transformation can be defined as,</p>
+<p><span class="math display" id="eq:cov-yx-wz">\[\begin{equation}
+  \begin{matrix}
+    \boldsymbol{\Sigma}_{yy} = \mathbf{Q}^t \boldsymbol{\Sigma}_{ww} \mathbf{Q} &amp;
+    \boldsymbol{\Sigma}_{yx} = \mathbf{Q}^t \boldsymbol{\Sigma}_{wz} \mathbf{R} \\
+    \boldsymbol{\Sigma}_{xy} = \mathbf{R}^t \boldsymbol{\Sigma}_{zw} \mathbf{Q} &amp;
+    \boldsymbol{\Sigma}_{xx} = \mathbf{R}^t \boldsymbol{\Sigma}_{zz} \mathbf{R}
+  \end{matrix}
+  \tag{4}
+\end{equation}\]</span></p>
+<p>Here, <span class="math inline">\(\boldsymbol{\Sigma_{zz}}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma_{ww}}\)</span> are diagonal matrices of eigenvalues corresponding to predictors and responses respectively. Following the concept of relevant components <span class="math inline">\(\boldsymbol{\Sigma}_{wz} = \boldsymbol{\Sigma_{zw}^t}\)</span> has non-zero columns (rows) with relevant components. With some random orthogonal rotation matrix <span class="math inline">\(\mathbf{R}\)</span> and <span class="math inline">\(\mathbf{Q}\)</span>, which can be easily generated, the unknowns required for simulation drastically decrease. Following the idea from <span class="citation">Sæbø, Almøy, and Helland (2015)</span>, Paper I uses exponential decay of eigenvalues as in <a href="background.html#eq:exp-decay">(5)</a> that fills of the diagonal of <span class="math inline">\(\boldsymbol{\Sigma_{zz}}\)</span> and <span class="math inline">\(\boldsymbol{\Sigma_{ww}}\)</span>. Here the decay factor <span class="math inline">\(\gamma\)</span> controls the multicollinearity such that a higher value of gamma corresponds to high multicollinearity.</p>
+<p><span class="math display" id="eq:exp-decay">\[\begin{equation}
+\lambda_i = e^{-\gamma(i - 1)}, \gamma &gt;0 \text{ and } i = 1, 2, \ldots, p
+\tag{5}
+\end{equation}\]</span></p>
+<p>A thorough discussion on the reparameterization of a linear model to simulate data by following the concept of “relevant components” can be found in Paper I. Following subsection discusses the concept of relevant components in brief.</p>
 </div>
 <div id="relevant-space-and-relevant-components" class="section level2">
 <h2>Relevant Space and Relevant Components</h2>
-<p><span class="citation">Naes and Martens (1985)</span> introduced the definition of relevant space as the decomposition of predictor space into two orthogonal subspaces: relevant and irrelevant such that a set of latent components defined as irrelevant components have no correlation with the response and no correlation with the relevant part of the data. The concept was further discussed and developed by <span class="citation">Helland (1990)</span> and <span class="citation">Næs and Helland (1993)</span>. More recently, various estimators <span class="citation">(Cook, Li, and Chiaromonte 2010; Cook, Helland, and Su 2013; Cook and Zhang 2015)</span> based on envelope <span class="citation">(Cook, Li, and Chiaromonte 2007)</span> have used the concepts of separation of relevant and irrelevant spaces which they have referred as material and immaterial spaces.</p>
+<p>In the model <a href="background.html#eq:linear-model">(1)</a>, not all information in <span class="math inline">\(\mathbf{x}\)</span> is relevant for <span class="math inline">\(\mathbf{y}\)</span> and not all variation in <span class="math inline">\(\mathbf{y}\)</span> is explainable or non-redundant. We can refer to the space “with information” as relevant (informative) space and the rest as irrelevant (uninformative) space. <span class="citation">Naes and Martens (1985)</span> introduced the definition of relevant space as the decomposition of the predictor space into two orthogonal subspaces: the relevant and the irrelevant space. Additionally, a set of predictor components defined as irrelevant components do not have any correlation with the response and the relevant part of the data. The relevant components, on the other hand, contains all the required information to explain the variation in the response <span class="math inline">\(\mathbf{y}\)</span>. Multivariate methods such as Principal Components Regression (PCR) and Partial Least Squares (PLS) Regression uses the eigenvectors to span the relevant and irrelevant spaces. Here, we refer the eigenvectors that span the relevant space as <em>relevant eigenvectors</em>. The concept was further discussed and developed by <span class="citation">Helland (1990)</span>, <span class="citation">Næs and Helland (1993)</span> and <span class="citation">Helland and Almøy (1994)</span>. However, all these studies have discussed the separation of relevant and irrelevant space only in predictor space.</p>
+<p>More recently, various estimators <span class="citation">(Cook, Li, and Chiaromonte 2010; R. D. Cook, Helland, and Su 2013; R. Dennis Cook and Zhang 2015b)</span> based on a so-called “envelope” <span class="citation">(Cook, Li, and Chiaromonte 2007)</span> have used and extended the concepts of the separation of relevant and irrelevant spaces to response space as well. The relevant and irrelevant space are referred to as material and immaterial spaces in their literature (Figure <a href="background.html#fig:relspace-plot">1</a>). The envelope methods use “envelope”, a linear combination of relevant eigenvectors <span class="citation">(Cook 2018)</span>, to span the relevant space.</p>
+
 <div class="figure"><span id="fig:relspace-plot"></span>
-<img src="Thesis_files/figure-html/relspace-plot-1.svg" alt="Relevant and Irrelevant Space in Linear Model" width="100%" />
+<img src="Thesis_files/figure-html/relspace-plot-1.svg" alt="A heuristic illustration of relevant and irrelevant spaces in a response space and a predictor space" width="100%" />
 <p class="caption">
-Figure 1: Relevant and Irrelevant Space in Linear Model
+Figure 1: A heuristic illustration of relevant and irrelevant spaces in a response space and a predictor space
 </p>
 </div>
-<p>The concept can also be extended to the response such that a subspace contains the information relevant for a model that the relevant space in <span class="math inline">\(\mathbf{x}\)</span> can explain. The item is implemented in simulteneous envelope <span class="citation">(Cook and Zhang 2015)</span> and response envelope <span class="citation">(Cook, Li, and Chiaromonte 2010)</span> methods. However methods such as PCR and PLS1 have not used the reduced space in the response. Figure-<a href="background.html#fig:relspace-plot">1</a> shows the notion of this reduction of linear regression model.</p>
+<p>To elaborate on the concept of relevant components and how they interact with other properties and influence the prediction of methods, let us consider an example. Let a single response model with 10 predictor variables where the information contained in these 10 predictors can be completely explained by four principal components of <span class="math inline">\(\Sigma_{xx}\)</span>, the variance-covariance matrix of the predictor (<span class="math inline">\(\mathbf{x}\)</span>). These four components are the relevant components. Consider two cases:</p>
+<dl>
+<dt>Case 1 (Figure <a href="background.html#fig:relcomp-example">2</a>, left):</dt>
+<dd>The position of these relevant components are at 1, 2, 3 and 4. The eigenvalues of <span class="math inline">\(\Sigma_{xx}\)</span> decay slowly, i.e. low multicollinearity. Here, the relevant components from 1 to 4 have large variation, so that, most methods easily extract the information and fit the model.
+</dd>
+<dt>Case 2 (Figure <a href="background.html#fig:relcomp-example">2</a>, right):</dt>
+<dd>The position of these relevant components are at 5, 6, 7 and 8. The eigenvalues of <span class="math inline">\(\Sigma_{xx}\)</span> decay rapidly, i.e. high multicollinearity. Here the relevant components from 5 to 8 have small variation, so that, it is difficult for most methods to extract the information and fit the model.
+</dd>
+</dl>
+<div class="figure"><span id="fig:relcomp-example"></span>
+<img src="Thesis_files/figure-html/relcomp-example-1.svg" alt="Relevant components at two different set of positions and two different levels of multicollinearity. The points represents the correlation of predictor components and the response variable." width="100%" />
+<p class="caption">
+Figure 2: Relevant components at two different set of positions and two different levels of multicollinearity. The points represents the correlation of predictor components and the response variable.
+</p>
+</div>
+<p>Further PCR and PLS regression are used with the data simulated from these two cases. Also, leave-one-out cross-validation validates their prediction performance and the root mean squares error of prediction measures their prediction error (Figure <a href="background.html#fig:rmsep-plot">3</a>).</p>
+<p>Different methods target these cases differently. For example, PCR tries to capture maximum variation in <span class="math inline">\(\mathbf{x}\)</span> through principal components, so it starts reducing its prediction error only after including the relevant components. For this method, in the first case, prediction error starts reducting from the first component and stabilize after the fourth component while in the second case, prediction error only starts reducting after the fifth component. This method requires all four relevant components to get the minimum prediction error. Partial Least Square Regression (PLS), on the other hand, is motivated to maximize the covariance between the predictors and the response. We can see a significant decline of prediction error after the first relevant components is included but it uses a fewer number of components to get the minimum prediction error than the PCR in both cases. <span class="citation">Helland and Almøy (1994)</span> has shown a similar result and shown that the relevant components with small variation make the prediction difficult.</p>
+<div class="figure"><span id="fig:rmsep-plot"></span>
+<img src="Thesis_files/figure-html/rmsep-plot-1.svg" alt="Root mean square error of cross-validation from PCR and PLSR" width="100%" />
+<p class="caption">
+Figure 3: Root mean square error of cross-validation from PCR and PLSR
+</p>
+</div>
+<p>The concept of relevant components also can be extended to the response such that a subspace contains the information relevant for a model. The concept is implemented in the simultaneous envelope <span class="citation">(R. Dennis Cook and Zhang 2015b)</span> and the response envelope <span class="citation">(Cook, Li, and Chiaromonte 2010)</span> methods.</p>
 </div>
 <div id="simulation" class="section level2">
 <h2>Simulation</h2>
-<p>Simulation refers to generate the data from known underlying population structure. Controlling the properties of the population is vital in the simulation which enables researchers and users to use the data for comparison of methods, accessing new methodology, testing theory and evaluating alorithms. Such data can also be widely used for educational purposes. All the research studies in this thesis have used an R-package called <code>simrel</code> for simulating multi-response linear model data introduced by <span class="citation">Rimal, Almøy, and Sæbø (2018a)</span>. The simulation tool is general purpose in nature and has few parameters that controls the essential properties of the poulation enabling users to simulate data with wide range of properties.</p>
-<p>The population properties such as the coefficient of determination, number of relevant predictors, level of multicollinerity and the position of relevant principal components can be varied in the simulation with <code>simrel</code>. A full factorial experimental design on various levels of some of these population properties has been implimented in all of these studies for various comparison. An experimental design helps to analyse the effect of certain population properties and allows comparision of different levels of these factors and their interactions. The data obtained from the simulation are used to compare different methods based on their performance. The performance is accessed through there prediction and estimation ability.</p>
+<p>Random variables are the basic components of a complex model and a stochastic simulation. These random variables can be generated by generating and manipulating uniform random variables <span class="math inline">\(U(0, 1)\)</span> which requires random numbers. Although computers can not generate truly random numbers, it can, however, generate pseudo-random numbers. These numbers appear as random numbers but they are completely deterministic. Since they are deterministic, any experiment performed using these numbers can be repeated exactly <span class="citation">(Jones, Maillardet, and Robinson 2014)</span>. We can use these uniform random variables to create other random variables that follow a certain distribution. Standard Normal Distribution is a common one and is used in many statistical simulations including the tool discussed in paper I. Apart from many other methods, one can use the central limit theorem to simulate standard normal variates from the uniform random variates. With standard normal variate <span class="math inline">\(Z \sim \mathrm{N}(0, 1)\)</span>, one can obtain any normal distribution with arbitrary mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> as <span class="math inline">\(\mu + \sigma Z\)</span>. Here, we can control the parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>Simulation refers to generating data from a known underlying population structure. Controlling the properties of the population is vital in the simulation. This enables researchers and users to use data for comparison of methods, assessing new methodology, testing theory and evaluating algorithms. Such data also can be widely used for educational purposes.</p>
+<p>All the research studies in this thesis have used an R-package called <code>simrel</code> for simulating multi-response linear model data introduced in paper I. The simulation tool is general purpose in nature and has a limited number of parameters that controls the essential properties of the population. It is flexible and enables users to simulate data with a wide range of properties. Some of these properties include the level of correlation between the predictors (<code>gamma</code>) and responses (<code>eta</code>) through exponential decay factor as in <a href="background.html#eq:exp-decay">(5)</a>. The position of the relevant components (<code>relpos</code>), the number of predictor variables (<code>p</code>) and the number of response variables (<code>m</code>) can also be controlled during the simulation.</p>
 </div>
 <div id="estimation-and-prediction" class="section level2">
 <h2>Estimation and Prediction</h2>
-<p>Measures such as mean and standard deviation for a population are usually referred as parameters of the population. A model as in <a href="background.html#eq:linear-reg-model">(2)</a>, which tries to formulate the relationship between <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> in the population uses parameters such as the error variance and regression coefficients are also terms as parameters. Usually, due to the lack of known population distribution, the values of these parameters are calculated using a sample collected from that population. The process of determining the value of certain parameters is called estimation. The estimated value from any two samples are different. The estimated values are considered better if squared difference between the estimated and true value is small and have small variation. The goodness of the estimates depends on the nature of the data and the method that is used to estimate them. In estimation error for a certain method using the simulated data with specific properties in most of the comparisons in this thesis are computed as in <a href="background.html#eq:est-error">(3)</a>.</p>
+<p>Measures such as mean and standard deviation for a population are usually referred to as parameters of the population. A model as in <a href="background.html#eq:linear-reg-model">(2)</a>, which expresses the relationship between <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> in the population, uses parameters such as the error variance and regression coefficients. Usually, due to the lack of known population distribution, the values of these parameters are calculated using a sample collected from the population. The process of determining the value of certain parameters is called estimation. The estimated parameter values from any two samples are different. The estimated value is considered better if the expected squared difference between the estimated and true value is small and has small variance. The goodness of the estimates depends on the nature of the data and the method that is used to estimate them. Estimation error with true and estimated regression coefficient <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\boldsymbol{\widehat{\beta}}\)</span> respectively, can be defined as in <a href="background.html#eq:est-error">(6)</a>.</p>
 <p><span class="math display" id="eq:est-error">\[\begin{equation}
 \text{Estimation Error} = \mathsf{E}\left[
   \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t 
   \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
 \right]
-\tag{3}
+\tag{6}
 \end{equation}\]</span></p>
-<p>A fitted or trained model are mostly used for prediction. Prediction referes to determining the value of the response for a new set of predictor which were not used to train the model. Most studies under “data science” field are targeted for better prediction. Most comparison in this thesis evaluate the prediction performance of the multivariate methods using the prediction error measured as in <a href="background.html#eq:pred-error">(4)</a>.</p>
+<p>A fitted or trained model is mostly used for prediction. Prediction refers to determining the value of the response for a new set of predictors, which were not used to train the model. Most studies under “data science” field are targeted for better prediction. Most comparisons in this thesis evaluate the prediction performance of the multivariate methods using the prediction error measured as in <a href="background.html#eq:pred-error">(7)</a>.</p>
 <p><span class="math display" id="eq:pred-error">\[\begin{equation}
 \text{Prediction Error} = \mathsf{E}\left[
   \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t
   \boldsymbol{\Sigma}_{xx}
   \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
 \right] + \boldsymbol{\Sigma}_{y|x}
-\tag{4}
+\tag{7}
 \end{equation}\]</span></p>
-<ul>
-<li>Prediction error are influenced by the covariance of the predictor directly while estimation error are not</li>
-<li>In the case of multicollinear predictors, estimation error can be huge while due to the scaling of the covariation of predictors, the prediction error can still be small</li>
-<li>A good estimation can give proper and trustworthy idea about the relation between certain predictor variation with certain response variable</li>
-<li>This is important in policy making, academic researches and to understanding the relation to develope new models.</li>
-<li>Prediction on the other hand are widely used from weather forcasting, economic forecasting, prediction in production and sales and many more.</li>
-</ul>
+<p>From <a href="background.html#eq:est-error">(6)</a> and <a href="background.html#eq:pred-error">(7)</a>, we can see that the prediction errors are influenced by the covariance of the predictor directly while estimation error is not. In the case of multicollinear predictors, estimation error can be huge while due to the scaling of the covariation of predictors, the prediction error can still be small. A good estimation can give a proper and trustworthy idea about the relation between certain predictor variation with a certain response variable. This is important in policymaking, academic researches and to understand the relationships when developing new models. Prediction, on the other hand, is widely used from weather forecasting, economic forecasting, prediction in production and sales, and many more.</p>
 </div>
 <div id="multivariate-methods" class="section level2">
 <h2>Multivariate Methods</h2>
-<p>Various multivariate methods such as ordinary least squares (OLS), principal components regression (PCR), partial least squares (PLS) regression and envelope methods are used for comparison of the study included in this thesis. All of these methods except OLS use the concept of relevant space and the reduction of the regression model.</p>
-<p><span class="citation">Wentzell and Montoto (2003)</span> has assmbled many comparisons made on PCR and PLS where they conclude that PLS have not shown clear advantage over PCR over predictive ability in most studies but uses less number of components than PCR. As PLS has been both popular and productive in fields like chemometrics, its developement has progressed quickly over time throught the formulation of various derivetives. CPLS and CPPLS are among them which conbines PLS and cannonical correlation analysis (CCA) and gives a joint framework for classification and regression <span class="citation">(Indahl, Liland, and Næs 2009)</span>. The first included paper which has introduced the simulation tool <code>simrel</code> has made some basic comparison on these methods for their predictive ability. The third and fourth paper included have made elaborative comparison on PCR and PLS using various properties in the data. More discussion are in the summary section of the respective papers. In addition, PLS1 methods which models each response separatly without any knowledge of other responses are also included. Further, in the single response setting, the second paper includes BayesPLS <span class="citation">(Helland, Saebø, and Tjelmeland 2012)</span> method in the comparison which have shown promishing results.</p>
-<p>Many literature are available comparing PCR, PLS and their derivetive. However there are not any studies to date which have made any emperical comparisons of newly developed <em>envelope</em> based methods using real and simulated data with these more established methods. Envelope introduced by <span class="citation">Cook, Li, and Chiaromonte (2007)</span> have been used to develop various estimators including response envelope (Yenv), predictor envelope (Xenv) and simultaneous estimation of envelope in both predictor and response (Senv). Envelope is defined as the smallest subspace that includes the span of true regression coefficients. The comparisons of these envelope methods together with PCR and PLS in third and fourth paper has shown encouraging results for envelope methdods in both easy and difficult models.</p>
+<p>Various multivariate methods such as ordinary least squares (OLS), principal components regression (PCR), partial least squares (PLS) regression and envelope methods are used for comparison studies included in this thesis. All of these methods except OLS use the concept of relevant space and the reduction of the regression model. Here we will refer PLS2, which models all the response variables together, as PLS and PLS1, which models each responses separately, as PLS1.</p>
+<div id="methods-based-on-envelope-model" class="section level3">
+<h3>Methods based on Envelope Model</h3>
+<p>Three different methods based on envelopes are also included for comparison. <span class="citation">Cook, Li, and Chiaromonte (2007)</span> defined envelope as the smallest subspace that includes the span of true regression coefficients and developed various estimators based on the concept of the envelope through various subsequent papers. Response envelope (Yenv) <span class="citation">(Cook, Li, and Chiaromonte 2010)</span> perform dimension reduction only in the response space while Predictor envelope (Xenv) <span class="citation">(R. D. Cook, Helland, and Su 2013)</span> perform dimension reduction only in the predictor space. The simultaneous envelope (Senv) <span class="citation">(R. Dennis Cook and Zhang 2015b)</span> perform dimension reduction on both predictor and response space simultaneously. If all the possible components (latent dimension) are included in these methods, the results are equivalent to OLS regression. The comparisons of these envelope methods together with PCR and PLS in the third and fourth paper has shown encouraging results for envelope methods in both easy and difficult models.</p>
+</div>
+<div id="pls-and-its-derivatives" class="section level3">
+<h3>PLS and its derivatives</h3>
+<p>Since the PLS method has been both popular and productive in the field like chemometrics, its development has progressed quickly over time through the formulation of various derivatives. CPLS and CPPLS are among them which combines PLS and canonical correlation analysis (CCA) and gives a joint framework for classification and regression <span class="citation">(Indahl, Liland, and Næs 2009)</span>. Paper-I has made some basic comparison of these methods for their predictive ability. More recently, <span class="citation">Helland, Saebø, and Tjelmeland (2012)</span>] introduced Bayes PLS method. The method only works with a single response model and have shown promising results compared to other methods in Paper-II.</p>
+<p><span class="citation">Wentzell and Montoto (2003)</span> has assembled many comparisons made on PCR and PLS where they conclude that PLS has not shown a clear advantage over PCR over predictive ability in most studies but uses less number of components than PCR. Many studies are available comparing PCR, PLS and their derivatives. However, there are not any studies to date which have made any empirical comparisons of newly developed <em>envelope</em> based methods using real and simulated data with these more established methods.</p>
 <p>Details on each of these methods can be obtained from the corresponding references.</p>
+</div>
 </div>
 <div id="experimental-design" class="section level2">
 <h2>Experimental Design</h2>
-<p>In all the comparison, different simulation parameters are considered as factors and the prediction and estimation error are considered as outcome variables. Factorial Design are implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For Example, the factorial design used throughout the third and fourth paper shown in Figure <a href="background.html#fig:design-plot">2</a> has four factors: Number of predictor variables (<code>p</code>) with two levels, level of multicollinearity (<code>gamma</code>) with two levels where higher value represents higher level of multicollinearity, position index of relevant predictor components (<code>relpos</code>) and the level of collinearity in response (<code>eta</code>) with four levels where higher value represents higher correlation between the response variables. The combination of these factors have created 32 unique designs which are then used for simulating data with that particular properties. Such data, with all possible combination of these properties, have made both through and regorous comparison of the methods fisible.</p>
+<p>In all the comparison, simulation parameters are considered as factors and the prediction and estimation error are considered as outcome variables. Factorial Design is implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For Example, the factorial design used throughout the third and fourth paper shown in Figure <a href="background.html#fig:design-plot">4</a> has four factors: a) Number of predictor variables (<code>p</code>) with two levels, b) level of multicollinearity (<code>gamma</code>) with two levels where higher value represents a higher level of multicollinearity, c) position index of relevant predictor components (<code>relpos</code>) and d) the level of collinearity in response (<code>eta</code>) with four levels where higher value represents a higher correlation between the response variables. The combination of these factors has created 32 unique designs which are then used for simulating data with those particular properties. Such data, with all possible combination of these properties, have made both through and rigorous comparison possible.</p>
 
 <div class="figure"><span id="fig:design-plot"></span>
-<img src="Thesis_files/figure-html/design-plot-1.svg" alt="An example of factorial design used in the third and fourth paper." width="100%" />
+<img src="Thesis_files/figure-html/design-plot-1.svg" alt="An example of a factorial design used in the third and fourth paper." width="100%" />
 <p class="caption">
-Figure 2: An example of factorial design used in the third and fourth paper.
+Figure 4: An example of a factorial design used in the third and fourth paper.
 </p>
 </div>
-<p>Lets dig a little deeper to understand how these simulation parameters are tied with the properties of the simulated data. As an example, let us take Design 1 and Design 9 of Figure <a href="background.html#fig:design-plot">2</a> where data simulated with Design 1 have low multicollinearity and the position index of relevant predictors are at 1, 2, 3, 4 while Design 9 have high multicollinearity and the position index of relevant predictors are at 5, 6, 7, 8. All the other factors or properties of the data being same for both, the difference is these two design helps us to analyse the interaction between the multicollinearity in the data and the position of relevant components.</p>
+<p>Let us dig a little deeper to understand how these simulation parameters are tied with the properties of the simulated data. As an example, let us take Design 1 and Design 9 of Figure <a href="background.html#fig:design-plot">4</a> where data simulated with Design 1 have low multicollinearity and the position index of relevant predictors are at 1, 2, 3, 4 while Design 9 have high multicollinearity and the position index of relevant predictors are at 5, 6, 7, 8. All the other factors or properties of the data being the same for both, the difference is these two design helps us to analyse the interaction between the multicollinearity in the data and the position of relevant components.</p>
 
 <div class="figure"><span id="fig:cov-plot"></span>
 <img src="Thesis_files/figure-html/cov-plot-1.svg" alt="Design 1: Relevant components have large variation, Design 9: irrelevant components have large variation and relevant components have small variation." width="100%" />
 <p class="caption">
-Figure 3: <em>Design 1</em>: Relevant components have large variation, <em>Design 9</em>: irrelevant components have large variation and relevant components have small variation.
+Figure 5: <em>Design 1</em>: Relevant components have large variation, <em>Design 9</em>: irrelevant components have large variation and relevant components have small variation.
 </p>
 </div>
-<p>Figure <a href="background.html#fig:cov-plot">3</a> (top-row) shows the scaled covariance between the predictor components and the response variables for Design 1. Here the relevant components with larger variation (due to low multicollinearity) simulates data that are easier to model my most methods. Figure <a href="background.html#fig:cov-plot">3</a> (bottom-row) for Design 9 shows that the relevant components at position 5, 6, 7, 8 has small variation and irrelevant components at position 1, 2, 3, 4 have large variation. This design simulates data that are difficult to model my most methdos. The population covariances in the figure gives clear and distinct relationship while the sample covariances have somewhat rough approximation of the population.</p>
+<p>Figure <a href="background.html#fig:cov-plot">5</a> (top-row) shows the scaled covariance between the predictor components and the response variables for Design 1. Here the relevant components with larger variation (due to low multicollinearity) simulate data that are easier to model by most methods. Figure <a href="background.html#fig:cov-plot">5</a> (bottom-row) for Design 9 shows that the relevant components at position 5, 6, 7, 8 has small variation and irrelevant components at position 1, 2, 3, 4 have large variation. This design simulates data that are difficult to model my most methods. The population covariances in the figure give clear and distinct relationship while the sample covariances have a somewhat rough approximation of the population.</p>
 </div>
 <div id="analysis-of-variance" class="section level2">
 <h2>Analysis of Variance</h2>
-<p>Performance measures such as prediction error, estimation error and the number of components used by the methods under comparison, various plots together with principal components analysis (PCA) has been used. In addition, a more formal analysis is made using analysis of variance (ANOVA). ANOVA allowed us not only to understand the effect of various properties of data controlled by the simulation parameters but also analysis the effect of interaction of these properties with the methods. Third and fourth paper with four response variables each of which are analyzed together with multivariate analysis of variance (MANOVA).</p>
-<p>Multivariate analysis of variance (MANOVA) is the multivariate counterpart of the ANOVA where various test statistic is used such as Wilks’ Lambda, Lawley-Hotelling trace, Pillai trace and Roy’s largest root. All of these methods use the within <span class="math inline">\((\mathbf{E})\)</span> and between <span class="math inline">\((\mathbf{H})\)</span> sum of squares and the cross products matrix. All four test statistic are nearly equivalent for large sample size <span class="citation">(Johnson and Wichern 2018)</span>. In our studies, Pillai trace is used which is defined as,</p>
+<p>Various exploratory plots of prediction error, estimation error and the number of components used by different methods are used for analysis. Also, visualizations from principal components analysis (PCA) have been used on these errors. Besides, a more formal analysis is made using analysis of variance (ANOVA). ANOVA allowed us not only to understand the effect of various properties of data controlled by the simulation parameters but also analyse the effect of the interaction of these properties with the methods. The third and fourth paper uses multivariate analysis of variance (MANOVA) to analyze the effect on four response variables.</p>
+<p>MANOVA is the multivariate counterpart of the ANOVA where various test statistic is used such as Wilks’ Lambda, Lawley-Hotelling trace, Pillai trace and Roy’s largest root. All of these methods use the within <span class="math inline">\((\mathbf{E})\)</span> and between <span class="math inline">\((\mathbf{H})\)</span> sum of squares and the cross products matrix. All four test statistic are nearly equivalent for large sample size <span class="citation">(Johnson and Wichern 2018)</span>. In our studies, Pillai trace is used which is defined as,</p>
 <p><span class="math display" id="eq:pillai">\[\begin{equation}
 \text{Pillai statistic} = \text{tr}\left[(E + H)^{-1}H\right] = \sum_{i=1}^{m}{\frac{\nu_i}{1+\nu_i}}
-\tag{5}
+\tag{8}
 \end{equation}\]</span>
 where, <span class="math inline">\(\nu_i\)</span> represents the eigenvalues corresponding to <span class="math inline">\(\mathbf{E^{-1}H}\)</span>.</p>
 
@@ -261,7 +329,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/therimalaya/thesis/edit/master/index.Rmd",
+"link": "https://github.com/therimalaya/thesis/edit/master/chapters/01-Background.Rmd",
 "text": "Edit"
 },
 "history": {

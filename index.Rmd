@@ -19,7 +19,7 @@ supervisors:
   - title: 'Professor'
     name: 'Solve Sæbø'
     affiliation: |
-      Prorector\
+      Prorector of Education\
       Norwegian University of Life Sciences\
       Ås, Norway
   - title: 'Associate Professor'
@@ -33,9 +33,10 @@ biblio-style: 'plainnat'
 biblio-title: 'References'
 natbiboptions: 'authoryear'
 nociteall: true
+nocite: '@*'
 #toc: true
 lof: true
-lot: true
+lot: false
 knit: 'bookdown::render_book'
 logo: "Logo.pdf"
 logo-width: '0.6\linewidth'
@@ -45,12 +46,12 @@ isbn: "123-45-678-1234-5"
 quote: "The goal is to turn data into information, and information into insight."
 quote-author: "- Carly Fiorina, former CEO of Hewlett-Packard"
 keywords: ['model-comparison ', 'multi-response ', 'simrel ']
-acknowledgments: chapters/00-Acknowledgment.md
-summary: chapters/00-Summary.md
-sammendrag: chapters/00-Sammendrag.md
-preface: chapters/00-Preface.md
+acknowledgments: chapters/tex/00-Acknowledgment.tex
+summary: chapters/tex/00-Summary.tex
+sammendrag: chapters/tex/00-Sammendrag.tex
+preface: chapters/tex/00-Preface.tex
 papers:
-  - title: "A tool for simulating multi-response linear model data"
+  - title: "A tool for simulating multi response linear model data"
     path: "papers/001.pdf"
   - title: "Model and estimators for partial least squares regression"
     path: "papers/002.pdf"
@@ -80,225 +81,22 @@ load("../04-estimation-comparison/scripts/robj/design.rdata")
 ```{r load-pkg, include=FALSE}
 library(tidyverse)
 library(simrel)
+library(pls)
 ```
-
 
 # Introduction #
 
-As a consequence of the development in the technology and computing power, data science discipline has emerged from the explosion of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools are being devised for this purpose. However the difference in the approach, these methods target the problem, makes them distinct and useful to deal with certain aspect of the data. Most of these problems lie in identifying the relationship between variables. This thesis confined itself in the exploration of linear relationship where a set of independent variables called predictor variables affect another set of dependent variables called response variables. Normally only subspace of predictor variables are relevant for a subspace of response variables to define its linear relationship. This brings to the concept of relevant and irrelevant space. Methods like Principal Components Regression (PCR), Partial Least Squares (PLS) and many other variants of PLS has leveraged this concept and are serving  as a prime tool in many discipline, most notably chemometrics. A relatively new methods called envelopes has used this concept of dimension reduction such that only the relevant (material) part in both response and predictors can be used to estimate the underlying linear model. Although the underlying population model is similar in these methods, they estimate the model parameter differently. Evaluation of these methods is crucial in order to understand their pros and cons on dataset with certain properties. This thesis will explore some of these methods and access their estimative and predictive strength and weaknesses through both simulated and real datasets. This exploration adds a reference for researchers and motivates them for using different methods based on the properties of the data they are working on.
+Rapid development in technology and computational power have resulted in heaps of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools devised for this purpose, Most of which, focus to identify the relationships between different variables. A linear relationship is the most common one. This thesis confined itself in the exploration of linear relationship where a set of independent variables, called predictor variables affect another set of dependent variables, called response variables. The space spanned by the columns of predictor and response are termed as predictor space and response space respectively. 
 
-This study is exploratory in nature where we assess and compare different multi-response multivariate methods but most importantly study their interaction with the properties of the data. The properties include the correlation between predictor variables, the position of principal components of predictor variables (predictor components) that are relevant for certain principal components of response variables (response components), the amount of correlation between the response variables and the number of predictor variables. The effect of correlation structure of response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling this structure. In order to simulate data with these properties varying at different levels, we have created an R-package called `simrel` which is an extension of the previous version of it introduced by @saebo2015simrel to incorporate multiple response.
+Many projection based statistical methods such as Principal Components Regression (PCR), Partial Least Squares (PLS) Regression and some variants of Envelopes only consider a subspace of predictor space relevant for defining the linear relationship between the predictor and the response. This brings us to the concept of relevant and irrelevant space introduced by @Naes1985. The relevant space can be described as the subspace that contains all the required information to defind the relationship between the predictors and the response in a model. The irrelevant space, on the other hand, does not contain any information regarding this relationship. 
 
-# Background ##
+A latent components corresponding to predictor variables, which we will refer to as "predictor components", are the linear combination of the predictor variables. @Naes1985 and later by @helland1990partial and @naes1993relevant have defined a set of predictor components as irrelevant components such that they have no correlation with the response variables and the relevant part. Using only a subset of the latent component for modeling or other analysis is often termed as "dimension reduction". Methods like PCR, PLS and many other variants of PLS has leveraged this concept and are serving as a prime tool in many disciplines, most notably in chemometrics.
 
-Following subsections will discuss few related topics extensively used in the papers.
+Relatively newer methods based on the concept of "envelopes" introduced by @Cook2007a, more specifically envelope in predictor variable (Xenv), have also used this concept of dimension reduction. In addition, envelope in response variable (Yenv) and simultaneous envelope in predictor and response (Senv) have extended the concept of relevant and irrelevant space to response space as well, which they referred to as material and immaterial part. These methods are discussed in [Background] section.
 
-## Multivariate Linear Regression Model ##
+Despite having similar underlying population model, these methods estimates the model parameters differently. Model parameters are the unknowns which helps to define a complex relationships between the variables. Regression coefficients $(\beta)$ in \@ref(eq:linear-reg-model) is an example of model parameter. All methods uses data to estimate these parameters. So, the pros and cons of a dataset affect the estimation of a method and consequently their prediction performance. Evaluation of these methods is essential to understand how they interact with various properties of the data. This thesis will explore some of these methods and assess their estimative and predictive strength and weaknesses through both simulated and real datasets.
 
-We can write the joint distribution of a random variable $\mathbf{y}$ consists of $m$ response variables and another random variable $\mathbf{x}$ consists of $p$ predictor variables as,
+This exploration adds a reference for researchers to motivate them for using different methods based on the properties of the data they are working on.
 
-\begin{equation}
-\begin{bmatrix}
-  \mathbf{y}\\
-  \mathbf{x}
-\end{bmatrix} \sim
-\mathsf{N}\begin{pmatrix}
-  \begin{bmatrix}
-    \boldsymbol{\mu_y}\\
-    \boldsymbol{\mu_x}
-  \end{bmatrix},
-  \begin{bmatrix}
-    \boldsymbol{\Sigma_{yy}} &
-    \boldsymbol{\Sigma_{yx}} \\
-    \boldsymbol{\Sigma_{xy}} &
-    \boldsymbol{\Sigma_{xx}}
-  \end{bmatrix}
-\end{pmatrix}
-(\#eq:linear-model)
-\end{equation}
-
-A model that linearly relates $\mathbf{x}$ and $\mathbf{y}$ through regression coefficient $\boldsymbol{\beta}$ is often written as,
-
-\begin{equation}
-\mathbf{y} = \boldsymbol{\mu}_y + \boldsymbol{\beta}^t\left(\mathbf{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
-(\#eq:linear-reg-model)
-\end{equation}
-where $\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_{y|x}\right)$, $\boldsymbol{\mu}_y$ is the mean vector of $\mathbf{y}$ and $\boldsymbol{\mu}_x$ is the mean vector of $\mathbf{x}$.
-
-We can write the regression coefficient  $\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}$ in terms of the covariance matrices. A complete simulation of this model requires to identify $1/2(p+m)(p+m+1)$ unknowns. However, not all information in $\mathbf{x}$ are relevant for $\mathbf{y}$ and not everything in $\mathbf{y}$ are informative. We can refer the space with information as relevant (informative) space and the rest as irrelevant (uninformative) space. @saebo2015simrel and @Rimal2018 have parameterized the linear model \@ref(eq:linear-model) based on the concept of relevant space and provided a tool for simulating multi-response data with few tuning parameters. A review on the simulation and the experimental design adopted in various papers attached to this thesis will follow after a short discussion of relevance and irrelevance in linear model.
-
-## Relevant Space and Relevant Components ##
-
-@Naes1985 introduced the definition of relevant space as the decomposition of predictor space into two orthogonal subspaces: relevant and irrelevant such that a set of latent components defined as irrelevant components  have no correlation with the response and no correlation with the relevant part of the data. The concept was further discussed and developed by @helland1990partial and @naes1993relevant. More recently, various estimators [@cook2010envelope; @cook2013envelopes; @cook2015simultaneous] based on envelope [@Cook2007a] have used the concepts of separation of relevant and irrelevant spaces which they have referred as material and immaterial spaces.
-
-```{r relspace-plot, fig.cap="Relevant and Irrelevant Space in Linear Model"}
-plot_relspace()
-```
-
- The concept can also be extended to the response such that a subspace contains the information relevant for a model that the relevant space in $\mathbf{x}$ can explain. The item is implemented in simulteneous envelope [@cook2015simultaneous] and response envelope [@cook2010envelope] methods. However methods such as PCR and PLS1 have not used the reduced space in the response. Figure-\@ref(fig:relspace-plot) shows the notion of this reduction of linear regression model.
-
-## Simulation ##
-
-Simulation refers to generate the data from known underlying population structure. Controlling the properties of the population is vital in the simulation which enables researchers and users to use the data for comparison of methods, accessing new methodology, testing theory and evaluating alorithms. Such data can also be widely used for educational purposes. All the research studies in this thesis have used an R-package called `simrel` for simulating multi-response linear model data introduced by @RIMAL20181. The simulation tool is general purpose in nature and has few parameters that controls the essential properties of the poulation enabling users to simulate data with wide range of properties.
-
-The population properties such as the coefficient of determination, number of relevant predictors, level of multicollinerity and the position of relevant principal components can be varied in the simulation with `simrel`. A full factorial experimental design on various levels of some of these population properties has been implimented in all of these studies for various comparison. An experimental design helps to analyse the effect of certain population properties and allows comparision of different levels of these factors and their interactions. The data obtained from the simulation are used to compare different methods based on their performance. The performance is accessed through there prediction and estimation ability. 
-
-## Estimation and Prediction ##
-
-Measures such as mean and standard deviation for a population are usually referred as parameters of the population. A model as in \@ref(eq:linear-reg-model), which tries to formulate the relationship between $\mathbf{x}$ and $\mathbf{y}$ in the population uses parameters such as the error variance and regression coefficients are also terms as parameters. Usually, due to the lack of known population distribution, the values of these parameters are calculated using a sample collected from that population. The process of determining the value of certain parameters is called estimation. The estimated value from any two samples are different. The estimated values are considered better if squared difference between the estimated and true value is small and have small variation. The goodness of the estimates depends on the nature of the data and the method that is used to estimate them. In estimation error for a certain method using the simulated data with specific properties in most of the comparisons in this thesis are computed as in \@ref(eq:est-error).
-
-\begin{equation}
-\text{Estimation Error} = \mathsf{E}\left[
-  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t 
-  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
-\right]
-(\#eq:est-error)
-\end{equation}
-
-A fitted or trained model are mostly used for prediction. Prediction referes to determining the value of the response for a new set of predictor which were not used to train the model. Most studies under "data science" field are targeted for better prediction. Most comparison in this thesis evaluate the prediction performance of the multivariate methods using the prediction error measured as in \@ref(eq:pred-error).
-
-\begin{equation}
-\text{Prediction Error} = \mathsf{E}\left[
-  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t
-  \boldsymbol{\Sigma}_{xx}
-  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
-\right] + \boldsymbol{\Sigma}_{y|x}
-(\#eq:pred-error)
-\end{equation}
-
-- Prediction error are influenced by the covariance of the predictor directly while estimation error are not
-- In the case of multicollinear predictors, estimation error can be huge while due to the scaling of the covariation of predictors, the prediction error can still be small
-- A good estimation can give proper and trustworthy idea about the relation between certain predictor variation with certain response variable
-- This is important in policy making, academic researches and to understanding the relation to develope new models.
-- Prediction on the other hand are widely used from weather forcasting, economic forecasting, prediction in production and sales and many more.
-
-## Multivariate Methods ##
-
-Various multivariate methods such as ordinary least squares (OLS), principal components regression (PCR), partial least squares (PLS) regression and envelope methods are used for comparison of the study included in this thesis. All of these methods except OLS use the concept of relevant space and the reduction of the regression model. 
-
-@WENTZELL2003257 has assmbled many comparisons made on PCR and PLS where they conclude that PLS have not shown clear advantage over PCR over predictive ability in most studies but uses less number of components than PCR. As PLS has been both popular and productive in fields like chemometrics, its developement has progressed quickly over time throught the formulation of various derivetives. CPLS and CPPLS are among them which conbines PLS and cannonical correlation analysis (CCA) and gives a joint framework for classification and regression [@indahl2009canonical]. The first included paper which has introduced the simulation tool `simrel` has made some basic comparison on these methods for their predictive ability. The third and fourth paper included have made elaborative comparison on PCR and PLS using various properties in the data. More discussion are in the summary section of the respective papers. In addition, PLS1 methods which models each response separatly without any knowledge of other responses are also included. Further, in the single response setting, the second paper includes BayesPLS [@helland2012near] method in the comparison which have shown promishing results.
-
-Many literature are available comparing PCR, PLS and their derivetive. However there are not any studies to date which have made any emperical comparisons of newly developed _envelope_ based methods using real and simulated data with these more established methods. Envelope introduced by @Cook2007a have been used to develop various estimators including response envelope (Yenv), predictor envelope (Xenv) and simultaneous estimation of envelope in both predictor and response (Senv). Envelope is defined as the smallest subspace that includes the span of true regression coefficients. The comparisons of these envelope methods together with PCR and PLS in third and fourth paper has shown encouraging results for envelope methdods in both easy and difficult models.
-
-Details on each of these methods can be obtained from the corresponding references.
-
-## Experimental Design ##
-
-In all the comparison, different simulation parameters are considered as factors and the prediction and estimation error are considered as outcome variables. Factorial Design are implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For Example, the factorial design used throughout the third and fourth paper shown in Figure \@ref(fig:design-plot) has four factors: Number of predictor variables (`p`) with two levels, level of multicollinearity (`gamma`) with two levels where higher value represents higher level of multicollinearity, position index of relevant predictor components (`relpos`) and the level of collinearity in response (`eta`) with four levels where higher value represents higher correlation between the response variables. The combination of these factors have created 32 unique designs which are then used for simulating data with that particular properties. Such data, with all possible combination of these properties, have made both through and  regorous comparison of the methods fisible.
-
-(ref:design-plot) An example of factorial design used in the third and fourth paper.
-
-```{r design-plot, fig.cap='(ref:design-plot)', fig.width=9, fig.asp=0.4}
-relpos_lbl <- c(
-  "1, 2, 3, 4" = "relpos: 1:4",
-  "5, 6, 7, 8" = "relpos: 5:8"
-)
-design_chr %>%
-  mutate(Design = row_number()) %>%
-  ggplot(aes(gamma, p, color = Design %in% c(1, 9))) +
-  geom_point(shape=4, show.legend = FALSE) +
-  ggrepel::geom_text_repel(
-    aes(label = formatC(Design, flag = "0", digits = 1, format = "fg")),
-    nudge_x = 0.03, family = 'mono', fontface = "bold", size = rel(5),
-    show.legend = FALSE) +
-  facet_grid(relpos ~ eta, labeller=labeller(
-    eta = label_both,
-    relpos = relpos_lbl
-  )) +
-  theme_minimal(base_size = 16, base_family = "mono") +
-  theme(panel.grid.minor = element_blank(), 
-        text = element_text(face = "bold"),
-        axis.text.x = element_text(hjust = c(0, 1))) +
-  scale_x_continuous(breaks = unique(design_chr$gamma)) +
-  scale_y_continuous(breaks = unique(design_chr$p), trans = "reverse") +
-  labs(y = "Predictors (p)",
-       x = "Multicollinearity Level (gamma)") +
-  coord_equal(ratio = 1/500) +
-  scale_color_manual(values = 1:2)
-```
-
-Lets dig a little deeper to understand how these simulation parameters are tied with the properties of the simulated data. As an example, let us take Design 1 and Design 9 of Figure \@ref(fig:design-plot) where data simulated with Design 1 have low multicollinearity and the position index of relevant predictors are at 1, 2, 3, 4 while Design 9 have high multicollinearity and the position index of relevant predictors are at 5, 6, 7, 8. All the other factors or properties of the data being same for both, the difference is these two design helps us to analyse the interaction between the multicollinearity in the data and the position of relevant components.
-
-
-```{r cov-plot-prep}
-selected_designs <- design %>%
-  mutate(Design = row_number()) %>%
-  filter(Design %in% c(1, 9))
-sobj_list <- lapply(1:nrow(selected_designs), function(i){
-  set.seed(2019)
-  selected_designs %>% select(-Design) %>% get_design(i) %>% simulate()
-})
-names(sobj_list) <- paste0("Design", selected_designs$Design)
-sigma_zy_pop <- map_df(sobj_list, function(obj){
-  obj %>%
-    cov_mat(which = "zy", use_population = TRUE) %>%
-    tidy_sigma() %>%
-    abs_sigma()
-}, .id = "Design")
-sigma_zy_samp <- map_df(sobj_list, function(obj){
-  obj %>%
-    cov_mat(which = "zy", use_population = FALSE) %>%
-    tidy_sigma() %>%
-    abs_sigma()
-}, .id = "Design")
-sigma_zy <- bind_rows(
-  Population = sigma_zy_pop,
-  Sample = sigma_zy_samp,
-  .id = "Type"
-)
-lambda_df <- bind_rows(
-  Population = map_df(sobj_list, tidy_lambda, use_population = TRUE, .id = "Design"),
-  Sample = map_df(sobj_list, tidy_lambda, use_population = FALSE, .id = "Design"),
-  .id = "Type"
-)
-design_chr_selected <- selected_designs %>%
-    select(relpos, gamma, Design) %>%
-    modify_at("relpos", paste0) %>%
-    mutate_at("relpos", ~gsub("list\\(c\\((.+)\\))", "\\1", ..1))
-design_name <- paste0("Design", selected_designs$Design)
-design_lbl <- with(design_chr_selected, {
-  paste(design_name, map2_chr(relpos, gamma, paste, sep = " | "), sep = "\n")
-})
-names(design_lbl) <- design_name
-```
-
-(ref:relcomp-plot) _Design 1_: Relevant components have large variation, _Design 9_: irrelevant components have large variation and relevant components have small variation.
-
-```{r cov-plot, fig.width=8, fig.asp=0.7, fig.cap="(ref:relcomp-plot)"}
-lbl <- sapply(opts[c("n", "R2")], unique)
-lbl <- paste(names(lbl), lbl, sep = ": ", collapse = ", ")
-sigma_zy %>% 
-  ggplot(aes(Predictor, Covariance, color = factor(Response))) +
-  geom_bar(data = lambda_df %>% filter(Type == "Population"), 
-           aes(x = Predictor, y = lambda),
-           fill = "lightgrey",
-           stat = "identity", inherit.aes = FALSE) +
-  geom_point(size = rel(0.8)) +
-  geom_line(size = rel(0.5)) +
-  facet_grid(rows = vars(Design), cols = vars(Type),
-             labeller = labeller(Design = design_lbl )) +
-  theme(legend.position = "bottom") +
-  labs(x = "Components",
-       y = "Absolute Covariances",
-       color = "Response Variable",
-       title = "Covariance between Predictor Components and Responses",
-       subtitle = "High/Low Multicollinearity with near/far relevant predictors") +
-  scale_color_brewer(palette = "Set1") +
-  annotate(geom = "text", label = lbl, x = Inf, y = Inf, hjust = 1, 
-           vjust = 2, family = "mono", size = rel(5))
-```
-
-Figure \@ref(fig:cov-plot) (top-row) shows the scaled covariance between the predictor components and the response variables for  Design 1. Here the relevant components with larger variation (due to low multicollinearity) simulates data that are easier to model my most methods. Figure \@ref(fig:cov-plot) (bottom-row) for Design 9 shows that the relevant components at position 5, 6, 7, 8 has small variation and irrelevant components at position 1, 2, 3, 4 have large variation. This design simulates data that are difficult to model my most methdos. The population covariances in the figure gives clear and distinct relationship while the sample covariances have somewhat rough approximation of the population.
-
-## Analysis of Variance ##
-
-Performance measures such as prediction error, estimation error and the number of components used by the methods under comparison, various plots together with principal components analysis (PCA) has been used. In addition, a more formal analysis is made using analysis of variance (ANOVA). ANOVA allowed us not only to understand the effect of various properties of data controlled by the simulation parameters but also analysis the effect of interaction of these properties with the methods. Third and fourth paper with four response variables each of which are analyzed together with multivariate analysis of variance (MANOVA).
-
-Multivariate analysis of variance (MANOVA) is the multivariate counterpart of the ANOVA where various test statistic is used such as Wilks' Lambda, Lawley-Hotelling trace, Pillai trace and Roy's largest root. All of these methods use the within $(\mathbf{E})$ and between $(\mathbf{H})$ sum of squares and the cross products matrix. All four test statistic are nearly equivalent for large sample size [@johnson2018applied]. In our studies, Pillai trace is used which is defined as,
-
-\begin{equation}
-\text{Pillai statistic} = \text{tr}\left[(E + H)^{-1}H\right] = \sum_{i=1}^{m}{\frac{\nu_i}{1+\nu_i}}
-(\#eq:pillai)
-\end{equation}
-where, $\nu_i$ represents the eigenvalues corresponding to $\mathbf{E^{-1}H}$.
+This study is exploratory in nature where we assess and compare different multi-response multivariate methods, but most importantly study their interaction with the properties of the data. The properties include the correlation between predictor variables, the position of principal components of predictor variables (predictor components) that are relevant for certain principal components of the response variables (response components), the amount of correlation between the response variables and the number of predictor variables. The effect of the correlation structure of the response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling this structure. In order to simulate data with these properties varying at different levels, we have created an R-package called `simrel` which is an extension of the previous version introduced by @saebo2015simrel to incorporate multiple responses.
 

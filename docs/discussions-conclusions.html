@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Exploration of Multi-Response Multivariate Methods</title>
-  <meta name="description" content="Exploration of Multi-Response Multivariate Methods" />
+  <title>Discussions &amp; Conclusions | Exploration of Multi-Response Multivariate Methods</title>
+  <meta name="description" content="Discussions &amp; Conclusions | Exploration of Multi-Response Multivariate Methods" />
   <meta name="generator" content="bookdown 0.11.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Exploration of Multi-Response Multivariate Methods" />
+  <meta property="og:title" content="Discussions &amp; Conclusions | Exploration of Multi-Response Multivariate Methods" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Exploration of Multi-Response Multivariate Methods" />
+  <meta name="twitter:title" content="Discussions &amp; Conclusions | Exploration of Multi-Response Multivariate Methods" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="background.html">
+<link rel="prev" href="paper-summary.html">
+<link rel="next" href="limitations-future-perspectives.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -111,25 +111,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Exploration of Multi-Response Multivariate Methods</h1>
-<p class="author"><em>Raju Rimal</em></p>
-<address class="author_afil">
-<p>Biostatistics<br />
-Dept. of Chemistry, Biotechnology and Food Science<br />
-Norwegian University of Life Sciences</p><br><a class="author_email" href="mailto:#"><a href="mailto:raju.rimal@nmbu.no" class="email">raju.rimal@nmbu.no</a></a>
-</address>
-<p class="date"><em>07, 2019</em></p>
-</div>
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>Rapid development in technology and computational power have resulted in heaps of data. Extracting information from this chaotic heap of data has become another problem. Many statistical and machine learning tools devised for this purpose, Most of which, focus to identify the relationships between different variables. A linear relationship is the most common one. This thesis confined itself in the exploration of linear relationship where a set of independent variables, called predictor variables affect another set of dependent variables, called response variables. The space spanned by the columns of predictor and response are termed as predictor space and response space respectively.</p>
-<p>Many projection based statistical methods such as Principal Components Regression (PCR), Partial Least Squares (PLS) Regression and some variants of Envelopes only consider a subspace of predictor space relevant for defining the linear relationship between the predictor and the response. This brings us to the concept of relevant and irrelevant space introduced by <span class="citation">Naes and Martens (1985)</span>. The relevant space can be described as the subspace that contains all the required information to defind the relationship between the predictors and the response in a model. The irrelevant space, on the other hand, does not contain any information regarding this relationship.</p>
-<p>A latent components corresponding to predictor variables, which we will refer to as “predictor components”, are the linear combination of the predictor variables. <span class="citation">Naes and Martens (1985)</span> and later by <span class="citation">Helland (1990)</span> and <span class="citation">Næs and Helland (1993)</span> have defined a set of predictor components as irrelevant components such that they have no correlation with the response variables and the relevant part. Using only a subset of the latent component for modeling or other analysis is often termed as “dimension reduction”. Methods like PCR, PLS and many other variants of PLS has leveraged this concept and are serving as a prime tool in many disciplines, most notably in chemometrics.</p>
-<p>Relatively newer methods based on the concept of “envelopes” introduced by <span class="citation">Cook, Li, and Chiaromonte (2007)</span>, more specifically envelope in predictor variable (Xenv), have also used this concept of dimension reduction. In addition, envelope in response variable (Yenv) and simultaneous envelope in predictor and response (Senv) have extended the concept of relevant and irrelevant space to response space as well, which they referred to as material and immaterial part. These methods are discussed in <a href="background.html#background">Background</a> section.</p>
-<p>Despite having similar underlying population model, these methods estimates the model parameters differently. Model parameters are the unknowns which helps to define a complex relationships between the variables. Regression coefficients <span class="math inline">\((\beta)\)</span> in <a href="background.html#eq:linear-reg-model">(2)</a> is an example of model parameter. All methods uses data to estimate these parameters. So, the pros and cons of a dataset affect the estimation of a method and consequently their prediction performance. Evaluation of these methods is essential to understand how they interact with various properties of the data. This thesis will explore some of these methods and assess their estimative and predictive strength and weaknesses through both simulated and real datasets.</p>
-<p>This exploration adds a reference for researchers to motivate them for using different methods based on the properties of the data they are working on.</p>
-<p>This study is exploratory in nature where we assess and compare different multi-response multivariate methods, but most importantly study their interaction with the properties of the data. The properties include the correlation between predictor variables, the position of principal components of predictor variables (predictor components) that are relevant for certain principal components of the response variables (response components), the amount of correlation between the response variables and the number of predictor variables. The effect of the correlation structure of the response matrix is less explored and it is expected to add some light on how similar and how different the methods are in terms of modelling this structure. In order to simulate data with these properties varying at different levels, we have created an R-package called <code>simrel</code> which is an extension of the previous version introduced by <span class="citation">Sæbø, Almøy, and Helland (2015)</span> to incorporate multiple responses.</p>
+<div id="discussions-conclusions" class="section level1">
+<h1>Discussions &amp; Conclusions</h1>
+<p>Simulated data are used in many scientific studies and teaching purposes. Assessing the properties of methods or algorithms is essential and usual in the scientific community. Since scientists often spend a lot of time developing a simulation model, paper-I attempts to present a simple, versatile and general-purpose tool for simulating such data only using few parameters. This attempt of adding a tool in scientists’ toolbox aims at making the laborious work of researchers simpler and less time-consuming. Although not discussed much in the paper, the tool can also be useful for teaching purposes. Using the tool, educators can simulate data easily based on their context and need.</p>
+<p>Most of our comparisons are on the methods that are based on the concept of relevant spaces. The study in paper-II helped us to understand the similarities and differences between these methods. My contribution to the second part of the paper was to use the simulation tool discussed in paper-I to compare these methods empirically. Although the Bayes PLS method has shown the best performance in these simulation results, its performance in the real data was satisfactory. This pointed us to explore the methods comprehensively. However, due to the time-consuming computation and since the method has not yet been developed to work with multiple responses, we planned to use only the envelope methods, PCR and PLS for further exploration.</p>
+<p>The further exploration continued on the multi-response setting for evaluating and comparing PCR, PLS and two envelope methods (Xenv and Senv) for their performance on prediction and estimation. These methods are capable of modelling multi-response models and are based on the concept of relevant space and dimension reduction.</p>
+<p>Since prediction and estimation each have many aspects to be discussed, we divided the comparison study into two papers: Paper-III and Paper-IV. Since both papers use the same simulated data based on the same experimental design, it became easier to make comparisons of prediction and estimation for individual methods.</p>
+<p>Since multicollinearity highly interacts with the position of the principal components, these factors highly influence both the estimation and the prediction. These factors were used as simulation parameters in addition to a factor that controls the correlation between the response variables. The response correlation and its interaction with these methods and other simulation parameters have limited studies. The study of response correlation, its interaction with other factors and different methods have made this thesis novel and useful.</p>
+<p>In the last two papers, Envelope methods have shown fine performance, specifically in the simulation examples. The PCR method has shown good performance if an optimal number of component is used. The performance is also stable, even when a non-optimal number of components is used. Both PLS1 and PLS2 have stable and better performance, particularly when relevant components are at the initial position (i.e. with large variation). The fine performance of envelope methods is achieved using a smaller number of components, which shows its remarkable strength in dimension reduction. An optimal number of components is crucial for the Envelope methods than for the PCR and PLS methods, as the estimation error rapidly increases with an increasing number of non-optimal components.</p>
+<p>In general, the study encourages researchers for using newly developed methods such as the envelope. This kind of comparisons in chemometrics data is relatively new for both chemometrics fields and the envelope methods. This thesis also hopes to be a useful reference for other researchers.</p>
+<p>Since Envelope methods have dimension reduction in response, it can be useful when many responses can be explained by fewer response components. Not a single method is superior for all kinds of data, and using methods correctly requires identifying the properties of data. More sophisticated assessment and comparison can be possible through the tool <code>simrel</code>. Researchers are encouraged to leverage the tool for their study and experiments. We would like to request the developer of the envelope to reach different fields and spread the envelope in a more simple and less mathematical form of communication.</p>
 
 </div>
             </section>
@@ -137,8 +128,8 @@ Norwegian University of Life Sciences</p><br><a class="author_email" href="mailt
           </div>
         </div>
       </div>
-
-<a href="background.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="paper-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="limitations-future-perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -168,7 +159,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/therimalaya/thesis/edit/master/index.Rmd",
+"link": "https://github.com/therimalaya/thesis/edit/master/chapters/03-Discussion-Conclusion.Rmd",
 "text": "Edit"
 },
 "history": {
