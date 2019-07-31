@@ -5,6 +5,11 @@
 \WarningFilter{scrbook}{Usage of package `titlesec'}
 \WarningFilter{titlesec}{Non standard sectioning command detected}
 
+% \tolerance=1
+\emergencystretch=\maxdimen
+% \hyphenpenalty=200 % Defined later just before body
+\hbadness=10000
+
 % *******************************************************
 % DOCUMENT FRONT MATTER START
 % *******************************************************
@@ -12,7 +17,10 @@
   headinclude,footinclude,BCOR=5mm,
   numbers=noenddot,cleardoublepage=empty,
   tablecaptionabove, dottedtoc,
-  bibliography=totoc]{scrreprt}
+  bibliography=totoc,paper=a4]{scrreprt}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage[linktocpage=true]{hyperref}
 \usepackage{subfig}
 \usepackage[eulerchapternumbers, subfig, beramono, eulermath, pdfspacing]{classicthesis} 
 \usepackage{arsclassica}
@@ -25,9 +33,12 @@
 \usepackage{pdfpages}
 \usepackage{titlesec}
 \usepackage{titletoc}
+\usepackage{longtable} 
 \usepackage[norsk,american]{babel}
 \usepackage[paperwidth=17cm, paperheight=24cm, margin=2.5cm]{geometry}
 \usepackage[cam,a4,center,pdflatex]{crop}
+\usepackage{easyReview}
+% \usepackage{setspace}
 
 % *******************************************************
 % ADDITIONAL PACKAGES
@@ -86,6 +97,11 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \DeclareTOCStyleEntry[beforeskip=3pt]{tocline}{section}
+
+\DeclareTOCStyleEntry[numwidth=2em]{tocline}{figure}
+\DeclareTOCStyleEntry[numwidth=2em]{tocline}{table}
+
+\titleformat{\section}{\normalfont\large\raggedright}{\thesection}{1em}{}
 
 % *******************************************************
 % DOCUMENT BEGIN
@@ -168,14 +184,13 @@ $endif$
 \bigskip
 \noindent This thesis is prepared with \texttt{ArsClassica} {\LaTeX} template with \texttt{pandoc} and r-package \texttt{bookdown}.
 % $if(docsite)$\begin{flushright}source: \url{$docsite$}\end{flushright}$endif$
-\pagestyle{scrheadings} 
 
 % *******************************************************
 % ABSTRACT
 % *******************************************************
 $if(abstract)$
 \cleardoublepage
-\pdfbookmark{Abstract}{Abstract}
+%\pdfbookmark{Abstract}{Abstract}
 \addchap{Abstract}
 \input{$abstract$}
 $endif$
@@ -185,7 +200,7 @@ $endif$
 % *******************************************************
 \begingroup
 $if(summary)$
-\pdfbookmark{Summary}{Summary}
+%\pdfbookmark{Summary}{Summary}
 \addchap{Summary}
 \input{$summary$}
 $endif$
@@ -193,10 +208,10 @@ $endif$
 $if(sammendrag)$
 \KOMAoptions{open=left}
 \begin{otherlanguage}{norsk}
-\pdfbookmark{Sammendrag}{Sammendrag}
+%\pdfbookmark{Sammendrag}{Sammendrag}
 \addchap{Sammendrag}
 \input{$sammendrag$}
-\end{otherlanguage}{norsk}
+\end{otherlanguage}
 \KOMAoptions{open=right}
 $endif$
 \endgroup
@@ -205,7 +220,7 @@ $endif$
 % ACKNOWLEDGMENT
 % *******************************************************
 $if(acknowledgments)$
-\pdfbookmark{Acknowledgments}{Acknowledgments}
+%\pdfbookmark{Acknowledgments}{Acknowledgments}
 \begingroup
 \cleardoublepage
 \addchap{Acknowledgment}
@@ -217,7 +232,7 @@ $endif$
 % PREFACE
 % *******************************************************
 $if(preface)$
-\pdfbookmark{Preface}{Preface}
+%\pdfbookmark{Preface}{Preface}
 \begingroup
 \cleardoublepage
 \addchap{Preface}
@@ -239,7 +254,7 @@ $if(toc)$
 \cleardoublepage
 \phantomsection
 \pdfbookmark{\contentsname}{tableofcontents}
-\setcounter{tocdepth}{$if(tocdepth)$$tocdepth$$else$2$endif$}
+\setcounter{tocdepth}{$if(tocdepth)$$tocdepth$$else$1$endif$}
 \begingroup 
   \let\clearpage\relax
   \let\cleardoublepage\relax
@@ -258,6 +273,13 @@ $if(lot)$
 \vfill
 \let\clearpage\relax
 \let\cleardoublepage\relax
+$endif$
+
+% Number the sections
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 $endif$
 
 $if(lof)$
@@ -279,6 +301,12 @@ $endif$
 % *******************************************************
 
 \pagenumbering{arabic}
+\hyphenpenalty=200
+
+\pagestyle{scrheadings} 
+\automark[chapter]{chapter}
+%\automark[section]{}
+%\doublespacing
 
 $body$
 
@@ -299,7 +327,7 @@ $endif$ % bibliography
 $endif$ % natbib
 
 $if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+\printbibliography%$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$ % biblatex
 
 $if(nociteall)$
@@ -313,8 +341,9 @@ $endif$
 $if(papers)$
 \part*{List of Research Papers}
 $for(papers)$
-\par\chapter{$papers.title$}
+\par\chapter$if(papers.subtitle)$[$papers.subtitle$]$endif${$papers.title$}
 \cleardoublepage
+%\includepdf[pages=-1]{$papers.path$}
 \includepdf[pages=-]{$papers.path$}
 $endfor$
 $endif$

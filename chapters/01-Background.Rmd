@@ -1,0 +1,381 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Background ##
+This section discusses the relevant topics that have been used in the included papers.
+
+## Multivariate Linear Regression Model ##
+The joint normal distribution of a random variable-vector $\mathbf{y}$ of $m$ response variables with mean of $\boldsymbol{\mu}_y$ and another random variable-vector $\mathbf{x}$ of $p$ predictor variables with mean $\boldsymbol{\mu}_x$ as,
+
+\begin{equation}
+\begin{bmatrix}
+  \mathbf{y}\\
+  \mathbf{x}
+\end{bmatrix} \sim
+\mathsf{N}
+\begin{pmatrix}
+  \begin{bmatrix}
+    \boldsymbol{\mu_y}\\
+    \boldsymbol{\mu_x}
+  \end{bmatrix},
+  \begin{bmatrix}
+    \boldsymbol{\Sigma_{yy}} & \boldsymbol{\Sigma_{yx}} \\
+    \boldsymbol{\Sigma_{xy}} & \boldsymbol{\Sigma_{xx}}
+  \end{bmatrix}
+\end{pmatrix}
+(\#eq:linear-model)
+\end{equation}
+where $\boldsymbol{\Sigma}_{xx}$ and $\boldsymbol{\Sigma}_{yy}$ are the variance-covariance matrices of $\mathbf{x}$ and $\mathbf{y}$, respectively, and $\boldsymbol{\Sigma}_{xy} = \boldsymbol{\Sigma}_{yx}^t$ is the covariances between them.
+
+A model that linearly relates $\mathbf{x}$ and $\mathbf{y}$ through regression coefficient vector $\boldsymbol{\beta}$ is often written as,
+
+\begin{equation}
+\mathbf{y} = \boldsymbol{\mu}_y + \boldsymbol{\beta}^t\left(\mathbf{x} - \boldsymbol{\mu}_x\right) + \boldsymbol{\varepsilon}
+(\#eq:linear-reg-model)
+\end{equation}
+where $\boldsymbol{\varepsilon} \sim \textsf{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_{y|x}\right)$
+
+We can write the regression coefficient $\boldsymbol{\beta} = \boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\Sigma}_{xy}$ in terms of the covariance matrices. A complete simulation of this model requires to specify $1/2(p+m)(p+m+1)$ unknowns.
+
+With a transformation defined as $\mathbf{z} = \mathbf{Rx}$ and $\mathbf{w} = \mathbf{Qy}$ with $\mathbf{R}_{p\times p}$ and $\mathbf{Q}_{m\times m}$ as random orthogonal rotation matrices, model \@ref(eq:linear-model) can be rewritten as,
+
+\begin{align}
+  \begin{bmatrix}\mathbf{w} \\
+  \mathbf{z}\end{bmatrix}  & \sim N \left(\boldsymbol{\mu}, \boldsymbol{\Sigma}\right)
+  = N \left(
+    \begin{bmatrix}
+      \boldsymbol{\mu}_w \\ \boldsymbol{\mu}_z
+    \end{bmatrix},
+    \begin{bmatrix}
+      \boldsymbol{\Sigma}_{ww} & \boldsymbol{\Sigma}_{wz} \\
+      \boldsymbol{\Sigma}_{zw} & \boldsymbol{\Sigma}_{zz}
+    \end{bmatrix} \right) \nonumber \\
+  &= N \left(
+    \begin{bmatrix}
+      \boldsymbol{Q\mu}_y \\
+      \boldsymbol{R\mu}_x
+    \end{bmatrix},
+    \begin{bmatrix}
+      \boldsymbol{Q\Sigma}_{yy}\boldsymbol{Q}^t & \boldsymbol{Q\Sigma}_{yx}\mathbf{R}^t \\
+      \boldsymbol{R\Sigma}_{xy}\boldsymbol{Q}^t & \boldsymbol{R\Sigma}_{xx}\mathbf{R}^t
+    \end{bmatrix}
+  \right)
+  (\#eq:latent-model)
+\end{align}
+
+Since both $\mathbf{Q}$ and $\mathbf{R}$ are orthonormal matrices, i.e., $\mathbf{Q}^t\mathbf{Q} = \mathbf{I}_m$ and $\mathbf{R}^t\mathbf{R} = \mathbf{I}_p$, the inverse transformation can be defined as,
+
+\begin{equation}
+  \begin{matrix}
+    \boldsymbol{\Sigma}_{yy} = \mathbf{Q}^t \boldsymbol{\Sigma}_{ww} \mathbf{Q} &
+    \boldsymbol{\Sigma}_{yx} = \mathbf{Q}^t \boldsymbol{\Sigma}_{wz} \mathbf{R} \\
+    \boldsymbol{\Sigma}_{xy} = \mathbf{R}^t \boldsymbol{\Sigma}_{zw} \mathbf{Q} &
+    \boldsymbol{\Sigma}_{xx} = \mathbf{R}^t \boldsymbol{\Sigma}_{zz} \mathbf{R}
+  \end{matrix}
+  (\#eq:cov-yx-wz)
+\end{equation}
+
+Here, $\boldsymbol{\Sigma_{zz}}$ and $\boldsymbol{\Sigma_{ww}}$ are diagonal matrices of eigenvalues corresponding to predictors and responses respectively. Following the concept of relevant components $\boldsymbol{\Sigma}_{wz}=\boldsymbol{\Sigma}_{zw}^t$ has non-zero elements for relevant components. With some random orthogonal rotation matrices $\mathbf{R}$ and $\mathbf{Q}$, which can be easily generated, the unknowns required for simulation may drastically decrease. Following the idea from @saebo2015simrel, Paper I uses exponential decay of eigenvalues, as in \@ref(eq:exp-decay), that fills the diagonals of $\boldsymbol{\Sigma}_{zz}$ and $\boldsymbol{\Sigma}_{ww}$. Here the decay factor $\gamma$ controls the multicollinearity such that a higher value of gamma corresponds to high multicollinearity.
+
+\begin{equation}
+\lambda_i = e^{-\gamma(i - 1)}, \gamma >0 \text{ and } i = 1, 2, \ldots, p
+(\#eq:exp-decay)
+\end{equation}
+
+A thorough discussion on the reparameterization of a linear model to simulate data by the concept of "relevant components" can be found in Paper I. The following subsection discusses the concept of relevant components in brief. 
+
+## Relevant Space and Relevant Components ##
+In the model \@ref(eq:linear-model), not all information in $\mathbf{x}$ is relevant for $\mathbf{y}$ and not all variation in $\mathbf{y}$ is explainable or non-redundant.  We can refer to the space "with information" as relevant (informative) space and the rest as irrelevant (uninformative) space. @Naes1985 introduced the definition of relevant space as the decomposition of the predictor space into two orthogonal subspaces: the relevant and the irrelevant space. Additionally, a set of predictor components defined as irrelevant components do not have any correlation with the response and the relevant part of the data. The relevant components, on the other hand, contains all the required information to explain the variation in the response $\mathbf{y}$. Multivariate methods such as Principal Components Regression (PCR) and Partial Least Squares (PLS) Regression uses the eigenvectors to span the relevant and irrelevant spaces. Here, we refer the eigenvectors that span the relevant space as _relevant eigenvectors_. The concept was further discussed and developed by @helland1990partial, @naes1993relevant and @Helland1994b. However, all these studies have discussed the separation of relevant and irrelevant space only in the predictor space.
+
+More recently, various estimators [@cook2010envelope; @cook2013envelopes; @cook2015simultaneous] based on a so-called "envelope" [@Cook2007a] have used and extended the concepts of the separation of relevant and irrelevant spaces to the response space as well. The relevant and irrelevant spaces are referred to as material and immaterial spaces in their literature (Figure \@ref(fig:relspace-plot)). The envelope methods use "envelope", a linear combination of relevant eigenvectors [@cook2018envelope], to span the relevant space.
+
+(ref:relspace-plot) A heuristic illustration of relevant and irrelevant spaces in a response space and a predictor space
+
+```{r relspace-plot, fig.cap="(ref:relspace-plot)", fig.scap="A heuristic illustration of relevant and irrelevant spaces"}
+plot_relspace()
+```
+
+
+```{r}
+set.seed(1983)
+params <- list(
+  relpos = list("1, 2, 3, 4", "5, 6, 7, 8"),
+  gamma = list(0.2, 1.2)
+)
+# sim_obj <- do.call(crossing, params) %>% 
+sim_obj <- params %>%
+  prepare_design() %>% 
+  mutate(n = 100, p = 10, q = 10, R2 = 0.8,
+         type = "univariate") %>% 
+  mutate(obj = pmap(., simrel)) %>% 
+  select(relpos, gamma, obj) %>% 
+  mutate_at("relpos", paste0) %>% 
+  mutate_at("relpos", ~gsub("c\\((.+)\\)", "\\1", .x)) %>% 
+  mutate(obj =  `names<-`(obj, gsub("Design", "Case", names(obj))))
+```
+
+```{r}
+sobj_list <- sim_obj %>% pluck("obj")
+sigma_zy_pop <- map_df(sobj_list, function(obj){
+  obj %>%
+    cov_mat(which = "zy", use_population = TRUE) %>%
+    tidy_sigma() %>%
+    abs_sigma()
+}, .id = "Case")
+sigma_zy_samp <- map_df(sobj_list, function(obj){
+  obj %>%
+    cov_mat(which = "zy", use_population = FALSE) %>%
+    tidy_sigma() %>%
+    abs_sigma()
+}, .id = "Case")
+sigma_zy <- bind_rows(
+  Population = sigma_zy_pop,
+  Sample = sigma_zy_samp,
+  .id = "Type"
+)
+lambda_df <- bind_rows(
+  Population = map_df(sobj_list, tidy_lambda, use_population = TRUE, .id = "Case"),
+  Sample = map_df(sobj_list, tidy_lambda, use_population = FALSE, .id = "Case"),
+  .id = "Type"
+)
+```
+
+To elaborate on the concept of relevant components and how they interact with other properties and influence the prediction of methods, let us consider an example. Assume a single response model with 10 predictor variables where the information contained in these 10 predictors can be completely explained by four principal components of $\Sigma_{xx}$, the variance-covariance matrix of the predictor ($\mathbf{x}$). These four components are the relevant components. Consider two cases:
+
+Case 1 (Figure \@ref(fig:relcomp-example), left):
+: The position of these relevant components are 1, 2, 3 and 4. The eigenvalues of $\Sigma_{xx}$ decay slowly, i.e. low multicollinearity. Here, the relevant components from 1 to 4 have large variation, so that, most methods easily extract the information and fit the model quite accurately.
+
+Case 2 (Figure \@ref(fig:relcomp-example), right):
+: The position of the relevant components are at 5, 6, 7 and 8. The eigenvalues of $\Sigma_{xx}$ decay rapidly, i.e. high multicollinearity. Here the relevant components from 5 to 8 have small variation, so that, it is difficult for most methods to extract the information and fit the model.
+
+(ref:relcomp-example) Relevant components at two different set of positions and two different levels of multicollinearity. The points represents the correlation of predictor components and the response variable. The grey bars are the eigenvalues of $\boldsymbol{\Sigma}_{xx}$.
+
+```{r relcomp-example, fig.cap="(ref:relcomp-example)", fig.scap="Relevant Components and Multicollinearity", fig.asp=0.5}
+strp_lbl <- c(
+  "Case1" = "Case1: Low Multicollinearity\nLarge Variance Relevant Components at 1:4",
+  "Case2" = "Case2: High Multicollinearity\nSmall Variance Relevant Components at 5:8"
+)
+sigma_zy %>% 
+  filter(Type == "Population") %>% 
+  ggplot(aes(Predictor, Covariance, color = factor(Response))) +
+  geom_bar(data = lambda_df %>% filter(Type == "Population"), 
+           aes(x = Predictor, y = lambda),
+           fill = "lightgrey",
+           stat = "identity", inherit.aes = FALSE) +
+  geom_point() +
+  geom_line(size = rel(0.5)) +
+  facet_grid(cols = vars(Case), labeller = labeller(.cols = strp_lbl)) +
+  theme(legend.position = "none") +
+  labs(x = "Components",
+       y = "Absolute Covariances",
+       color = "Response Variable",
+       title = "Covariance between Predictor Components and Responses",
+       subtitle = "High/Low Multicollinearity with near/far relevant predictors") +
+  scale_color_brewer(palette = "Set1") +
+  scale_x_continuous(breaks = 1:10)
+```
+
+Further, PCR and PLS regression are used with the data simulated from these two cases. Also, leave-one-out cross-validation validates their prediction performance, and the root mean squares error of prediction measures their prediction error (Figure \@ref(fig:rmsep-plot)).
+
+Different methods target these cases differently. For example, PCR tries to capture maximum variation in  $\mathbf{x}$ through principal components, so it starts reducing its prediction error only after including the relevant components. For this method, in the first case, prediction error starts decreasing from the first component on, and stabilize after the fourth component while in the second case, prediction error only starts decreasing after the fifth component. This method requires all four relevant components to get the minimum prediction error. Partial Least Square Regression (PLS), on the other hand, is motivated to maximize the covariance between the predictors and the response. We can see a significant decline of prediction error after the first relevant components is included but it uses fewer components to get the minimum prediction error than PCR in both cases. @Helland1994b has shown a similar result and shown that the relevant components with small variation make the prediction difficult.
+
+```{r rmsep-df, warning=FALSE}
+rmsep_df <- map_df(sim_obj$obj, function(sobj){
+  map_df(name_it(c("pcr", "plsr"), c("PCR", "PLS")), function(mthd) {
+    fn <- eval(parse(text = mthd))
+    fit <- with(sobj, fn(Y ~ X, validation = "LOO"))
+    rmsep <- RMSEP(fit, estimate = "all")
+    out <- drop(rmsep$val) %>% 
+      as.data.frame() %>% 
+      rownames_to_column("type") %>% 
+      gather(components, rmsep, -type)
+    return(out)
+  }, .id = "Method")
+}, .id = "Case") %>% 
+  as_tibble() %>% 
+  mutate(components = components %>% 
+           parse_number() %>% 
+           replace_na(0))
+```
+
+
+```{r rmsep-plot, fig.asp=0.7, fig.cap="Root mean square error of cross-validation from PCR and PLSR", fig.scap=""}
+rmsep_df %>% 
+  filter(type != "adjCV") %>% 
+  ggplot(aes(components, rmsep, color = type)) +
+  geom_line(aes(group = type)) +
+  geom_point() +
+  facet_grid(Method ~ Case, labeller = labeller(.cols = strp_lbl)) +
+  theme(legend.position = "bottom") +
+  scale_x_continuous(breaks = 0:10) +
+  scale_color_discrete(labels = c("Cross-validated", "Training")) +
+  labs(x = "Number of Components", y = "Root mean square error of prediction",
+       color = NULL)
+```
+
+
+The concept of relevant components also can be extended to the response such that a subspace contains the information relevant for a model. The concept is implemented in the simultaneous envelope [@cook2015simultaneous] and the response envelope [@cook2010envelope] methods.
+
+## Simulation ##
+Random variables are the basic components of a complex model and a stochastic simulation. These random variables can be generated on a computer by sampling and manipulating uniform random variables $U(0, 1)$ which requires random numbers. Although computers can not generate truly random numbers, it can, however, generate pseudo-random numbers. These numbers appear as random numbers but they are completely deterministic. Since they are deterministic, any experiment performed using these numbers can be repeated exactly [@jones2014introduction]. We can use these uniform random variables to create other random variables that follow a certain distribution. Standard Normal Distribution is a common one and is used in many statistical simulations including the tool discussed in paper I. Given that we can simulate a standard normal variable $\mathbf{z}$, one can obtain any normal distribution with arbitrary mean $\mu$ and variance $\sigma^2$ as $\mu + \sigma Z$. Here, we can control the parameters $\mu$ and $\sigma$.
+
+Simulation refers to generating data from a known underlying population structure. Controlling the properties of the population is vital in the simulation. This enables researchers and users to use data for comparison of methods, assessing new methodology, testing theory and evaluating algorithms. Such data also can be used for educational purposes.
+
+All the research studies in this thesis have used an R-package called `simrel` for simulating multi-response linear model data (paper I). The simulation tool is general purpose in nature and has a limited number of parameters that controls the essential properties of the population. It is flexible and enables users to simulate data with a wide range of properties. Some of these properties include the level of correlation between the predictors (`gamma`)  and responses (`eta`) through exponential decay factor as in \@ref(eq:exp-decay). The position of the relevant components (`relpos`), the number of predictor variables (`p`) and the number of response variables (`m`) can also be controlled during the simulation.
+
+## Estimation and Prediction ##
+Measures such as mean and standard deviation for a population are usually referred to as parameters of the population. A model as in \@ref(eq:linear-reg-model), which expresses the relationship between $\mathbf{x}$ and $\mathbf{y}$ in the population, uses parameters such as the error variance and regression coefficients. Usually, due to the lack of known population distribution, the values of these parameters are calculated using a sample collected from the population. The process of determining the value of certain parameters is called estimation. The estimated parameter values from any two samples are different. A method for estimation is considered better if the expected squared difference between the estimated and true value is small and has small variance. The goodness of estimation method depends on the nature of the data. Estimation error with true and estimated regression coefficient $\boldsymbol{\beta}$ and $\boldsymbol{\widehat{\beta}}$ respectively, can be defined as in \@ref(eq:est-error).
+
+\begin{equation}
+\text{Estimation Error} = \mathsf{E}\left[
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t 
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
+\right]
+(\#eq:est-error)
+\end{equation}
+
+A fitted or trained model is mostly used for prediction. Prediction refers to determining the value of the response for a new set of predictors, which were not used to train the model. Most studies under "data science" field are targeted for better prediction. Most comparisons in this thesis evaluate the prediction performance of the multivariate methods using the prediction error measured as in \@ref(eq:pred-error).
+
+\begin{equation}
+\text{Prediction Error} = \mathsf{E}\left[
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)^t
+  \boldsymbol{\Sigma}_{xx}
+  \left(\boldsymbol{\beta} - \hat{\boldsymbol{\beta}}\right)
+\right] + \boldsymbol{\Sigma}_{y|x}
+(\#eq:pred-error)
+\end{equation}
+
+From \@ref(eq:est-error) and \@ref(eq:pred-error), we can see that the prediction errors are influenced by the covariance of the predictors directly, while estimation error is not. In the case of multicollinear predictors, estimation error can be huge, while due to the scaling of the covariation of predictors, the prediction error can still be small. A good estimation can give a proper and trustworthy idea about the relation between certain predictor variation with a certain response variable. This is important in policymaking, academic researches and to understand the relationships when developing new models. Prediction, on the other hand, is widely used from weather forecasting, economic forecasting, prediction in production and sales, and many more.
+
+## Multivariate Methods ##
+Various multivariate methods such as ordinary least squares (OLS), principal components regression (PCR), partial least squares (PLS) regression and envelope methods are used for comparison studies included in this thesis. All of these methods except OLS use the concept of relevant space and the reduction of the regression model. Here we will refer PLS2, which models all the response variables together, as PLS and PLS1, which models each responses separately, as PLS1. 
+
+### Methods based on Envelope Model
+Three different methods based on envelopes are also included for comparison. @Cook2007a defined envelope as the smallest subspace that includes the span of true regression coefficients and developed various estimators based on the concept of the envelope through various subsequent papers. Response envelope (Yenv) [@cook2010envelope] perform dimension reduction only in the response space while Predictor envelope (Xenv) [@cook2013envelopes] perform dimension reduction only in the predictor space. The simultaneous envelope (Senv) [@cook2015simultaneous] perform dimension reduction on both predictor and response space simultaneously. If all the possible components (latent dimension) are included in these methods, the results are equivalent to OLS regression. The comparisons of these envelope methods together with PCR and PLS in the third and fourth paper has shown encouraging results for envelope methods in both easy and difficult cases.
+
+### PLS and its derivatives
+Since the PLS method has been both popular and productive in fields like chemometrics, its development has progressed quickly over time through the formulation of various derivatives. CPLS and CPPLS are among them which combines PLS and canonical correlation analysis (CCA) and gives a joint framework for classification and regression [@indahl2009canonical]. Paper-I has made some basic comparison of these methods for their predictive ability. More recently, @helland2012near] introduced the Bayes PLS method. The method only works with a single response model and has shown promising results compared to other methods in Paper-II. 
+
+@WENTZELL2003257 has assembled many comparisons made on PCR and PLS where they conclude that PLS has not shown a clear advantage over PCR over predictive ability in most studies, but uses fewer components than PCR.  Many studies are available comparing PCR, PLS and their derivatives. However, there are not any studies to date which have made any empirical comparisons of the newly developed _envelope_ based methods using real and simulated data with these more established methods. 
+
+Details on each of these methods can be obtained from the corresponding references.
+
+## Experimental Design ##
+In all the post hoc comparisons, simulation parameters are considered as independent variables (factors), and the prediction- and estimation errors are considered as outcome variables (responses). Factorial Design is implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For example, the factorial design used throughout the third and fourth paper, shown in Figure \@ref(fig:design-plot), has four factors: a) Number of predictor variables (`p`) with two levels, b) level of multicollinearity (`gamma`) with two levels, where higher value represents a higher level of multicollinearity, c) position index of relevant predictor components (`relpos`) and d) the level of collinearity in response (`eta`), with four levels where higher value represents a higher correlation between the response variables. The combination of these factors has created 32 unique designs which are then used for simulating data with those particular properties. Such data, with all possible combination of these properties, have made both thorough and rigorous comparison possible.
+
+(ref:design-plot) An example of a factorial design used in the third and fourth paper.
+
+```{r design-plot, fig.cap='(ref:design-plot)', fig.width=9, fig.asp=0.4}
+relpos_lbl <- c(
+  "1, 2, 3, 4" = "relpos: 1:4",
+  "5, 6, 7, 8" = "relpos: 5:8"
+)
+design_chr %>%
+  mutate(Design = row_number()) %>%
+  ggplot(aes(gamma, p, color = Design %in% c(1, 9))) +
+  geom_point(shape=4, show.legend = FALSE) +
+  ggrepel::geom_text_repel(
+    aes(label = formatC(Design, flag = "0", digits = 1, format = "fg")),
+    nudge_x = 0.03, family = 'mono', fontface = "bold", size = rel(5),
+    show.legend = FALSE) +
+  facet_grid(relpos ~ eta, labeller=labeller(
+    eta = label_both,
+    relpos = relpos_lbl
+  )) +
+  theme_minimal(base_size = 16, base_family = "mono") +
+  theme(panel.grid.minor = element_blank(), 
+        text = element_text(face = "bold"),
+        axis.text.x = element_text(hjust = c(0, 1))) +
+  scale_x_continuous(breaks = unique(design_chr$gamma)) +
+  scale_y_continuous(breaks = unique(design_chr$p), trans = "reverse") +
+  labs(y = "Predictors (p)",
+       x = "Multicollinearity Level (gamma)") +
+  coord_equal(ratio = 1/500) +
+  scale_color_manual(values = 1:2)
+```
+
+Let us dig a little deeper to understand how these simulation parameters are tied with the properties of the simulated data. As an example, let us take Design 1 and Design 9 of Figure \@ref(fig:design-plot) where data simulated with Design 1 have low multicollinearity and the position index of relevant predictors are 1, 2, 3, 4, while Design 9 have high multicollinearity and the position index of relevant predictors are 5, 6, 7, 8. With other factors or properties of the data being the same for both, the difference in these two designs helps us to analyse the interaction between the multicollinearity in the data and the position of relevant components on, for instance, prediction performance of the methods.
+
+```{r cov-plot-prep}
+selected_designs <- design %>%
+  mutate(Design = row_number()) %>%
+  filter(Design %in% c(1, 9))
+sobj_list <- lapply(1:nrow(selected_designs), function(i){
+  set.seed(2019)
+  selected_designs %>% select(-Design) %>% get_design(i) %>% simulate()
+})
+names(sobj_list) <- paste0("Design", selected_designs$Design)
+sigma_zy_pop <- map_df(sobj_list, function(obj){
+  obj %>%
+    cov_mat(which = "zy", use_population = TRUE) %>%
+    tidy_sigma() %>%
+    abs_sigma()
+}, .id = "Design")
+sigma_zy_samp <- map_df(sobj_list, function(obj){
+  obj %>%
+    cov_mat(which = "zy", use_population = FALSE) %>%
+    tidy_sigma() %>%
+    abs_sigma()
+}, .id = "Design")
+sigma_zy <- bind_rows(
+  Population = sigma_zy_pop,
+  Sample = sigma_zy_samp,
+  .id = "Type"
+)
+lambda_df <- bind_rows(
+  Population = map_df(sobj_list, tidy_lambda, use_population = TRUE, .id = "Design"),
+  Sample = map_df(sobj_list, tidy_lambda, use_population = FALSE, .id = "Design"),
+  .id = "Type"
+)
+design_chr_selected <- selected_designs %>%
+    select(relpos, gamma, Design) %>%
+    modify_at("relpos", paste0) %>%
+    mutate_at("relpos", ~gsub("list\\(c\\((.+)\\))", "\\1", ..1))
+design_name <- paste0("Design", selected_designs$Design)
+design_lbl <- with(design_chr_selected, {
+  paste(design_name, map2_chr(relpos, gamma, paste, sep = " | "), sep = "\n")
+})
+names(design_lbl) <- design_name
+```
+
+(ref:relcomp-plot) _Design 1_: Relevant components have large variation, _Design 9_: irrelevant components have large variation and relevant components have small variation.
+
+```{r cov-plot, fig.width=8, fig.asp=0.7, fig.cap="(ref:relcomp-plot)"}
+lbl <- sapply(opts[c("n", "R2")], unique)
+lbl <- paste(names(lbl), lbl, sep = ": ", collapse = ", ")
+sigma_zy %>% 
+  ggplot(aes(Predictor, Covariance, color = factor(Response))) +
+  geom_bar(data = lambda_df %>% filter(Type == "Population"), 
+           aes(x = Predictor, y = lambda),
+           fill = "lightgrey",
+           stat = "identity", inherit.aes = FALSE) +
+  geom_point(size = rel(0.8)) +
+  geom_line(size = rel(0.5)) +
+  facet_grid(rows = vars(Design), cols = vars(Type),
+             labeller = labeller(Design = design_lbl )) +
+  theme(legend.position = "bottom") +
+  labs(x = "Components",
+       y = "Absolute Covariances",
+       color = "Response Variable",
+       title = "Covariance between Predictor Components and Responses",
+       subtitle = "High/Low Multicollinearity with near/far relevant predictors") +
+  scale_color_brewer(palette = "Set1") +
+  annotate(geom = "text", label = lbl, x = Inf, y = Inf, hjust = 1, 
+           vjust = 2, family = "mono", size = rel(5))
+```
+
+Figure \@ref(fig:cov-plot) (top-row) shows the scaled covariance between the predictor components and the response variables for  Design 1. Here the relevant components with larger variation (due to low multicollinearity) simulate data that are easier to model by most methods. Figure \@ref(fig:cov-plot) (bottom-row) for Design 9 shows that the relevant components at position 5, 6, 7, 8 has small variation and irrelevant components at position 1, 2, 3, 4 have large variation. This design simulates data that are difficult to model my most methods. The population covariances in the figure give clear and distinct relationship, while the sample covariances give a somewhat rough approximation of the population.
+
+## Analysis of Variance ##
+Various exploratory plots of prediction error, estimation error and the number of components used by different methods are used for analysis. Also, visualizations from principal components analysis (PCA) have been used on these errors. Besides, a more formal analysis is made using analysis of variance (ANOVA). ANOVA allowed us not only to understand the effect of various properties of data controlled by the simulation parameters but also analyse the effect of the interaction of these properties with the methods. The third and fourth paper use multivariate analysis of variance (MANOVA) to analyze the effect on four response variables.
+
+MANOVA is the multivariate counterpart of the ANOVA where various test statistic is used, such as Wilks' Lambda, Lawley-Hotelling trace, Pillai trace and Roy's largest root. All of these methods use the within $(\mathbf{E})$ and between $(\mathbf{H})$ sum of squares and the cross products matrices. All four test statistic are nearly equivalent for large sample size [@johnson2018applied]. In our studies, Pillai trace is used, which is defined as,
+
+\begin{equation}
+\text{Pillai statistic} = \text{tr}\left[(E + H)^{-1}H\right] = \sum_{i=1}^{m}{\frac{\nu_i}{1+\nu_i}}
+(\#eq:pillai)
+\end{equation}
+where, $\nu_i$ represents the eigenvalues corresponding to $\mathbf{E^{-1}H}$.
