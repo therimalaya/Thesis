@@ -1,26 +1,37 @@
 En lineær regresjonsmodell definerer et lineært forhold mellom to eller
 flere tilfeldige variabler. De tilfeldige variablene som er avhengige av
-andre tilfeldige variabler kalles ofte responsvariabler og de uavhengige
-tilfeldige variablene kalles prediktorvariabler. I de fleste tilfeller
-er ikke alle variasjoner relevante for regresjon, dvs. bare en viss
-mengde variasjoner i prediktorer er relevante for en del av variasjoner
-i respons. Dette fører til en reduksjon av den lineære
-regresjonsmodellen der man kan forestille seg et underområde av plassen
-som spennes av prediktorvariablene som inneholder all relevant
-informasjon for et underområde spandert av responsvariablene.
+andre tilfeldige variabler, kalles ofte responsvariabler, og de
+uavhengige tilfeldige variablene kalles prediktorvariabler. I de fleste
+tilfeller er ikke all variasjon relevant for regresjon, dvs. bare en
+viss mengde variasjonen i prediktorene er relevante, og bare for en del
+av variasjonen i responsen. Dette fører til en reduksjon av den lineære
+regresjonsmodellen der man kan forestille seg et underrom av rommet som
+spennesut av prediktorvariablene som inneholder all relevant informasjon
+for et underrom av rommet spent ut av responsvariablene.
 
-I denne avhandlingen prøver vi å sammenligne noen nye metoder som er
-basert på konvoluttmodellen og noen etablerte metoder som
-hovedkomponenter regresjon (PCR) og partiell minste kvadraters regresjon
-(PLS). Sammenligningen tester disse metodene på deres ytelse til å
-produsere minimum prediksjon og estimeringsfeil mens modelleringsdata
-simuleres med spesielt designet egenskaper. For simuleringen har vi også
-laget en R-pakke kalt \texttt{simrel} med et webgrensesnitt.
+I denne avhandlingenprøver vi å sammenligne noen nye metoder som er
+basert på Envelopemodellen og noen etablerte metoder som principal
+komponent regresjon (PCR) og partiell minste kvadraters regresjon (PLS).
+Sammenligningen tester disse metodene på deres ytelse til å produsere
+minimum prediksjon- og estimeringsfeil, mens modelleringsdata simuleres
+med spesielt designede egenskaper. For simuleringen har vi også laget en
+R-pakke kalt \texttt{simrel} med et webgrensesnitt.
 
-En første simuleringsmodell for en multirespons, multivariat lineær
-modell som simuleringsverktøyet bygger på. Denne artikkelen utarbeider
-et grunnleggende fundament for simuleringene med konseptet reduksjon av
-regresjonsmodeller. Den andre artikkelen diskuterer likhetene i
-konvolutt-, PCR- og PLS-populasjonsmodellene. Denne artikkelen
-sammenligner prediksjonsytelsen til flere multivariate metoder ved bruk
-av en modell med en enkelt respons.
+En simuleringsmodell for multirespons, multivariat lineær modell, som
+simuleringsverktøyet bygger på, diskuteres i den første artikkelen.
+Denne artikkelen utarbeider et grunnleggende fundament for simuleringene
+basert på konseptet om reduksjon av regresjonsmodeller. Den andre
+artikkelen diskuterer likhetene i Envelope-, PCR- og
+PLS-populasjonsmodellene. Denne artikkelen sammenligner
+prediksjonsytelsen til flere multivariate metoder ved bruk av en modell
+med en enkelt respons.
+
+De to siste artiklene gir en grundig evaluering av prediksjons- og
+estimeringsegenskapene til etablerte metoder (PCR, PLS1 og PLS2) og
+nyutviklede envelope-baserte metoder (Xenv og Senv). Ikke uventet fant
+studien at det ikke finnes en enkelt metode som dominerer i alle
+situasjoner, men resultatene deres avhenger av egenskapene til dataene
+de modellerer. Imidlertid har envelope-baserte metoder vist
+bemerkelsesverdig resultater i mange tilfeller, både når det gjelder
+prediksjon og estimering. Studien anbefaler også forskere å bruke og
+evaluere envelope-metodene.

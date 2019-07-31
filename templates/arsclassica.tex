@@ -327,7 +327,7 @@ $endif$ % bibliography
 $endif$ % natbib
 
 $if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+\printbibliography%$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$ % biblatex
 
 $if(nociteall)$
@@ -343,8 +343,8 @@ $if(papers)$
 $for(papers)$
 \par\chapter$if(papers.subtitle)$[$papers.subtitle$]$endif${$papers.title$}
 \cleardoublepage
-\includepdf[pages=-1]{$papers.path$}
-%\includepdf[pages=-]{$papers.path$}
+%\includepdf[pages=-1]{$papers.path$}
+\includepdf[pages=-]{$papers.path$}
 $endfor$
 $endif$
 
