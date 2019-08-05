@@ -12,9 +12,8 @@ author:
   email: 'raju.rimal@nmbu.no'
   homepage: 'https://www.mathatistics.com/'
   affiliation: |
-    Biostatistics\
-    Dept. of Chemistry, Biotechnology and Food Science\
-    Norwegian University of Life Sciences
+    Norwegian University of Life Sciences\
+    Faculty of Chemistry, Biotechnology and Food Science\
 supervisors:
   - title: 'Professor'
     name: 'Solve Sæbø'
@@ -25,8 +24,8 @@ supervisors:
   - title: 'Associate Professor'
     name: 'Trygve Almøy'
     affiliation: |
-      Dept. of Chemistry, Biotechnology and Food Science\
       Norwegian University of Life Sciences\
+      Faculty of Chemistry, Biotechnology and Food Science\
       Ås, Norway
 bibliography: [References.bib]
 biblio-style: 'plainnat'
@@ -38,8 +37,8 @@ nocite: '@*'
 lof: true
 lot: false
 knit: 'bookdown::render_book'
-logo: "Logo.pdf"
-logo-width: '0.6\linewidth'
+logo: "Logo1.png"
+logo-width: '0.35\linewidth'
 thesis-number: "2019:76"
 issn: "1894-6402"
 isbn: "978-82-575-1636-9"
