@@ -6,3 +6,4 @@ rstudio
 .Rapp*
 .DS_Store
 
+*.log

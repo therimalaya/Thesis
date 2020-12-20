@@ -57,7 +57,7 @@
 \newcommand{\Title}{Exploration of Multi-Response Multivariate Methods}
 \newcommand{\Location}{\spacedlowsmallcaps{Ås}}
 \newcommand{\Year}{2019}
-\newcommand{\Month}{Aug}
+\newcommand{\Month}{okt.}
 \newcommand{\Date}{\Year, \Month}
 \newcommand{\docsite}{\url{https://therimalaya.github.com/thesis}}
 \newcommand{\Subtitle}{}
@@ -451,6 +451,11 @@ Details on each of these methods can be obtained from the corresponding referenc
 In all the post hoc comparisons, simulation parameters are considered as independent variables (factors), and the prediction- and estimation errors are considered as outcome variables (responses). Factorial Design is implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For example, the factorial design used throughout the third and fourth paper, shown in Figure \ref{fig:design-plot}, has four factors: a) Number of predictor variables (\texttt{p}) with two levels, b) level of multicollinearity (\texttt{gamma}) with two levels, where higher value represents a higher level of multicollinearity, c) position index of relevant predictor components (\texttt{relpos}) and d) the level of collinearity in response (\texttt{eta}), with four levels where higher value represents a higher correlation between the response variables. The combination of these factors has created 32 unique designs which are then used for simulating data with those particular properties. Such data, with all possible combination of these properties, have made both thorough and rigorous comparison possible.
 
 
+
+\begin{verbatim}
+Warning: Vectorized input to `element_text()` is not officially supported.
+Results may be unexpected or may change in future versions of ggplot2.
+\end{verbatim}
 
 \begin{figure}[!htb]
 \includegraphics[width=1\linewidth]{Thesis_files/figure-latex/design-plot-1} \caption{An example of a factorial design used in the third and fourth paper.}\label{fig:design-plot}

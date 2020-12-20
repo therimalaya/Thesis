@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Background | Exploration of Multi-Response Multivariate Methods</title>
   <meta name="description" content="Background | Exploration of Multi-Response Multivariate Methods" />
-  <meta name="generator" content="bookdown 0.11.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
   <meta property="og:title" content="Background | Exploration of Multi-Response Multivariate Methods" />
   <meta property="og:type" content="book" />
@@ -266,6 +266,8 @@ Figure 3: Root mean square error of cross-validation from PCR and PLSR
 <h2>Experimental Design</h2>
 <p>In all the post hoc comparisons, simulation parameters are considered as independent variables (factors), and the prediction- and estimation errors are considered as outcome variables (responses). Factorial Design is implemented as an experimental design which allowed us to compare all possible combination of different factor levels. For example, the factorial design used throughout the third and fourth paper, shown in Figure <a href="background.html#fig:design-plot">4</a>, has four factors: a) Number of predictor variables (<code>p</code>) with two levels, b) level of multicollinearity (<code>gamma</code>) with two levels, where higher value represents a higher level of multicollinearity, c) position index of relevant predictor components (<code>relpos</code>) and d) the level of collinearity in response (<code>eta</code>), with four levels where higher value represents a higher correlation between the response variables. The combination of these factors has created 32 unique designs which are then used for simulating data with those particular properties. Such data, with all possible combination of these properties, have made both thorough and rigorous comparison possible.</p>
 
+<pre><code>Warning: Vectorized input to `element_text()` is not officially supported.
+Results may be unexpected or may change in future versions of ggplot2.</code></pre>
 <div class="figure"><span id="fig:design-plot"></span>
 <img src="Thesis_files/figure-html/design-plot-1.svg" alt="An example of a factorial design used in the third and fourth paper." width="100%" />
 <p class="caption">
